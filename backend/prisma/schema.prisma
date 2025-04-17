@@ -44,12 +44,14 @@ model Department {
 }
 
 model SeatMatrix {
-  id           Int        @id @default(autoincrement())
-  department   Department @relation(fields: [departmentId], references: [id])
+  id           Int    @id @default(autoincrement())
   departmentId String
   category     String
-  subCategory  String?
+  subCategory  String
   totalSeats   Int
+  department   Department @relation(fields: [departmentId], references: [id])
+
+  @@unique([departmentId, category, subCategory], name: "departmentId_category_subCategory")
 }
 
 model AllocatedSeat {

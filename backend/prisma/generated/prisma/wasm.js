@@ -117,12 +117,46 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
-  id: 'id',
+exports.Prisma.StudentApplicationScalarFieldEnum = {
+  applicationNumber: 'applicationNumber',
+  studentName: 'studentName',
+  fatherMotherName: 'fatherMotherName',
+  phoneNumber: 'phoneNumber',
   email: 'email',
-  password: 'password',
-  role: 'role',
+  jeeCRL: 'jeeCRL',
+  category: 'category',
+  categoryRank: 'categoryRank',
+  subCategory: 'subCategory',
+  subCategoryRank: 'subCategoryRank',
+  courseChoice1: 'courseChoice1',
+  courseChoice2: 'courseChoice2',
+  courseChoice3: 'courseChoice3',
+  courseChoice4: 'courseChoice4',
+  courseChoice5: 'courseChoice5',
+  courseChoice6: 'courseChoice6',
+  courseChoice7: 'courseChoice7',
   createdAt: 'createdAt'
+};
+
+exports.Prisma.DepartmentScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.SeatMatrixScalarFieldEnum = {
+  id: 'id',
+  departmentId: 'departmentId',
+  category: 'category',
+  subCategory: 'subCategory',
+  totalSeats: 'totalSeats'
+};
+
+exports.Prisma.AllocatedSeatScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  allocatedCourse: 'allocatedCourse',
+  allocationRound: 'allocationRound',
+  allocatedAt: 'allocatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -135,9 +169,17 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  StudentApplication: 'StudentApplication',
+  Department: 'Department',
+  SeatMatrix: 'SeatMatrix',
+  AllocatedSeat: 'AllocatedSeat'
 };
 
 /**

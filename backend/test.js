@@ -1,11 +1,94 @@
-const { PrismaClient } = require('@prisma/client');
+const { PrismaClient } = require('./prisma/generated/prisma');
 const prisma = new PrismaClient();
 
-async function main() {
-  const users = await prisma.user.findMany();
-  console.log(users);
+async function allocateRound1GNGN() {
+  // 1. Get all students regardless of category
+  const students = await prisma.studentApplication.findMany({
+    orderBy: {
+      jeeCRL: 'asc',
+    },
+  });
+
+  // 2. Get GEN/GNGN seat matrix
+  const seatMatrix = await prisma.seatMatrix.findMany({
+    where: {
+      category: 'GEN',
+      subCategory: 'GNGN',
+      totalSeats: {
+        gt: 0,
+      },
+    },
+    include: {
+      department: true,
+    },
+  });
+
+  // 3. Map course name to departmentId and seats
+  const seatMap = new Map(); // departmentId => available seats
+  const nameToDeptId = new Map(); // courseName => departmentId
+
+  seatMatrix.forEach(seat => {
+    seatMap.set(seat.departmentId, seat.totalSeats);
+    nameToDeptId.set(seat.department.name, seat.departmentId);
+  });
+
+  // 4. Allocate students
+  for (const student of students) {
+    const choices = [
+      student.courseChoice1,
+      student.courseChoice2,
+      student.courseChoice3,
+      student.courseChoice4,
+      student.courseChoice5,
+      student.courseChoice6,
+      student.courseChoice7,
+    ].filter(Boolean);
+
+    for (const courseName of choices) {
+      const deptId = nameToDeptId.get(courseName);
+      const available = seatMap.get(deptId);
+
+      if (available && available > 0) {
+        // Allocate seat
+        await prisma.allocatedSeat.create({
+          data: {
+            studentId: student.applicationNumber,
+            allocatedCourse: courseName,
+            allocationRound: 1,
+            allocatedAt: new Date(),
+          },
+        });
+
+        // Update in-memory
+        seatMap.set(deptId, available - 1);
+
+        // Update DB seatMatrix
+        await prisma.seatMatrix.update({
+          where: {
+            departmentId_category_subCategory: {
+              departmentId: deptId,
+              category: 'GEN',
+              subCategory: 'GNGN',
+            },
+          },
+          data: {
+            totalSeats: { decrement: 1 },
+          },
+        });
+
+        console.log(`Allocated ${student.studentName} to ${courseName}`);
+        break;
+      }
+    }
+  }
+
+  console.log('Round 1 GNGN allocation complete.');
 }
 
-main()
-  .catch(console.error)
-  .finally(() => prisma.$disconnect());
+allocateRound1GNGN()
+  .catch((e) => {
+    console.error(e);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
