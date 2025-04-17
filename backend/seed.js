@@ -1,7 +1,17 @@
 const { PrismaClient } = require('./prisma/generated/prisma');
 const prisma = new PrismaClient();
 
+
+
 async function main() {
+  await prisma.allocatedSeat.deleteMany();
+  await prisma.seatMatrix.deleteMany();
+  await prisma.studentApplication.deleteMany();
+  await prisma.department.deleteMany();
+  
+    // then create data
+  
+
   // Create Departments
   const csDepartment = await prisma.department.create({
     data: {
