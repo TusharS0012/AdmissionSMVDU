@@ -1,5 +1,7 @@
-const { PrismaClient } = require('./prisma/generated/prisma');
+import { PrismaClient } from './prisma/generated/prisma/index.js';
+
 const prisma = new PrismaClient();
+
 
 async function allocateRound1GNGN() {
   // 1. Get all students regardless of category

@@ -35,6 +35,7 @@ model StudentApplication {
   courseChoice7     String?
 
   createdAt         DateTime @default(now())
+  allocations        AllocatedSeat[]
 }
 
 model Department {
@@ -60,4 +61,5 @@ model AllocatedSeat {
   allocatedCourse   String
   allocationRound   Int
   allocatedAt       DateTime           @default(now())
+  student           StudentApplication @relation(fields: [studentId], references: [applicationNumber])
 }

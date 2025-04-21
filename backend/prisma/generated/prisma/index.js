@@ -165,7 +165,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/soum/Projects/AdmissionDB/backend/prisma/generated/prisma",
+      "value": "/home/soumitra/Projects/AdmissionDB/backend/prisma/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -179,7 +179,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/soum/Projects/AdmissionDB/backend/prisma/schema.prisma",
+    "sourceFilePath": "/home/soumitra/Projects/AdmissionDB/backend/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
