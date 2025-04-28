@@ -1,14 +1,14 @@
 import {PrismaClient} from './prisma/generated/prisma/index.js';
 const prisma = new PrismaClient();
 
-import { allocateRound1GNGN } from './test.js';
-import { allocateRound2OBC } from './test3.js';
-import { allocateRound2EWS } from './test4.js';
-import { allocateRound2SC } from './test5.js';
-import { allocateRound2ST1 } from './test6.js';
-import { allocateRound2ST2 } from './test7.js';
-import { allocateRound2RBA } from './test8.js';
-import { allocateRound2RLAC } from './test9.js';
+import { allocateRound1GNGN } from './testGN.js';
+import { allocateRound2OBC } from './testGN2.js';
+import { allocateRound2EWS } from './testEWS.js';
+import { allocateRound2SC } from './testSC.js';
+import { allocateRound2ST1 } from './testST1.js';
+import { allocateRound2ST2 } from './testST2.js';
+import { allocateRound2RBA } from './testRBA.js';
+import { allocateRound2RLAC } from './testRLAC.js';
 import { checkSeatsRemaining } from './remseats.js';
 
 
