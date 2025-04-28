@@ -94,3 +94,5 @@ allocateRound1GNGN()
   .finally(async () => {
     await prisma.$disconnect();
   });
+
+  export { allocateRound1GNGN };

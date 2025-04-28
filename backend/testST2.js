@@ -130,3 +130,5 @@ allocateRound2ST2()
     .finally(async () => {
         await prisma.$disconnect();
     });
+
+export { allocateRound2ST2 };

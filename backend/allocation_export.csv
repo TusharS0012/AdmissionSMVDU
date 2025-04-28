@@ -1,0 +1,8 @@
+applicationNumber,studentName,allocatedDepartment,allocatedCategory,allocatedSeat
+APP001,John Doe,None,GEN,None
+APP002,Jane Smith,Computer Science,OBC,OBC
+APP003,Sam Wilson,Computer Science,OBC,OBC
+APP004,Emily Chen,None,EWS,None
+APP005,Ali Khan,Computer Science,OBC,OBC
+APP006,Neha Verma,None,EWS,None
+APP007,Riya,None,GEN,None

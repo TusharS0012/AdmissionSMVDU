@@ -129,3 +129,5 @@ allocateRound2RLAC()
     .finally(async () => {
         await prisma.$disconnect();
     });
+
+export { allocateRound2RLAC };

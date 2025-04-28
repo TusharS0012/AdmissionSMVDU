@@ -1138,6 +1138,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type StudentApplicationCountOutputType
+   */
+
+  export type StudentApplicationCountOutputType = {
+    allocations: number
+  }
+
+  export type StudentApplicationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    allocations?: boolean | StudentApplicationCountOutputTypeCountAllocationsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * StudentApplicationCountOutputType without action
+   */
+  export type StudentApplicationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StudentApplicationCountOutputType
+     */
+    select?: StudentApplicationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * StudentApplicationCountOutputType without action
+   */
+  export type StudentApplicationCountOutputTypeCountAllocationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AllocatedSeatWhereInput
+  }
+
+
+  /**
    * Count Type DepartmentCountOutputType
    */
 
@@ -1482,6 +1513,8 @@ export namespace Prisma {
     courseChoice6?: boolean
     courseChoice7?: boolean
     createdAt?: boolean
+    allocations?: boolean | StudentApplication$allocationsArgs<ExtArgs>
+    _count?: boolean | StudentApplicationCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["studentApplication"]>
 
   export type StudentApplicationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1548,10 +1581,18 @@ export namespace Prisma {
   }
 
   export type StudentApplicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"applicationNumber" | "studentName" | "fatherMotherName" | "phoneNumber" | "email" | "jeeCRL" | "category" | "categoryRank" | "subCategory" | "subCategoryRank" | "courseChoice1" | "courseChoice2" | "courseChoice3" | "courseChoice4" | "courseChoice5" | "courseChoice6" | "courseChoice7" | "createdAt", ExtArgs["result"]["studentApplication"]>
+  export type StudentApplicationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    allocations?: boolean | StudentApplication$allocationsArgs<ExtArgs>
+    _count?: boolean | StudentApplicationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type StudentApplicationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type StudentApplicationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $StudentApplicationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "StudentApplication"
-    objects: {}
+    objects: {
+      allocations: Prisma.$AllocatedSeatPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       applicationNumber: string
       studentName: string
@@ -1965,6 +2006,7 @@ export namespace Prisma {
    */
   export interface Prisma__StudentApplicationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    allocations<T extends StudentApplication$allocationsArgs<ExtArgs> = {}>(args?: Subset<T, StudentApplication$allocationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AllocatedSeatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2029,6 +2071,10 @@ export namespace Prisma {
      */
     omit?: StudentApplicationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentApplicationInclude<ExtArgs> | null
+    /**
      * Filter, which StudentApplication to fetch.
      */
     where: StudentApplicationWhereUniqueInput
@@ -2047,6 +2093,10 @@ export namespace Prisma {
      */
     omit?: StudentApplicationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentApplicationInclude<ExtArgs> | null
+    /**
      * Filter, which StudentApplication to fetch.
      */
     where: StudentApplicationWhereUniqueInput
@@ -2064,6 +2114,10 @@ export namespace Prisma {
      * Omit specific fields from the StudentApplication
      */
     omit?: StudentApplicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentApplicationInclude<ExtArgs> | null
     /**
      * Filter, which StudentApplication to fetch.
      */
@@ -2113,6 +2167,10 @@ export namespace Prisma {
      */
     omit?: StudentApplicationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentApplicationInclude<ExtArgs> | null
+    /**
      * Filter, which StudentApplication to fetch.
      */
     where?: StudentApplicationWhereInput
@@ -2161,6 +2219,10 @@ export namespace Prisma {
      */
     omit?: StudentApplicationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentApplicationInclude<ExtArgs> | null
+    /**
      * Filter, which StudentApplications to fetch.
      */
     where?: StudentApplicationWhereInput
@@ -2203,6 +2265,10 @@ export namespace Prisma {
      * Omit specific fields from the StudentApplication
      */
     omit?: StudentApplicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentApplicationInclude<ExtArgs> | null
     /**
      * The data needed to create a StudentApplication.
      */
@@ -2251,6 +2317,10 @@ export namespace Prisma {
      * Omit specific fields from the StudentApplication
      */
     omit?: StudentApplicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentApplicationInclude<ExtArgs> | null
     /**
      * The data needed to update a StudentApplication.
      */
@@ -2318,6 +2388,10 @@ export namespace Prisma {
      */
     omit?: StudentApplicationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentApplicationInclude<ExtArgs> | null
+    /**
      * The filter to search for the StudentApplication to update in case it exists.
      */
     where: StudentApplicationWhereUniqueInput
@@ -2344,6 +2418,10 @@ export namespace Prisma {
      */
     omit?: StudentApplicationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentApplicationInclude<ExtArgs> | null
+    /**
      * Filter which StudentApplication to delete.
      */
     where: StudentApplicationWhereUniqueInput
@@ -2364,6 +2442,30 @@ export namespace Prisma {
   }
 
   /**
+   * StudentApplication.allocations
+   */
+  export type StudentApplication$allocationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AllocatedSeat
+     */
+    select?: AllocatedSeatSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AllocatedSeat
+     */
+    omit?: AllocatedSeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AllocatedSeatInclude<ExtArgs> | null
+    where?: AllocatedSeatWhereInput
+    orderBy?: AllocatedSeatOrderByWithRelationInput | AllocatedSeatOrderByWithRelationInput[]
+    cursor?: AllocatedSeatWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AllocatedSeatScalarFieldEnum | AllocatedSeatScalarFieldEnum[]
+  }
+
+  /**
    * StudentApplication without action
    */
   export type StudentApplicationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2375,6 +2477,10 @@ export namespace Prisma {
      * Omit specific fields from the StudentApplication
      */
     omit?: StudentApplicationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: StudentApplicationInclude<ExtArgs> | null
   }
 
 
@@ -4707,6 +4813,7 @@ export namespace Prisma {
     allocatedCourse?: boolean
     allocationRound?: boolean
     allocatedAt?: boolean
+    student?: boolean | StudentApplicationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["allocatedSeat"]>
 
   export type AllocatedSeatSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4715,6 +4822,7 @@ export namespace Prisma {
     allocatedCourse?: boolean
     allocationRound?: boolean
     allocatedAt?: boolean
+    student?: boolean | StudentApplicationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["allocatedSeat"]>
 
   export type AllocatedSeatSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4723,6 +4831,7 @@ export namespace Prisma {
     allocatedCourse?: boolean
     allocationRound?: boolean
     allocatedAt?: boolean
+    student?: boolean | StudentApplicationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["allocatedSeat"]>
 
   export type AllocatedSeatSelectScalar = {
@@ -4734,10 +4843,21 @@ export namespace Prisma {
   }
 
   export type AllocatedSeatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "studentId" | "allocatedCourse" | "allocationRound" | "allocatedAt", ExtArgs["result"]["allocatedSeat"]>
+  export type AllocatedSeatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    student?: boolean | StudentApplicationDefaultArgs<ExtArgs>
+  }
+  export type AllocatedSeatIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    student?: boolean | StudentApplicationDefaultArgs<ExtArgs>
+  }
+  export type AllocatedSeatIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    student?: boolean | StudentApplicationDefaultArgs<ExtArgs>
+  }
 
   export type $AllocatedSeatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "AllocatedSeat"
-    objects: {}
+    objects: {
+      student: Prisma.$StudentApplicationPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       studentId: string
@@ -5138,6 +5258,7 @@ export namespace Prisma {
    */
   export interface Prisma__AllocatedSeatClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    student<T extends StudentApplicationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StudentApplicationDefaultArgs<ExtArgs>>): Prisma__StudentApplicationClient<$Result.GetResult<Prisma.$StudentApplicationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5189,6 +5310,10 @@ export namespace Prisma {
      */
     omit?: AllocatedSeatOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AllocatedSeatInclude<ExtArgs> | null
+    /**
      * Filter, which AllocatedSeat to fetch.
      */
     where: AllocatedSeatWhereUniqueInput
@@ -5207,6 +5332,10 @@ export namespace Prisma {
      */
     omit?: AllocatedSeatOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AllocatedSeatInclude<ExtArgs> | null
+    /**
      * Filter, which AllocatedSeat to fetch.
      */
     where: AllocatedSeatWhereUniqueInput
@@ -5224,6 +5353,10 @@ export namespace Prisma {
      * Omit specific fields from the AllocatedSeat
      */
     omit?: AllocatedSeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AllocatedSeatInclude<ExtArgs> | null
     /**
      * Filter, which AllocatedSeat to fetch.
      */
@@ -5273,6 +5406,10 @@ export namespace Prisma {
      */
     omit?: AllocatedSeatOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AllocatedSeatInclude<ExtArgs> | null
+    /**
      * Filter, which AllocatedSeat to fetch.
      */
     where?: AllocatedSeatWhereInput
@@ -5321,6 +5458,10 @@ export namespace Prisma {
      */
     omit?: AllocatedSeatOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AllocatedSeatInclude<ExtArgs> | null
+    /**
      * Filter, which AllocatedSeats to fetch.
      */
     where?: AllocatedSeatWhereInput
@@ -5364,6 +5505,10 @@ export namespace Prisma {
      */
     omit?: AllocatedSeatOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AllocatedSeatInclude<ExtArgs> | null
+    /**
      * The data needed to create a AllocatedSeat.
      */
     data: XOR<AllocatedSeatCreateInput, AllocatedSeatUncheckedCreateInput>
@@ -5397,6 +5542,10 @@ export namespace Prisma {
      */
     data: AllocatedSeatCreateManyInput | AllocatedSeatCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AllocatedSeatIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5411,6 +5560,10 @@ export namespace Prisma {
      * Omit specific fields from the AllocatedSeat
      */
     omit?: AllocatedSeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AllocatedSeatInclude<ExtArgs> | null
     /**
      * The data needed to update a AllocatedSeat.
      */
@@ -5463,6 +5616,10 @@ export namespace Prisma {
      * Limit how many AllocatedSeats to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AllocatedSeatIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5477,6 +5634,10 @@ export namespace Prisma {
      * Omit specific fields from the AllocatedSeat
      */
     omit?: AllocatedSeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AllocatedSeatInclude<ExtArgs> | null
     /**
      * The filter to search for the AllocatedSeat to update in case it exists.
      */
@@ -5503,6 +5664,10 @@ export namespace Prisma {
      * Omit specific fields from the AllocatedSeat
      */
     omit?: AllocatedSeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AllocatedSeatInclude<ExtArgs> | null
     /**
      * Filter which AllocatedSeat to delete.
      */
@@ -5535,6 +5700,10 @@ export namespace Prisma {
      * Omit specific fields from the AllocatedSeat
      */
     omit?: AllocatedSeatOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AllocatedSeatInclude<ExtArgs> | null
   }
 
 
@@ -5716,6 +5885,7 @@ export namespace Prisma {
     courseChoice6?: StringNullableFilter<"StudentApplication"> | string | null
     courseChoice7?: StringNullableFilter<"StudentApplication"> | string | null
     createdAt?: DateTimeFilter<"StudentApplication"> | Date | string
+    allocations?: AllocatedSeatListRelationFilter
   }
 
   export type StudentApplicationOrderByWithRelationInput = {
@@ -5737,6 +5907,7 @@ export namespace Prisma {
     courseChoice6?: SortOrderInput | SortOrder
     courseChoice7?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    allocations?: AllocatedSeatOrderByRelationAggregateInput
   }
 
   export type StudentApplicationWhereUniqueInput = Prisma.AtLeast<{
@@ -5761,6 +5932,7 @@ export namespace Prisma {
     courseChoice6?: StringNullableFilter<"StudentApplication"> | string | null
     courseChoice7?: StringNullableFilter<"StudentApplication"> | string | null
     createdAt?: DateTimeFilter<"StudentApplication"> | Date | string
+    allocations?: AllocatedSeatListRelationFilter
   }, "applicationNumber">
 
   export type StudentApplicationOrderByWithAggregationInput = {
@@ -5920,6 +6092,7 @@ export namespace Prisma {
     allocatedCourse?: StringFilter<"AllocatedSeat"> | string
     allocationRound?: IntFilter<"AllocatedSeat"> | number
     allocatedAt?: DateTimeFilter<"AllocatedSeat"> | Date | string
+    student?: XOR<StudentApplicationScalarRelationFilter, StudentApplicationWhereInput>
   }
 
   export type AllocatedSeatOrderByWithRelationInput = {
@@ -5928,6 +6101,7 @@ export namespace Prisma {
     allocatedCourse?: SortOrder
     allocationRound?: SortOrder
     allocatedAt?: SortOrder
+    student?: StudentApplicationOrderByWithRelationInput
   }
 
   export type AllocatedSeatWhereUniqueInput = Prisma.AtLeast<{
@@ -5939,6 +6113,7 @@ export namespace Prisma {
     allocatedCourse?: StringFilter<"AllocatedSeat"> | string
     allocationRound?: IntFilter<"AllocatedSeat"> | number
     allocatedAt?: DateTimeFilter<"AllocatedSeat"> | Date | string
+    student?: XOR<StudentApplicationScalarRelationFilter, StudentApplicationWhereInput>
   }, "id">
 
   export type AllocatedSeatOrderByWithAggregationInput = {
@@ -5984,6 +6159,7 @@ export namespace Prisma {
     courseChoice6?: string | null
     courseChoice7?: string | null
     createdAt?: Date | string
+    allocations?: AllocatedSeatCreateNestedManyWithoutStudentInput
   }
 
   export type StudentApplicationUncheckedCreateInput = {
@@ -6005,6 +6181,7 @@ export namespace Prisma {
     courseChoice6?: string | null
     courseChoice7?: string | null
     createdAt?: Date | string
+    allocations?: AllocatedSeatUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type StudentApplicationUpdateInput = {
@@ -6026,6 +6203,7 @@ export namespace Prisma {
     courseChoice6?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice7?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    allocations?: AllocatedSeatUpdateManyWithoutStudentNestedInput
   }
 
   export type StudentApplicationUncheckedUpdateInput = {
@@ -6047,6 +6225,7 @@ export namespace Prisma {
     courseChoice6?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice7?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    allocations?: AllocatedSeatUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type StudentApplicationCreateManyInput = {
@@ -6204,10 +6383,10 @@ export namespace Prisma {
   }
 
   export type AllocatedSeatCreateInput = {
-    studentId: string
     allocatedCourse: string
     allocationRound: number
     allocatedAt?: Date | string
+    student: StudentApplicationCreateNestedOneWithoutAllocationsInput
   }
 
   export type AllocatedSeatUncheckedCreateInput = {
@@ -6219,10 +6398,10 @@ export namespace Prisma {
   }
 
   export type AllocatedSeatUpdateInput = {
-    studentId?: StringFieldUpdateOperationsInput | string
     allocatedCourse?: StringFieldUpdateOperationsInput | string
     allocationRound?: IntFieldUpdateOperationsInput | number
     allocatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    student?: StudentApplicationUpdateOneRequiredWithoutAllocationsNestedInput
   }
 
   export type AllocatedSeatUncheckedUpdateInput = {
@@ -6242,7 +6421,6 @@ export namespace Prisma {
   }
 
   export type AllocatedSeatUpdateManyMutationInput = {
-    studentId?: StringFieldUpdateOperationsInput | string
     allocatedCourse?: StringFieldUpdateOperationsInput | string
     allocationRound?: IntFieldUpdateOperationsInput | number
     allocatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6319,9 +6497,19 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type AllocatedSeatListRelationFilter = {
+    every?: AllocatedSeatWhereInput
+    some?: AllocatedSeatWhereInput
+    none?: AllocatedSeatWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type AllocatedSeatOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type StudentApplicationCountOrderByAggregateInput = {
@@ -6551,6 +6739,11 @@ export namespace Prisma {
     totalSeats?: SortOrder
   }
 
+  export type StudentApplicationScalarRelationFilter = {
+    is?: StudentApplicationWhereInput
+    isNot?: StudentApplicationWhereInput
+  }
+
   export type AllocatedSeatCountOrderByAggregateInput = {
     id?: SortOrder
     studentId?: SortOrder
@@ -6585,6 +6778,20 @@ export namespace Prisma {
     allocationRound?: SortOrder
   }
 
+  export type AllocatedSeatCreateNestedManyWithoutStudentInput = {
+    create?: XOR<AllocatedSeatCreateWithoutStudentInput, AllocatedSeatUncheckedCreateWithoutStudentInput> | AllocatedSeatCreateWithoutStudentInput[] | AllocatedSeatUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: AllocatedSeatCreateOrConnectWithoutStudentInput | AllocatedSeatCreateOrConnectWithoutStudentInput[]
+    createMany?: AllocatedSeatCreateManyStudentInputEnvelope
+    connect?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
+  }
+
+  export type AllocatedSeatUncheckedCreateNestedManyWithoutStudentInput = {
+    create?: XOR<AllocatedSeatCreateWithoutStudentInput, AllocatedSeatUncheckedCreateWithoutStudentInput> | AllocatedSeatCreateWithoutStudentInput[] | AllocatedSeatUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: AllocatedSeatCreateOrConnectWithoutStudentInput | AllocatedSeatCreateOrConnectWithoutStudentInput[]
+    createMany?: AllocatedSeatCreateManyStudentInputEnvelope
+    connect?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -6611,6 +6818,34 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type AllocatedSeatUpdateManyWithoutStudentNestedInput = {
+    create?: XOR<AllocatedSeatCreateWithoutStudentInput, AllocatedSeatUncheckedCreateWithoutStudentInput> | AllocatedSeatCreateWithoutStudentInput[] | AllocatedSeatUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: AllocatedSeatCreateOrConnectWithoutStudentInput | AllocatedSeatCreateOrConnectWithoutStudentInput[]
+    upsert?: AllocatedSeatUpsertWithWhereUniqueWithoutStudentInput | AllocatedSeatUpsertWithWhereUniqueWithoutStudentInput[]
+    createMany?: AllocatedSeatCreateManyStudentInputEnvelope
+    set?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
+    disconnect?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
+    delete?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
+    connect?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
+    update?: AllocatedSeatUpdateWithWhereUniqueWithoutStudentInput | AllocatedSeatUpdateWithWhereUniqueWithoutStudentInput[]
+    updateMany?: AllocatedSeatUpdateManyWithWhereWithoutStudentInput | AllocatedSeatUpdateManyWithWhereWithoutStudentInput[]
+    deleteMany?: AllocatedSeatScalarWhereInput | AllocatedSeatScalarWhereInput[]
+  }
+
+  export type AllocatedSeatUncheckedUpdateManyWithoutStudentNestedInput = {
+    create?: XOR<AllocatedSeatCreateWithoutStudentInput, AllocatedSeatUncheckedCreateWithoutStudentInput> | AllocatedSeatCreateWithoutStudentInput[] | AllocatedSeatUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: AllocatedSeatCreateOrConnectWithoutStudentInput | AllocatedSeatCreateOrConnectWithoutStudentInput[]
+    upsert?: AllocatedSeatUpsertWithWhereUniqueWithoutStudentInput | AllocatedSeatUpsertWithWhereUniqueWithoutStudentInput[]
+    createMany?: AllocatedSeatCreateManyStudentInputEnvelope
+    set?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
+    disconnect?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
+    delete?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
+    connect?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
+    update?: AllocatedSeatUpdateWithWhereUniqueWithoutStudentInput | AllocatedSeatUpdateWithWhereUniqueWithoutStudentInput[]
+    updateMany?: AllocatedSeatUpdateManyWithWhereWithoutStudentInput | AllocatedSeatUpdateManyWithWhereWithoutStudentInput[]
+    deleteMany?: AllocatedSeatScalarWhereInput | AllocatedSeatScalarWhereInput[]
   }
 
   export type SeatMatrixCreateNestedManyWithoutDepartmentInput = {
@@ -6667,6 +6902,20 @@ export namespace Prisma {
     upsert?: DepartmentUpsertWithoutSeatMatrixInput
     connect?: DepartmentWhereUniqueInput
     update?: XOR<XOR<DepartmentUpdateToOneWithWhereWithoutSeatMatrixInput, DepartmentUpdateWithoutSeatMatrixInput>, DepartmentUncheckedUpdateWithoutSeatMatrixInput>
+  }
+
+  export type StudentApplicationCreateNestedOneWithoutAllocationsInput = {
+    create?: XOR<StudentApplicationCreateWithoutAllocationsInput, StudentApplicationUncheckedCreateWithoutAllocationsInput>
+    connectOrCreate?: StudentApplicationCreateOrConnectWithoutAllocationsInput
+    connect?: StudentApplicationWhereUniqueInput
+  }
+
+  export type StudentApplicationUpdateOneRequiredWithoutAllocationsNestedInput = {
+    create?: XOR<StudentApplicationCreateWithoutAllocationsInput, StudentApplicationUncheckedCreateWithoutAllocationsInput>
+    connectOrCreate?: StudentApplicationCreateOrConnectWithoutAllocationsInput
+    upsert?: StudentApplicationUpsertWithoutAllocationsInput
+    connect?: StudentApplicationWhereUniqueInput
+    update?: XOR<XOR<StudentApplicationUpdateToOneWithWhereWithoutAllocationsInput, StudentApplicationUpdateWithoutAllocationsInput>, StudentApplicationUncheckedUpdateWithoutAllocationsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6832,6 +7081,56 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type AllocatedSeatCreateWithoutStudentInput = {
+    allocatedCourse: string
+    allocationRound: number
+    allocatedAt?: Date | string
+  }
+
+  export type AllocatedSeatUncheckedCreateWithoutStudentInput = {
+    id?: number
+    allocatedCourse: string
+    allocationRound: number
+    allocatedAt?: Date | string
+  }
+
+  export type AllocatedSeatCreateOrConnectWithoutStudentInput = {
+    where: AllocatedSeatWhereUniqueInput
+    create: XOR<AllocatedSeatCreateWithoutStudentInput, AllocatedSeatUncheckedCreateWithoutStudentInput>
+  }
+
+  export type AllocatedSeatCreateManyStudentInputEnvelope = {
+    data: AllocatedSeatCreateManyStudentInput | AllocatedSeatCreateManyStudentInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AllocatedSeatUpsertWithWhereUniqueWithoutStudentInput = {
+    where: AllocatedSeatWhereUniqueInput
+    update: XOR<AllocatedSeatUpdateWithoutStudentInput, AllocatedSeatUncheckedUpdateWithoutStudentInput>
+    create: XOR<AllocatedSeatCreateWithoutStudentInput, AllocatedSeatUncheckedCreateWithoutStudentInput>
+  }
+
+  export type AllocatedSeatUpdateWithWhereUniqueWithoutStudentInput = {
+    where: AllocatedSeatWhereUniqueInput
+    data: XOR<AllocatedSeatUpdateWithoutStudentInput, AllocatedSeatUncheckedUpdateWithoutStudentInput>
+  }
+
+  export type AllocatedSeatUpdateManyWithWhereWithoutStudentInput = {
+    where: AllocatedSeatScalarWhereInput
+    data: XOR<AllocatedSeatUpdateManyMutationInput, AllocatedSeatUncheckedUpdateManyWithoutStudentInput>
+  }
+
+  export type AllocatedSeatScalarWhereInput = {
+    AND?: AllocatedSeatScalarWhereInput | AllocatedSeatScalarWhereInput[]
+    OR?: AllocatedSeatScalarWhereInput[]
+    NOT?: AllocatedSeatScalarWhereInput | AllocatedSeatScalarWhereInput[]
+    id?: IntFilter<"AllocatedSeat"> | number
+    studentId?: StringFilter<"AllocatedSeat"> | string
+    allocatedCourse?: StringFilter<"AllocatedSeat"> | string
+    allocationRound?: IntFilter<"AllocatedSeat"> | number
+    allocatedAt?: DateTimeFilter<"AllocatedSeat"> | Date | string
+  }
+
   export type SeatMatrixCreateWithoutDepartmentInput = {
     category: string
     subCategory: string
@@ -6916,6 +7215,133 @@ export namespace Prisma {
   export type DepartmentUncheckedUpdateWithoutSeatMatrixInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type StudentApplicationCreateWithoutAllocationsInput = {
+    applicationNumber: string
+    studentName: string
+    fatherMotherName: string
+    phoneNumber: string
+    email: string
+    jeeCRL: number
+    category: string
+    categoryRank: number
+    subCategory?: string | null
+    subCategoryRank?: number | null
+    courseChoice1: string
+    courseChoice2?: string | null
+    courseChoice3?: string | null
+    courseChoice4?: string | null
+    courseChoice5?: string | null
+    courseChoice6?: string | null
+    courseChoice7?: string | null
+    createdAt?: Date | string
+  }
+
+  export type StudentApplicationUncheckedCreateWithoutAllocationsInput = {
+    applicationNumber: string
+    studentName: string
+    fatherMotherName: string
+    phoneNumber: string
+    email: string
+    jeeCRL: number
+    category: string
+    categoryRank: number
+    subCategory?: string | null
+    subCategoryRank?: number | null
+    courseChoice1: string
+    courseChoice2?: string | null
+    courseChoice3?: string | null
+    courseChoice4?: string | null
+    courseChoice5?: string | null
+    courseChoice6?: string | null
+    courseChoice7?: string | null
+    createdAt?: Date | string
+  }
+
+  export type StudentApplicationCreateOrConnectWithoutAllocationsInput = {
+    where: StudentApplicationWhereUniqueInput
+    create: XOR<StudentApplicationCreateWithoutAllocationsInput, StudentApplicationUncheckedCreateWithoutAllocationsInput>
+  }
+
+  export type StudentApplicationUpsertWithoutAllocationsInput = {
+    update: XOR<StudentApplicationUpdateWithoutAllocationsInput, StudentApplicationUncheckedUpdateWithoutAllocationsInput>
+    create: XOR<StudentApplicationCreateWithoutAllocationsInput, StudentApplicationUncheckedCreateWithoutAllocationsInput>
+    where?: StudentApplicationWhereInput
+  }
+
+  export type StudentApplicationUpdateToOneWithWhereWithoutAllocationsInput = {
+    where?: StudentApplicationWhereInput
+    data: XOR<StudentApplicationUpdateWithoutAllocationsInput, StudentApplicationUncheckedUpdateWithoutAllocationsInput>
+  }
+
+  export type StudentApplicationUpdateWithoutAllocationsInput = {
+    applicationNumber?: StringFieldUpdateOperationsInput | string
+    studentName?: StringFieldUpdateOperationsInput | string
+    fatherMotherName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    jeeCRL?: IntFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    categoryRank?: IntFieldUpdateOperationsInput | number
+    subCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    subCategoryRank?: NullableIntFieldUpdateOperationsInput | number | null
+    courseChoice1?: StringFieldUpdateOperationsInput | string
+    courseChoice2?: NullableStringFieldUpdateOperationsInput | string | null
+    courseChoice3?: NullableStringFieldUpdateOperationsInput | string | null
+    courseChoice4?: NullableStringFieldUpdateOperationsInput | string | null
+    courseChoice5?: NullableStringFieldUpdateOperationsInput | string | null
+    courseChoice6?: NullableStringFieldUpdateOperationsInput | string | null
+    courseChoice7?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type StudentApplicationUncheckedUpdateWithoutAllocationsInput = {
+    applicationNumber?: StringFieldUpdateOperationsInput | string
+    studentName?: StringFieldUpdateOperationsInput | string
+    fatherMotherName?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    jeeCRL?: IntFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    categoryRank?: IntFieldUpdateOperationsInput | number
+    subCategory?: NullableStringFieldUpdateOperationsInput | string | null
+    subCategoryRank?: NullableIntFieldUpdateOperationsInput | number | null
+    courseChoice1?: StringFieldUpdateOperationsInput | string
+    courseChoice2?: NullableStringFieldUpdateOperationsInput | string | null
+    courseChoice3?: NullableStringFieldUpdateOperationsInput | string | null
+    courseChoice4?: NullableStringFieldUpdateOperationsInput | string | null
+    courseChoice5?: NullableStringFieldUpdateOperationsInput | string | null
+    courseChoice6?: NullableStringFieldUpdateOperationsInput | string | null
+    courseChoice7?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AllocatedSeatCreateManyStudentInput = {
+    id?: number
+    allocatedCourse: string
+    allocationRound: number
+    allocatedAt?: Date | string
+  }
+
+  export type AllocatedSeatUpdateWithoutStudentInput = {
+    allocatedCourse?: StringFieldUpdateOperationsInput | string
+    allocationRound?: IntFieldUpdateOperationsInput | number
+    allocatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AllocatedSeatUncheckedUpdateWithoutStudentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    allocatedCourse?: StringFieldUpdateOperationsInput | string
+    allocationRound?: IntFieldUpdateOperationsInput | number
+    allocatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AllocatedSeatUncheckedUpdateManyWithoutStudentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    allocatedCourse?: StringFieldUpdateOperationsInput | string
+    allocationRound?: IntFieldUpdateOperationsInput | number
+    allocatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SeatMatrixCreateManyDepartmentInput = {

@@ -130,3 +130,5 @@ allocateRound2RBA()
     .finally(async () => {
         await prisma.$disconnect();
     });
+
+export { allocateRound2RBA };

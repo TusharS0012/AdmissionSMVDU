@@ -152,3 +152,5 @@ allocateRound2OBC()
     .finally(async () => {
         await prisma.$disconnect();
     });
+
+    export { allocateRound2OBC };
