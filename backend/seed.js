@@ -56,10 +56,16 @@ async function main() {
       email: student.email,
       jeeCRL: parseInt(student.jeeCRL),
       category: student.category,
+      subCategory: student.subCategory,
       categoryRank: parseInt(student.categoryRank),
       courseChoice1: student.courseChoice1,
       courseChoice2: student.courseChoice2,
-      createdAt: new Date(), // Or you can add a `createdAt` field in CSV
+      courseChoice3: student.courseChoice3,
+      courseChoice4: student.courseChoice4,
+      courseChoice5: student.courseChoice5,
+      courseChoice6: student.courseChoice6,
+      courseChoice7: student.courseChoice7,
+      createdAt: new Date(), 
     })),
   });
 

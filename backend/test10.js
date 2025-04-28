@@ -2,7 +2,7 @@ import {PrismaClient} from './prisma/generated/prisma/index.js';
 const prisma = new PrismaClient();
 
 import { allocateRound1GNGN } from './testGN.js';
-import { allocateRound2OBC } from './testGN2.js';
+import { allocateRound2OBC } from './testOBC.js';
 import { allocateRound2EWS } from './testEWS.js';
 import { allocateRound2SC } from './testSC.js';
 import { allocateRound2ST1 } from './testST1.js';

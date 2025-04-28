@@ -29,10 +29,12 @@ async function allocateRound1GNGN() {
   const seatMap = new Map(); // departmentId => available seats
   const nameToDeptId = new Map(); // courseName => departmentId
 
-  seatMatrix.forEach(seat => {
-    seatMap.set(seat.departmentId, seat.totalSeats);
-    nameToDeptId.set(seat.department.name, seat.departmentId);
-  });
+  // 3. Map course departmentId directly
+seatMatrix.forEach(seat => {
+  seatMap.set(seat.departmentId, seat.totalSeats);
+  nameToDeptId.set(seat.department.id, seat.departmentId); // ✅ map id, not name
+});
+
 
   // 4. Allocate students
   for (const student of students) {

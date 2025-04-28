@@ -1,5 +1,6 @@
 // test6.js - ST1 Allocation
-import {PrismaClient} from './prisma/generated/prisma/index.js';
+
+import { PrismaClient } from './prisma/generated/prisma/index.js';
 
 const prisma = new PrismaClient();
 
@@ -8,26 +9,24 @@ async function allocateRound2ST1() {
     const targetSubCategory = 'ST1';
     const roundNumber = 2;
 
+    console.log('Fetching ST1 students...');
     const students = await prisma.studentApplication.findMany({
-        where: {category: targetCategory},
-        orderBy: {categoryRank: 'asc'},
+        where: { category: targetCategory },
+        orderBy: { categoryRank: 'asc' },
     });
-
-    const seatMap = new Map(); // departmentId => available seats
-    const nameToDeptId = new Map(); // courseName => departmentId
+    console.log(`Found ${students.length} ST1 students.`);
 
     const seatMatrix = await prisma.seatMatrix.findMany({
         where: {
             category: targetCategory,
             subCategory: targetSubCategory,
-            totalSeats: {
-                gt: 0,
-            },
+            totalSeats: { gt: 0 },
         },
-        include: {
-            department: true,
-        },
+        include: { department: true },
     });
+
+    const seatMap = new Map();
+    const nameToDeptId = new Map();
 
     seatMatrix.forEach(seat => {
         seatMap.set(seat.departmentId, seat.totalSeats);
@@ -53,40 +52,36 @@ async function allocateRound2ST1() {
 
             if (available && available > 0) {
                 const existingAllocation = await prisma.allocatedSeat.findFirst({
-                    where: {
-                        studentId: student.applicationNumber
-                    }
-                })
+                    where: { studentId: student.applicationNumber }
+                });
 
                 if (existingAllocation) {
                     const currentChoiceIndex = choices.indexOf(courseName);
                     const previousChoiceIndex = choices.indexOf(existingAllocation.allocatedCourse);
 
-                    if (currentChoiceIndex === -1 || currentChoiceIndex >= previousChoiceIndex) {
-                        console.log(`${student.studentName}'s current seat is better, skipping...`);
+                    if (previousChoiceIndex !== -1 && currentChoiceIndex >= previousChoiceIndex) {
+                        console.log(`${student.studentName}'s current seat is better or same, skipping...`);
                         break;
                     } else {
                         await prisma.allocatedSeat.delete({
-                            where: {
-                                id: existingAllocation.id
-                            }
+                            where: { id: existingAllocation.id }
                         });
 
                         const previousDeptId = nameToDeptId.get(existingAllocation.allocatedCourse);
-                        seatMap.set(previousDeptId, seatMap.get(previousDeptId) + 1);
+                        if (previousDeptId) {
+                            seatMap.set(previousDeptId, seatMap.get(previousDeptId) + 1);
 
-                        await prisma.seatMatrix.update({
-                            where: {
-                                departmentId_category_subCategory: {
-                                    departmentId: previousDeptId,
-                                    category: targetCategory,
-                                    subCategory: targetSubCategory,
+                            await prisma.seatMatrix.update({
+                                where: {
+                                    departmentId_category_subCategory: {
+                                        departmentId: previousDeptId,
+                                        category: targetCategory,
+                                        subCategory: targetSubCategory,
+                                    },
                                 },
-                            },
-                            data: {
-                                totalSeats: { increment: 1 },
-                            },
-                        });
+                                data: { totalSeats: { increment: 1 } },
+                            });
+                        }
                     }
                 }
 
@@ -109,26 +104,24 @@ async function allocateRound2ST1() {
                             subCategory: targetSubCategory,
                         },
                     },
-                    data: {
-                        totalSeats: { decrement: 1 },
-                    },
+                    data: { totalSeats: { decrement: 1 } },
                 });
 
-                console.log(`Allocated ${student.studentName} to ${courseName}`);
-                break;
+                console.log(`✅ Allocated ${student.studentName} to ${courseName}`);
+                break; // move to next student
             }
         }
     }
 
-    console.log('Round 2 ST1 allocation complete.');
+    console.log('✅ Round 2 ST1 allocation complete.');
 }
 
 allocateRound2ST1()
     .catch((e) => {
-        console.error(e);
+        console.error('❌ Error during ST1 allocation:', e);
     })
     .finally(async () => {
         await prisma.$disconnect();
     });
 
-    export { allocateRound2ST1 };
+export { allocateRound2ST1 };

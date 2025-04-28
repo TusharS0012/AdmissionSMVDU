@@ -1,8 +1,11 @@
-applicationNumber,studentName,fatherMotherName,phoneNumber,email,jeeCRL,category,categoryRank,courseChoice1,courseChoice2
-APP001,John Doe,"Michael Doe, Sarah Doe",1234567890,john.doe@example.com,100,GEN,0,Computer Science,Mechanical Engineering
-APP002,Jane Smith,"Robert Smith, Emily Smith",9876543210,jane.smith@example.com,150,OBC,20,Mechanical Engineering,Computer Science
-APP003,Sam Wilson,"David Wilson, Helen Wilson",5555555555,sam.wilson@example.com,200,OBC,35,Mechanical Engineering,Computer Science
-APP004,Emily Chen,"David Wilson, Helen Wilson",5555555555,sam.wilson@example.com,180,EWS,200,Computer Science,Mechanical Engineering
-APP005,Ali Khan,"David Wilson, Helen Wilson",5555555555,sam.wilson@example.com,300,OBC,55,Mechanical Engineering,Computer Science
-APP006,Neha Verma,"David Wilson, Helen Wilson",5555555555,sam.wilson@example.com,25,EWS,30,Mechanical Engineering,Computer Science
-APP007,Riya,"David Wilson, Helen Wilson",5555555555,sam.wilson@example.com,80,GEN,0,Computer Science,Mechanical Engineering
+applicationNumber,studentName,fatherMotherName,phoneNumber,email,jeeCRL,category,subCategory,categoryRank,courseChoice1,courseChoice2,courseChoice3,courseChoice4,courseChoice5,courseChoice6,courseChoice7
+1001,Aarav Mehta,Sunita Mehta,9876543210,aarav.mehta@example.com,1234,GEN,GNGN,1234,cs,ece,ee,bt,me,mnc,b_des
+1002,Isha Sharma,Rajeev Sharma,9876501234,isha.sharma@example.com,2345,OBC,OBC,500,cs,ai_robotics,ece,bt,me,b_arch,b_des
+1003,Vihaan Verma,Meena Verma,9876512345,vihaan.verma@example.com,3456,SC,SCSC,150,bt,cs,ece,ee,mnc,me,b_des
+1004,Anaya Singh,Saurabh Singh,9876523456,anaya.singh@example.com,4567,EWS,EWSEWS,300,cs,ece,ai_robotics,bt,me,b_des,b_arch
+1005,Advait Iyer,Deepa Iyer,9876534567,advait.iyer@example.com,5678,GEN,GNGN,5678,ece,cs,bt,ai_robotics,me,mnc,b_des
+1006,Myra Nair,Sanjay Nair,9876545678,myra.nair@example.com,6789,RBA,RBA,700,b_des,cs,ece,bt,mnc,me,b_arch
+1007,Ayaan Pillai,Neha Pillai,9876556789,ayaan.pillai@example.com,7890,ST1,ST1,1200,mnc,cs,ece,bt,me,b_des,ai_robotics
+1008,Diya Reddy,Prakash Reddy,9876567890,diya.reddy@example.com,8901,ST2,ST2,800,b_arch,cs,ece,bt,me,b_des,ai_robotics
+1009,Kabir Joshi,Anita Joshi,9876578901,kabir.joshi@example.com,9012,RLAC,RLAC,600,me,cs,ece,bt,mnc,b_des,b_arch
+1010,Tara Deshmukh,Manoj Deshmukh,9876589012,tara.deshmukh@example.com,10123,OBC,OBC,400,ai_robotics,cs,ece,bt,me,b_des,b_arch
