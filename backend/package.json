@@ -17,5 +17,6 @@
   "devDependencies": {
     "prisma": "^6.6.0"
   },
-  "description": ""
+  "description": "",
+  "type": "module"
 }
