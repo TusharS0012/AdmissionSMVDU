@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  binaryTargets = ["native", "windows"]
   output   = "./generated/prisma"
 }
 
@@ -22,7 +23,7 @@ model StudentApplication {
   email             String
   jeeCRL            Int
   category          String
-  categoryRank      Int
+  categoryRank      Int?
   subCategory       String?
   subCategoryRank   Int?
 

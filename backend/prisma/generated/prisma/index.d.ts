@@ -1462,7 +1462,7 @@ export namespace Prisma {
     email: string
     jeeCRL: number
     category: string
-    categoryRank: number
+    categoryRank: number | null
     subCategory: string | null
     subCategoryRank: number | null
     courseChoice1: string
@@ -1601,7 +1601,7 @@ export namespace Prisma {
       email: string
       jeeCRL: number
       category: string
-      categoryRank: number
+      categoryRank: number | null
       subCategory: string | null
       subCategoryRank: number | null
       courseChoice1: string
@@ -5874,7 +5874,7 @@ export namespace Prisma {
     email?: StringFilter<"StudentApplication"> | string
     jeeCRL?: IntFilter<"StudentApplication"> | number
     category?: StringFilter<"StudentApplication"> | string
-    categoryRank?: IntFilter<"StudentApplication"> | number
+    categoryRank?: IntNullableFilter<"StudentApplication"> | number | null
     subCategory?: StringNullableFilter<"StudentApplication"> | string | null
     subCategoryRank?: IntNullableFilter<"StudentApplication"> | number | null
     courseChoice1?: StringFilter<"StudentApplication"> | string
@@ -5896,7 +5896,7 @@ export namespace Prisma {
     email?: SortOrder
     jeeCRL?: SortOrder
     category?: SortOrder
-    categoryRank?: SortOrder
+    categoryRank?: SortOrderInput | SortOrder
     subCategory?: SortOrderInput | SortOrder
     subCategoryRank?: SortOrderInput | SortOrder
     courseChoice1?: SortOrder
@@ -5921,7 +5921,7 @@ export namespace Prisma {
     email?: StringFilter<"StudentApplication"> | string
     jeeCRL?: IntFilter<"StudentApplication"> | number
     category?: StringFilter<"StudentApplication"> | string
-    categoryRank?: IntFilter<"StudentApplication"> | number
+    categoryRank?: IntNullableFilter<"StudentApplication"> | number | null
     subCategory?: StringNullableFilter<"StudentApplication"> | string | null
     subCategoryRank?: IntNullableFilter<"StudentApplication"> | number | null
     courseChoice1?: StringFilter<"StudentApplication"> | string
@@ -5943,7 +5943,7 @@ export namespace Prisma {
     email?: SortOrder
     jeeCRL?: SortOrder
     category?: SortOrder
-    categoryRank?: SortOrder
+    categoryRank?: SortOrderInput | SortOrder
     subCategory?: SortOrderInput | SortOrder
     subCategoryRank?: SortOrderInput | SortOrder
     courseChoice1?: SortOrder
@@ -5972,7 +5972,7 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"StudentApplication"> | string
     jeeCRL?: IntWithAggregatesFilter<"StudentApplication"> | number
     category?: StringWithAggregatesFilter<"StudentApplication"> | string
-    categoryRank?: IntWithAggregatesFilter<"StudentApplication"> | number
+    categoryRank?: IntNullableWithAggregatesFilter<"StudentApplication"> | number | null
     subCategory?: StringNullableWithAggregatesFilter<"StudentApplication"> | string | null
     subCategoryRank?: IntNullableWithAggregatesFilter<"StudentApplication"> | number | null
     courseChoice1?: StringWithAggregatesFilter<"StudentApplication"> | string
@@ -6148,7 +6148,7 @@ export namespace Prisma {
     email: string
     jeeCRL: number
     category: string
-    categoryRank: number
+    categoryRank?: number | null
     subCategory?: string | null
     subCategoryRank?: number | null
     courseChoice1: string
@@ -6170,7 +6170,7 @@ export namespace Prisma {
     email: string
     jeeCRL: number
     category: string
-    categoryRank: number
+    categoryRank?: number | null
     subCategory?: string | null
     subCategoryRank?: number | null
     courseChoice1: string
@@ -6192,7 +6192,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     jeeCRL?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
-    categoryRank?: IntFieldUpdateOperationsInput | number
+    categoryRank?: NullableIntFieldUpdateOperationsInput | number | null
     subCategory?: NullableStringFieldUpdateOperationsInput | string | null
     subCategoryRank?: NullableIntFieldUpdateOperationsInput | number | null
     courseChoice1?: StringFieldUpdateOperationsInput | string
@@ -6214,7 +6214,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     jeeCRL?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
-    categoryRank?: IntFieldUpdateOperationsInput | number
+    categoryRank?: NullableIntFieldUpdateOperationsInput | number | null
     subCategory?: NullableStringFieldUpdateOperationsInput | string | null
     subCategoryRank?: NullableIntFieldUpdateOperationsInput | number | null
     courseChoice1?: StringFieldUpdateOperationsInput | string
@@ -6236,7 +6236,7 @@ export namespace Prisma {
     email: string
     jeeCRL: number
     category: string
-    categoryRank: number
+    categoryRank?: number | null
     subCategory?: string | null
     subCategoryRank?: number | null
     courseChoice1: string
@@ -6257,7 +6257,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     jeeCRL?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
-    categoryRank?: IntFieldUpdateOperationsInput | number
+    categoryRank?: NullableIntFieldUpdateOperationsInput | number | null
     subCategory?: NullableStringFieldUpdateOperationsInput | string | null
     subCategoryRank?: NullableIntFieldUpdateOperationsInput | number | null
     courseChoice1?: StringFieldUpdateOperationsInput | string
@@ -6278,7 +6278,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     jeeCRL?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
-    categoryRank?: IntFieldUpdateOperationsInput | number
+    categoryRank?: NullableIntFieldUpdateOperationsInput | number | null
     subCategory?: NullableStringFieldUpdateOperationsInput | string | null
     subCategoryRank?: NullableIntFieldUpdateOperationsInput | number | null
     courseChoice1?: StringFieldUpdateOperationsInput | string
@@ -6460,6 +6460,17 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -6473,17 +6484,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -6621,6 +6621,22 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -6637,22 +6653,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -6804,16 +6804,16 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -6943,6 +6943,17 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedStringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -6955,17 +6966,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -7023,23 +7023,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -7065,6 +7048,23 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -7225,7 +7225,7 @@ export namespace Prisma {
     email: string
     jeeCRL: number
     category: string
-    categoryRank: number
+    categoryRank?: number | null
     subCategory?: string | null
     subCategoryRank?: number | null
     courseChoice1: string
@@ -7246,7 +7246,7 @@ export namespace Prisma {
     email: string
     jeeCRL: number
     category: string
-    categoryRank: number
+    categoryRank?: number | null
     subCategory?: string | null
     subCategoryRank?: number | null
     courseChoice1: string
@@ -7283,7 +7283,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     jeeCRL?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
-    categoryRank?: IntFieldUpdateOperationsInput | number
+    categoryRank?: NullableIntFieldUpdateOperationsInput | number | null
     subCategory?: NullableStringFieldUpdateOperationsInput | string | null
     subCategoryRank?: NullableIntFieldUpdateOperationsInput | number | null
     courseChoice1?: StringFieldUpdateOperationsInput | string
@@ -7304,7 +7304,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     jeeCRL?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
-    categoryRank?: IntFieldUpdateOperationsInput | number
+    categoryRank?: NullableIntFieldUpdateOperationsInput | number | null
     subCategory?: NullableStringFieldUpdateOperationsInput | string | null
     subCategoryRank?: NullableIntFieldUpdateOperationsInput | number | null
     courseChoice1?: StringFieldUpdateOperationsInput | string

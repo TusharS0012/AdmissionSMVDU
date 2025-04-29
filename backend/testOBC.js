@@ -120,7 +120,7 @@ async function allocateRound2OBC() {
                         },
                     },
                     data: {
-                        totalSeats: { decrement: 1 },
+                        totalSeats: { increment: -1 },
                     },
                 });
 
