@@ -40,9 +40,10 @@ model StudentApplication {
 }
 
 model Department {
-  id         String       @id
-  name       String
-  seatMatrix SeatMatrix[]
+  id                 String               @id
+  name               String
+  seatMatrix         SeatMatrix[]
+  originalSeatMatrix OriginalSeatMatrix[]
 }
 
 model SeatMatrix {
@@ -63,4 +64,16 @@ model AllocatedSeat {
   allocationRound Int
   allocatedAt     DateTime           @default(now())
   student         StudentApplication @relation(fields: [studentId], references: [applicationNumber])
+}
+
+model OriginalSeatMatrix {
+  id           Int    @id @default(autoincrement())
+  departmentId String
+  category     String
+  subCategory  String
+  totalSeats   Int
+
+  department Department @relation(fields: [departmentId], references: [id])
+
+  @@unique([departmentId, category, subCategory], name: "original_department_category_subCategory")
 }

@@ -33,6 +33,11 @@ export type SeatMatrix = $Result.DefaultSelection<Prisma.$SeatMatrixPayload>
  * 
  */
 export type AllocatedSeat = $Result.DefaultSelection<Prisma.$AllocatedSeatPayload>
+/**
+ * Model OriginalSeatMatrix
+ * 
+ */
+export type OriginalSeatMatrix = $Result.DefaultSelection<Prisma.$OriginalSeatMatrixPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -198,6 +203,16 @@ export class PrismaClient<
     * ```
     */
   get allocatedSeat(): Prisma.AllocatedSeatDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.originalSeatMatrix`: Exposes CRUD operations for the **OriginalSeatMatrix** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more OriginalSeatMatrices
+    * const originalSeatMatrices = await prisma.originalSeatMatrix.findMany()
+    * ```
+    */
+  get originalSeatMatrix(): Prisma.OriginalSeatMatrixDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -256,8 +271,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.6.0
-   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+   * Prisma Client JS version: 6.7.0
+   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
    */
   export type PrismaVersion = {
     client: string
@@ -641,7 +656,8 @@ export namespace Prisma {
     StudentApplication: 'StudentApplication',
     Department: 'Department',
     SeatMatrix: 'SeatMatrix',
-    AllocatedSeat: 'AllocatedSeat'
+    AllocatedSeat: 'AllocatedSeat',
+    OriginalSeatMatrix: 'OriginalSeatMatrix'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -660,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "studentApplication" | "department" | "seatMatrix" | "allocatedSeat"
+      modelProps: "studentApplication" | "department" | "seatMatrix" | "allocatedSeat" | "originalSeatMatrix"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -960,6 +976,80 @@ export namespace Prisma {
           }
         }
       }
+      OriginalSeatMatrix: {
+        payload: Prisma.$OriginalSeatMatrixPayload<ExtArgs>
+        fields: Prisma.OriginalSeatMatrixFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.OriginalSeatMatrixFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OriginalSeatMatrixPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.OriginalSeatMatrixFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OriginalSeatMatrixPayload>
+          }
+          findFirst: {
+            args: Prisma.OriginalSeatMatrixFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OriginalSeatMatrixPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.OriginalSeatMatrixFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OriginalSeatMatrixPayload>
+          }
+          findMany: {
+            args: Prisma.OriginalSeatMatrixFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OriginalSeatMatrixPayload>[]
+          }
+          create: {
+            args: Prisma.OriginalSeatMatrixCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OriginalSeatMatrixPayload>
+          }
+          createMany: {
+            args: Prisma.OriginalSeatMatrixCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.OriginalSeatMatrixCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OriginalSeatMatrixPayload>[]
+          }
+          delete: {
+            args: Prisma.OriginalSeatMatrixDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OriginalSeatMatrixPayload>
+          }
+          update: {
+            args: Prisma.OriginalSeatMatrixUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OriginalSeatMatrixPayload>
+          }
+          deleteMany: {
+            args: Prisma.OriginalSeatMatrixDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.OriginalSeatMatrixUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.OriginalSeatMatrixUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OriginalSeatMatrixPayload>[]
+          }
+          upsert: {
+            args: Prisma.OriginalSeatMatrixUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$OriginalSeatMatrixPayload>
+          }
+          aggregate: {
+            args: Prisma.OriginalSeatMatrixAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOriginalSeatMatrix>
+          }
+          groupBy: {
+            args: Prisma.OriginalSeatMatrixGroupByArgs<ExtArgs>
+            result: $Utils.Optional<OriginalSeatMatrixGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.OriginalSeatMatrixCountArgs<ExtArgs>
+            result: $Utils.Optional<OriginalSeatMatrixCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1048,6 +1138,7 @@ export namespace Prisma {
     department?: DepartmentOmit
     seatMatrix?: SeatMatrixOmit
     allocatedSeat?: AllocatedSeatOmit
+    originalSeatMatrix?: OriginalSeatMatrixOmit
   }
 
   /* Types for Logging */
@@ -1174,10 +1265,12 @@ export namespace Prisma {
 
   export type DepartmentCountOutputType = {
     seatMatrix: number
+    originalSeatMatrix: number
   }
 
   export type DepartmentCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     seatMatrix?: boolean | DepartmentCountOutputTypeCountSeatMatrixArgs
+    originalSeatMatrix?: boolean | DepartmentCountOutputTypeCountOriginalSeatMatrixArgs
   }
 
   // Custom InputTypes
@@ -1196,6 +1289,13 @@ export namespace Prisma {
    */
   export type DepartmentCountOutputTypeCountSeatMatrixArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SeatMatrixWhereInput
+  }
+
+  /**
+   * DepartmentCountOutputType without action
+   */
+  export type DepartmentCountOutputTypeCountOriginalSeatMatrixArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OriginalSeatMatrixWhereInput
   }
 
 
@@ -2625,6 +2725,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     seatMatrix?: boolean | Department$seatMatrixArgs<ExtArgs>
+    originalSeatMatrix?: boolean | Department$originalSeatMatrixArgs<ExtArgs>
     _count?: boolean | DepartmentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["department"]>
 
@@ -2646,6 +2747,7 @@ export namespace Prisma {
   export type DepartmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["department"]>
   export type DepartmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     seatMatrix?: boolean | Department$seatMatrixArgs<ExtArgs>
+    originalSeatMatrix?: boolean | Department$originalSeatMatrixArgs<ExtArgs>
     _count?: boolean | DepartmentCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type DepartmentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2655,6 +2757,7 @@ export namespace Prisma {
     name: "Department"
     objects: {
       seatMatrix: Prisma.$SeatMatrixPayload<ExtArgs>[]
+      originalSeatMatrix: Prisma.$OriginalSeatMatrixPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3054,6 +3157,7 @@ export namespace Prisma {
   export interface Prisma__DepartmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     seatMatrix<T extends Department$seatMatrixArgs<ExtArgs> = {}>(args?: Subset<T, Department$seatMatrixArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SeatMatrixPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    originalSeatMatrix<T extends Department$originalSeatMatrixArgs<ExtArgs> = {}>(args?: Subset<T, Department$originalSeatMatrixArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OriginalSeatMatrixPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3494,6 +3598,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: SeatMatrixScalarFieldEnum | SeatMatrixScalarFieldEnum[]
+  }
+
+  /**
+   * Department.originalSeatMatrix
+   */
+  export type Department$originalSeatMatrixArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OriginalSeatMatrix
+     */
+    select?: OriginalSeatMatrixSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OriginalSeatMatrix
+     */
+    omit?: OriginalSeatMatrixOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OriginalSeatMatrixInclude<ExtArgs> | null
+    where?: OriginalSeatMatrixWhereInput
+    orderBy?: OriginalSeatMatrixOrderByWithRelationInput | OriginalSeatMatrixOrderByWithRelationInput[]
+    cursor?: OriginalSeatMatrixWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: OriginalSeatMatrixScalarFieldEnum | OriginalSeatMatrixScalarFieldEnum[]
   }
 
   /**
@@ -5708,6 +5836,1102 @@ export namespace Prisma {
 
 
   /**
+   * Model OriginalSeatMatrix
+   */
+
+  export type AggregateOriginalSeatMatrix = {
+    _count: OriginalSeatMatrixCountAggregateOutputType | null
+    _avg: OriginalSeatMatrixAvgAggregateOutputType | null
+    _sum: OriginalSeatMatrixSumAggregateOutputType | null
+    _min: OriginalSeatMatrixMinAggregateOutputType | null
+    _max: OriginalSeatMatrixMaxAggregateOutputType | null
+  }
+
+  export type OriginalSeatMatrixAvgAggregateOutputType = {
+    id: number | null
+    totalSeats: number | null
+  }
+
+  export type OriginalSeatMatrixSumAggregateOutputType = {
+    id: number | null
+    totalSeats: number | null
+  }
+
+  export type OriginalSeatMatrixMinAggregateOutputType = {
+    id: number | null
+    departmentId: string | null
+    category: string | null
+    subCategory: string | null
+    totalSeats: number | null
+  }
+
+  export type OriginalSeatMatrixMaxAggregateOutputType = {
+    id: number | null
+    departmentId: string | null
+    category: string | null
+    subCategory: string | null
+    totalSeats: number | null
+  }
+
+  export type OriginalSeatMatrixCountAggregateOutputType = {
+    id: number
+    departmentId: number
+    category: number
+    subCategory: number
+    totalSeats: number
+    _all: number
+  }
+
+
+  export type OriginalSeatMatrixAvgAggregateInputType = {
+    id?: true
+    totalSeats?: true
+  }
+
+  export type OriginalSeatMatrixSumAggregateInputType = {
+    id?: true
+    totalSeats?: true
+  }
+
+  export type OriginalSeatMatrixMinAggregateInputType = {
+    id?: true
+    departmentId?: true
+    category?: true
+    subCategory?: true
+    totalSeats?: true
+  }
+
+  export type OriginalSeatMatrixMaxAggregateInputType = {
+    id?: true
+    departmentId?: true
+    category?: true
+    subCategory?: true
+    totalSeats?: true
+  }
+
+  export type OriginalSeatMatrixCountAggregateInputType = {
+    id?: true
+    departmentId?: true
+    category?: true
+    subCategory?: true
+    totalSeats?: true
+    _all?: true
+  }
+
+  export type OriginalSeatMatrixAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OriginalSeatMatrix to aggregate.
+     */
+    where?: OriginalSeatMatrixWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OriginalSeatMatrices to fetch.
+     */
+    orderBy?: OriginalSeatMatrixOrderByWithRelationInput | OriginalSeatMatrixOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: OriginalSeatMatrixWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OriginalSeatMatrices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OriginalSeatMatrices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned OriginalSeatMatrices
+    **/
+    _count?: true | OriginalSeatMatrixCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: OriginalSeatMatrixAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: OriginalSeatMatrixSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: OriginalSeatMatrixMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: OriginalSeatMatrixMaxAggregateInputType
+  }
+
+  export type GetOriginalSeatMatrixAggregateType<T extends OriginalSeatMatrixAggregateArgs> = {
+        [P in keyof T & keyof AggregateOriginalSeatMatrix]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOriginalSeatMatrix[P]>
+      : GetScalarType<T[P], AggregateOriginalSeatMatrix[P]>
+  }
+
+
+
+
+  export type OriginalSeatMatrixGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: OriginalSeatMatrixWhereInput
+    orderBy?: OriginalSeatMatrixOrderByWithAggregationInput | OriginalSeatMatrixOrderByWithAggregationInput[]
+    by: OriginalSeatMatrixScalarFieldEnum[] | OriginalSeatMatrixScalarFieldEnum
+    having?: OriginalSeatMatrixScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: OriginalSeatMatrixCountAggregateInputType | true
+    _avg?: OriginalSeatMatrixAvgAggregateInputType
+    _sum?: OriginalSeatMatrixSumAggregateInputType
+    _min?: OriginalSeatMatrixMinAggregateInputType
+    _max?: OriginalSeatMatrixMaxAggregateInputType
+  }
+
+  export type OriginalSeatMatrixGroupByOutputType = {
+    id: number
+    departmentId: string
+    category: string
+    subCategory: string
+    totalSeats: number
+    _count: OriginalSeatMatrixCountAggregateOutputType | null
+    _avg: OriginalSeatMatrixAvgAggregateOutputType | null
+    _sum: OriginalSeatMatrixSumAggregateOutputType | null
+    _min: OriginalSeatMatrixMinAggregateOutputType | null
+    _max: OriginalSeatMatrixMaxAggregateOutputType | null
+  }
+
+  type GetOriginalSeatMatrixGroupByPayload<T extends OriginalSeatMatrixGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<OriginalSeatMatrixGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof OriginalSeatMatrixGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], OriginalSeatMatrixGroupByOutputType[P]>
+            : GetScalarType<T[P], OriginalSeatMatrixGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type OriginalSeatMatrixSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    departmentId?: boolean
+    category?: boolean
+    subCategory?: boolean
+    totalSeats?: boolean
+    department?: boolean | DepartmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["originalSeatMatrix"]>
+
+  export type OriginalSeatMatrixSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    departmentId?: boolean
+    category?: boolean
+    subCategory?: boolean
+    totalSeats?: boolean
+    department?: boolean | DepartmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["originalSeatMatrix"]>
+
+  export type OriginalSeatMatrixSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    departmentId?: boolean
+    category?: boolean
+    subCategory?: boolean
+    totalSeats?: boolean
+    department?: boolean | DepartmentDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["originalSeatMatrix"]>
+
+  export type OriginalSeatMatrixSelectScalar = {
+    id?: boolean
+    departmentId?: boolean
+    category?: boolean
+    subCategory?: boolean
+    totalSeats?: boolean
+  }
+
+  export type OriginalSeatMatrixOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "departmentId" | "category" | "subCategory" | "totalSeats", ExtArgs["result"]["originalSeatMatrix"]>
+  export type OriginalSeatMatrixInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    department?: boolean | DepartmentDefaultArgs<ExtArgs>
+  }
+  export type OriginalSeatMatrixIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    department?: boolean | DepartmentDefaultArgs<ExtArgs>
+  }
+  export type OriginalSeatMatrixIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    department?: boolean | DepartmentDefaultArgs<ExtArgs>
+  }
+
+  export type $OriginalSeatMatrixPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "OriginalSeatMatrix"
+    objects: {
+      department: Prisma.$DepartmentPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      departmentId: string
+      category: string
+      subCategory: string
+      totalSeats: number
+    }, ExtArgs["result"]["originalSeatMatrix"]>
+    composites: {}
+  }
+
+  type OriginalSeatMatrixGetPayload<S extends boolean | null | undefined | OriginalSeatMatrixDefaultArgs> = $Result.GetResult<Prisma.$OriginalSeatMatrixPayload, S>
+
+  type OriginalSeatMatrixCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<OriginalSeatMatrixFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: OriginalSeatMatrixCountAggregateInputType | true
+    }
+
+  export interface OriginalSeatMatrixDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['OriginalSeatMatrix'], meta: { name: 'OriginalSeatMatrix' } }
+    /**
+     * Find zero or one OriginalSeatMatrix that matches the filter.
+     * @param {OriginalSeatMatrixFindUniqueArgs} args - Arguments to find a OriginalSeatMatrix
+     * @example
+     * // Get one OriginalSeatMatrix
+     * const originalSeatMatrix = await prisma.originalSeatMatrix.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends OriginalSeatMatrixFindUniqueArgs>(args: SelectSubset<T, OriginalSeatMatrixFindUniqueArgs<ExtArgs>>): Prisma__OriginalSeatMatrixClient<$Result.GetResult<Prisma.$OriginalSeatMatrixPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one OriginalSeatMatrix that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {OriginalSeatMatrixFindUniqueOrThrowArgs} args - Arguments to find a OriginalSeatMatrix
+     * @example
+     * // Get one OriginalSeatMatrix
+     * const originalSeatMatrix = await prisma.originalSeatMatrix.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends OriginalSeatMatrixFindUniqueOrThrowArgs>(args: SelectSubset<T, OriginalSeatMatrixFindUniqueOrThrowArgs<ExtArgs>>): Prisma__OriginalSeatMatrixClient<$Result.GetResult<Prisma.$OriginalSeatMatrixPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OriginalSeatMatrix that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OriginalSeatMatrixFindFirstArgs} args - Arguments to find a OriginalSeatMatrix
+     * @example
+     * // Get one OriginalSeatMatrix
+     * const originalSeatMatrix = await prisma.originalSeatMatrix.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends OriginalSeatMatrixFindFirstArgs>(args?: SelectSubset<T, OriginalSeatMatrixFindFirstArgs<ExtArgs>>): Prisma__OriginalSeatMatrixClient<$Result.GetResult<Prisma.$OriginalSeatMatrixPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first OriginalSeatMatrix that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OriginalSeatMatrixFindFirstOrThrowArgs} args - Arguments to find a OriginalSeatMatrix
+     * @example
+     * // Get one OriginalSeatMatrix
+     * const originalSeatMatrix = await prisma.originalSeatMatrix.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends OriginalSeatMatrixFindFirstOrThrowArgs>(args?: SelectSubset<T, OriginalSeatMatrixFindFirstOrThrowArgs<ExtArgs>>): Prisma__OriginalSeatMatrixClient<$Result.GetResult<Prisma.$OriginalSeatMatrixPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more OriginalSeatMatrices that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OriginalSeatMatrixFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all OriginalSeatMatrices
+     * const originalSeatMatrices = await prisma.originalSeatMatrix.findMany()
+     * 
+     * // Get first 10 OriginalSeatMatrices
+     * const originalSeatMatrices = await prisma.originalSeatMatrix.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const originalSeatMatrixWithIdOnly = await prisma.originalSeatMatrix.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends OriginalSeatMatrixFindManyArgs>(args?: SelectSubset<T, OriginalSeatMatrixFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OriginalSeatMatrixPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a OriginalSeatMatrix.
+     * @param {OriginalSeatMatrixCreateArgs} args - Arguments to create a OriginalSeatMatrix.
+     * @example
+     * // Create one OriginalSeatMatrix
+     * const OriginalSeatMatrix = await prisma.originalSeatMatrix.create({
+     *   data: {
+     *     // ... data to create a OriginalSeatMatrix
+     *   }
+     * })
+     * 
+     */
+    create<T extends OriginalSeatMatrixCreateArgs>(args: SelectSubset<T, OriginalSeatMatrixCreateArgs<ExtArgs>>): Prisma__OriginalSeatMatrixClient<$Result.GetResult<Prisma.$OriginalSeatMatrixPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many OriginalSeatMatrices.
+     * @param {OriginalSeatMatrixCreateManyArgs} args - Arguments to create many OriginalSeatMatrices.
+     * @example
+     * // Create many OriginalSeatMatrices
+     * const originalSeatMatrix = await prisma.originalSeatMatrix.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends OriginalSeatMatrixCreateManyArgs>(args?: SelectSubset<T, OriginalSeatMatrixCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many OriginalSeatMatrices and returns the data saved in the database.
+     * @param {OriginalSeatMatrixCreateManyAndReturnArgs} args - Arguments to create many OriginalSeatMatrices.
+     * @example
+     * // Create many OriginalSeatMatrices
+     * const originalSeatMatrix = await prisma.originalSeatMatrix.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many OriginalSeatMatrices and only return the `id`
+     * const originalSeatMatrixWithIdOnly = await prisma.originalSeatMatrix.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends OriginalSeatMatrixCreateManyAndReturnArgs>(args?: SelectSubset<T, OriginalSeatMatrixCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OriginalSeatMatrixPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a OriginalSeatMatrix.
+     * @param {OriginalSeatMatrixDeleteArgs} args - Arguments to delete one OriginalSeatMatrix.
+     * @example
+     * // Delete one OriginalSeatMatrix
+     * const OriginalSeatMatrix = await prisma.originalSeatMatrix.delete({
+     *   where: {
+     *     // ... filter to delete one OriginalSeatMatrix
+     *   }
+     * })
+     * 
+     */
+    delete<T extends OriginalSeatMatrixDeleteArgs>(args: SelectSubset<T, OriginalSeatMatrixDeleteArgs<ExtArgs>>): Prisma__OriginalSeatMatrixClient<$Result.GetResult<Prisma.$OriginalSeatMatrixPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one OriginalSeatMatrix.
+     * @param {OriginalSeatMatrixUpdateArgs} args - Arguments to update one OriginalSeatMatrix.
+     * @example
+     * // Update one OriginalSeatMatrix
+     * const originalSeatMatrix = await prisma.originalSeatMatrix.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends OriginalSeatMatrixUpdateArgs>(args: SelectSubset<T, OriginalSeatMatrixUpdateArgs<ExtArgs>>): Prisma__OriginalSeatMatrixClient<$Result.GetResult<Prisma.$OriginalSeatMatrixPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more OriginalSeatMatrices.
+     * @param {OriginalSeatMatrixDeleteManyArgs} args - Arguments to filter OriginalSeatMatrices to delete.
+     * @example
+     * // Delete a few OriginalSeatMatrices
+     * const { count } = await prisma.originalSeatMatrix.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends OriginalSeatMatrixDeleteManyArgs>(args?: SelectSubset<T, OriginalSeatMatrixDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OriginalSeatMatrices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OriginalSeatMatrixUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many OriginalSeatMatrices
+     * const originalSeatMatrix = await prisma.originalSeatMatrix.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends OriginalSeatMatrixUpdateManyArgs>(args: SelectSubset<T, OriginalSeatMatrixUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more OriginalSeatMatrices and returns the data updated in the database.
+     * @param {OriginalSeatMatrixUpdateManyAndReturnArgs} args - Arguments to update many OriginalSeatMatrices.
+     * @example
+     * // Update many OriginalSeatMatrices
+     * const originalSeatMatrix = await prisma.originalSeatMatrix.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more OriginalSeatMatrices and only return the `id`
+     * const originalSeatMatrixWithIdOnly = await prisma.originalSeatMatrix.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends OriginalSeatMatrixUpdateManyAndReturnArgs>(args: SelectSubset<T, OriginalSeatMatrixUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OriginalSeatMatrixPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one OriginalSeatMatrix.
+     * @param {OriginalSeatMatrixUpsertArgs} args - Arguments to update or create a OriginalSeatMatrix.
+     * @example
+     * // Update or create a OriginalSeatMatrix
+     * const originalSeatMatrix = await prisma.originalSeatMatrix.upsert({
+     *   create: {
+     *     // ... data to create a OriginalSeatMatrix
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the OriginalSeatMatrix we want to update
+     *   }
+     * })
+     */
+    upsert<T extends OriginalSeatMatrixUpsertArgs>(args: SelectSubset<T, OriginalSeatMatrixUpsertArgs<ExtArgs>>): Prisma__OriginalSeatMatrixClient<$Result.GetResult<Prisma.$OriginalSeatMatrixPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of OriginalSeatMatrices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OriginalSeatMatrixCountArgs} args - Arguments to filter OriginalSeatMatrices to count.
+     * @example
+     * // Count the number of OriginalSeatMatrices
+     * const count = await prisma.originalSeatMatrix.count({
+     *   where: {
+     *     // ... the filter for the OriginalSeatMatrices we want to count
+     *   }
+     * })
+    **/
+    count<T extends OriginalSeatMatrixCountArgs>(
+      args?: Subset<T, OriginalSeatMatrixCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], OriginalSeatMatrixCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a OriginalSeatMatrix.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OriginalSeatMatrixAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends OriginalSeatMatrixAggregateArgs>(args: Subset<T, OriginalSeatMatrixAggregateArgs>): Prisma.PrismaPromise<GetOriginalSeatMatrixAggregateType<T>>
+
+    /**
+     * Group by OriginalSeatMatrix.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {OriginalSeatMatrixGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends OriginalSeatMatrixGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: OriginalSeatMatrixGroupByArgs['orderBy'] }
+        : { orderBy?: OriginalSeatMatrixGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, OriginalSeatMatrixGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOriginalSeatMatrixGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the OriginalSeatMatrix model
+   */
+  readonly fields: OriginalSeatMatrixFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for OriginalSeatMatrix.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__OriginalSeatMatrixClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    department<T extends DepartmentDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DepartmentDefaultArgs<ExtArgs>>): Prisma__DepartmentClient<$Result.GetResult<Prisma.$DepartmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the OriginalSeatMatrix model
+   */
+  interface OriginalSeatMatrixFieldRefs {
+    readonly id: FieldRef<"OriginalSeatMatrix", 'Int'>
+    readonly departmentId: FieldRef<"OriginalSeatMatrix", 'String'>
+    readonly category: FieldRef<"OriginalSeatMatrix", 'String'>
+    readonly subCategory: FieldRef<"OriginalSeatMatrix", 'String'>
+    readonly totalSeats: FieldRef<"OriginalSeatMatrix", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * OriginalSeatMatrix findUnique
+   */
+  export type OriginalSeatMatrixFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OriginalSeatMatrix
+     */
+    select?: OriginalSeatMatrixSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OriginalSeatMatrix
+     */
+    omit?: OriginalSeatMatrixOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OriginalSeatMatrixInclude<ExtArgs> | null
+    /**
+     * Filter, which OriginalSeatMatrix to fetch.
+     */
+    where: OriginalSeatMatrixWhereUniqueInput
+  }
+
+  /**
+   * OriginalSeatMatrix findUniqueOrThrow
+   */
+  export type OriginalSeatMatrixFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OriginalSeatMatrix
+     */
+    select?: OriginalSeatMatrixSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OriginalSeatMatrix
+     */
+    omit?: OriginalSeatMatrixOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OriginalSeatMatrixInclude<ExtArgs> | null
+    /**
+     * Filter, which OriginalSeatMatrix to fetch.
+     */
+    where: OriginalSeatMatrixWhereUniqueInput
+  }
+
+  /**
+   * OriginalSeatMatrix findFirst
+   */
+  export type OriginalSeatMatrixFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OriginalSeatMatrix
+     */
+    select?: OriginalSeatMatrixSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OriginalSeatMatrix
+     */
+    omit?: OriginalSeatMatrixOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OriginalSeatMatrixInclude<ExtArgs> | null
+    /**
+     * Filter, which OriginalSeatMatrix to fetch.
+     */
+    where?: OriginalSeatMatrixWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OriginalSeatMatrices to fetch.
+     */
+    orderBy?: OriginalSeatMatrixOrderByWithRelationInput | OriginalSeatMatrixOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OriginalSeatMatrices.
+     */
+    cursor?: OriginalSeatMatrixWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OriginalSeatMatrices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OriginalSeatMatrices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OriginalSeatMatrices.
+     */
+    distinct?: OriginalSeatMatrixScalarFieldEnum | OriginalSeatMatrixScalarFieldEnum[]
+  }
+
+  /**
+   * OriginalSeatMatrix findFirstOrThrow
+   */
+  export type OriginalSeatMatrixFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OriginalSeatMatrix
+     */
+    select?: OriginalSeatMatrixSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OriginalSeatMatrix
+     */
+    omit?: OriginalSeatMatrixOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OriginalSeatMatrixInclude<ExtArgs> | null
+    /**
+     * Filter, which OriginalSeatMatrix to fetch.
+     */
+    where?: OriginalSeatMatrixWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OriginalSeatMatrices to fetch.
+     */
+    orderBy?: OriginalSeatMatrixOrderByWithRelationInput | OriginalSeatMatrixOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for OriginalSeatMatrices.
+     */
+    cursor?: OriginalSeatMatrixWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OriginalSeatMatrices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OriginalSeatMatrices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of OriginalSeatMatrices.
+     */
+    distinct?: OriginalSeatMatrixScalarFieldEnum | OriginalSeatMatrixScalarFieldEnum[]
+  }
+
+  /**
+   * OriginalSeatMatrix findMany
+   */
+  export type OriginalSeatMatrixFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OriginalSeatMatrix
+     */
+    select?: OriginalSeatMatrixSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OriginalSeatMatrix
+     */
+    omit?: OriginalSeatMatrixOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OriginalSeatMatrixInclude<ExtArgs> | null
+    /**
+     * Filter, which OriginalSeatMatrices to fetch.
+     */
+    where?: OriginalSeatMatrixWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of OriginalSeatMatrices to fetch.
+     */
+    orderBy?: OriginalSeatMatrixOrderByWithRelationInput | OriginalSeatMatrixOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing OriginalSeatMatrices.
+     */
+    cursor?: OriginalSeatMatrixWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` OriginalSeatMatrices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` OriginalSeatMatrices.
+     */
+    skip?: number
+    distinct?: OriginalSeatMatrixScalarFieldEnum | OriginalSeatMatrixScalarFieldEnum[]
+  }
+
+  /**
+   * OriginalSeatMatrix create
+   */
+  export type OriginalSeatMatrixCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OriginalSeatMatrix
+     */
+    select?: OriginalSeatMatrixSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OriginalSeatMatrix
+     */
+    omit?: OriginalSeatMatrixOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OriginalSeatMatrixInclude<ExtArgs> | null
+    /**
+     * The data needed to create a OriginalSeatMatrix.
+     */
+    data: XOR<OriginalSeatMatrixCreateInput, OriginalSeatMatrixUncheckedCreateInput>
+  }
+
+  /**
+   * OriginalSeatMatrix createMany
+   */
+  export type OriginalSeatMatrixCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many OriginalSeatMatrices.
+     */
+    data: OriginalSeatMatrixCreateManyInput | OriginalSeatMatrixCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * OriginalSeatMatrix createManyAndReturn
+   */
+  export type OriginalSeatMatrixCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OriginalSeatMatrix
+     */
+    select?: OriginalSeatMatrixSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OriginalSeatMatrix
+     */
+    omit?: OriginalSeatMatrixOmit<ExtArgs> | null
+    /**
+     * The data used to create many OriginalSeatMatrices.
+     */
+    data: OriginalSeatMatrixCreateManyInput | OriginalSeatMatrixCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OriginalSeatMatrixIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OriginalSeatMatrix update
+   */
+  export type OriginalSeatMatrixUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OriginalSeatMatrix
+     */
+    select?: OriginalSeatMatrixSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OriginalSeatMatrix
+     */
+    omit?: OriginalSeatMatrixOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OriginalSeatMatrixInclude<ExtArgs> | null
+    /**
+     * The data needed to update a OriginalSeatMatrix.
+     */
+    data: XOR<OriginalSeatMatrixUpdateInput, OriginalSeatMatrixUncheckedUpdateInput>
+    /**
+     * Choose, which OriginalSeatMatrix to update.
+     */
+    where: OriginalSeatMatrixWhereUniqueInput
+  }
+
+  /**
+   * OriginalSeatMatrix updateMany
+   */
+  export type OriginalSeatMatrixUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update OriginalSeatMatrices.
+     */
+    data: XOR<OriginalSeatMatrixUpdateManyMutationInput, OriginalSeatMatrixUncheckedUpdateManyInput>
+    /**
+     * Filter which OriginalSeatMatrices to update
+     */
+    where?: OriginalSeatMatrixWhereInput
+    /**
+     * Limit how many OriginalSeatMatrices to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * OriginalSeatMatrix updateManyAndReturn
+   */
+  export type OriginalSeatMatrixUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OriginalSeatMatrix
+     */
+    select?: OriginalSeatMatrixSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the OriginalSeatMatrix
+     */
+    omit?: OriginalSeatMatrixOmit<ExtArgs> | null
+    /**
+     * The data used to update OriginalSeatMatrices.
+     */
+    data: XOR<OriginalSeatMatrixUpdateManyMutationInput, OriginalSeatMatrixUncheckedUpdateManyInput>
+    /**
+     * Filter which OriginalSeatMatrices to update
+     */
+    where?: OriginalSeatMatrixWhereInput
+    /**
+     * Limit how many OriginalSeatMatrices to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OriginalSeatMatrixIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * OriginalSeatMatrix upsert
+   */
+  export type OriginalSeatMatrixUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OriginalSeatMatrix
+     */
+    select?: OriginalSeatMatrixSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OriginalSeatMatrix
+     */
+    omit?: OriginalSeatMatrixOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OriginalSeatMatrixInclude<ExtArgs> | null
+    /**
+     * The filter to search for the OriginalSeatMatrix to update in case it exists.
+     */
+    where: OriginalSeatMatrixWhereUniqueInput
+    /**
+     * In case the OriginalSeatMatrix found by the `where` argument doesn't exist, create a new OriginalSeatMatrix with this data.
+     */
+    create: XOR<OriginalSeatMatrixCreateInput, OriginalSeatMatrixUncheckedCreateInput>
+    /**
+     * In case the OriginalSeatMatrix was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<OriginalSeatMatrixUpdateInput, OriginalSeatMatrixUncheckedUpdateInput>
+  }
+
+  /**
+   * OriginalSeatMatrix delete
+   */
+  export type OriginalSeatMatrixDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OriginalSeatMatrix
+     */
+    select?: OriginalSeatMatrixSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OriginalSeatMatrix
+     */
+    omit?: OriginalSeatMatrixOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OriginalSeatMatrixInclude<ExtArgs> | null
+    /**
+     * Filter which OriginalSeatMatrix to delete.
+     */
+    where: OriginalSeatMatrixWhereUniqueInput
+  }
+
+  /**
+   * OriginalSeatMatrix deleteMany
+   */
+  export type OriginalSeatMatrixDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which OriginalSeatMatrices to delete
+     */
+    where?: OriginalSeatMatrixWhereInput
+    /**
+     * Limit how many OriginalSeatMatrices to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * OriginalSeatMatrix without action
+   */
+  export type OriginalSeatMatrixDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the OriginalSeatMatrix
+     */
+    select?: OriginalSeatMatrixSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the OriginalSeatMatrix
+     */
+    omit?: OriginalSeatMatrixOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: OriginalSeatMatrixInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -5773,6 +6997,17 @@ export namespace Prisma {
   };
 
   export type AllocatedSeatScalarFieldEnum = (typeof AllocatedSeatScalarFieldEnum)[keyof typeof AllocatedSeatScalarFieldEnum]
+
+
+  export const OriginalSeatMatrixScalarFieldEnum: {
+    id: 'id',
+    departmentId: 'departmentId',
+    category: 'category',
+    subCategory: 'subCategory',
+    totalSeats: 'totalSeats'
+  };
+
+  export type OriginalSeatMatrixScalarFieldEnum = (typeof OriginalSeatMatrixScalarFieldEnum)[keyof typeof OriginalSeatMatrixScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -5992,12 +7227,14 @@ export namespace Prisma {
     id?: StringFilter<"Department"> | string
     name?: StringFilter<"Department"> | string
     seatMatrix?: SeatMatrixListRelationFilter
+    originalSeatMatrix?: OriginalSeatMatrixListRelationFilter
   }
 
   export type DepartmentOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     seatMatrix?: SeatMatrixOrderByRelationAggregateInput
+    originalSeatMatrix?: OriginalSeatMatrixOrderByRelationAggregateInput
   }
 
   export type DepartmentWhereUniqueInput = Prisma.AtLeast<{
@@ -6007,6 +7244,7 @@ export namespace Prisma {
     NOT?: DepartmentWhereInput | DepartmentWhereInput[]
     name?: StringFilter<"Department"> | string
     seatMatrix?: SeatMatrixListRelationFilter
+    originalSeatMatrix?: OriginalSeatMatrixListRelationFilter
   }, "id">
 
   export type DepartmentOrderByWithAggregationInput = {
@@ -6138,6 +7376,64 @@ export namespace Prisma {
     allocatedCourse?: StringWithAggregatesFilter<"AllocatedSeat"> | string
     allocationRound?: IntWithAggregatesFilter<"AllocatedSeat"> | number
     allocatedAt?: DateTimeWithAggregatesFilter<"AllocatedSeat"> | Date | string
+  }
+
+  export type OriginalSeatMatrixWhereInput = {
+    AND?: OriginalSeatMatrixWhereInput | OriginalSeatMatrixWhereInput[]
+    OR?: OriginalSeatMatrixWhereInput[]
+    NOT?: OriginalSeatMatrixWhereInput | OriginalSeatMatrixWhereInput[]
+    id?: IntFilter<"OriginalSeatMatrix"> | number
+    departmentId?: StringFilter<"OriginalSeatMatrix"> | string
+    category?: StringFilter<"OriginalSeatMatrix"> | string
+    subCategory?: StringFilter<"OriginalSeatMatrix"> | string
+    totalSeats?: IntFilter<"OriginalSeatMatrix"> | number
+    department?: XOR<DepartmentScalarRelationFilter, DepartmentWhereInput>
+  }
+
+  export type OriginalSeatMatrixOrderByWithRelationInput = {
+    id?: SortOrder
+    departmentId?: SortOrder
+    category?: SortOrder
+    subCategory?: SortOrder
+    totalSeats?: SortOrder
+    department?: DepartmentOrderByWithRelationInput
+  }
+
+  export type OriginalSeatMatrixWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    original_department_category_subCategory?: OriginalSeatMatrixOriginal_department_category_subCategoryCompoundUniqueInput
+    AND?: OriginalSeatMatrixWhereInput | OriginalSeatMatrixWhereInput[]
+    OR?: OriginalSeatMatrixWhereInput[]
+    NOT?: OriginalSeatMatrixWhereInput | OriginalSeatMatrixWhereInput[]
+    departmentId?: StringFilter<"OriginalSeatMatrix"> | string
+    category?: StringFilter<"OriginalSeatMatrix"> | string
+    subCategory?: StringFilter<"OriginalSeatMatrix"> | string
+    totalSeats?: IntFilter<"OriginalSeatMatrix"> | number
+    department?: XOR<DepartmentScalarRelationFilter, DepartmentWhereInput>
+  }, "id" | "original_department_category_subCategory">
+
+  export type OriginalSeatMatrixOrderByWithAggregationInput = {
+    id?: SortOrder
+    departmentId?: SortOrder
+    category?: SortOrder
+    subCategory?: SortOrder
+    totalSeats?: SortOrder
+    _count?: OriginalSeatMatrixCountOrderByAggregateInput
+    _avg?: OriginalSeatMatrixAvgOrderByAggregateInput
+    _max?: OriginalSeatMatrixMaxOrderByAggregateInput
+    _min?: OriginalSeatMatrixMinOrderByAggregateInput
+    _sum?: OriginalSeatMatrixSumOrderByAggregateInput
+  }
+
+  export type OriginalSeatMatrixScalarWhereWithAggregatesInput = {
+    AND?: OriginalSeatMatrixScalarWhereWithAggregatesInput | OriginalSeatMatrixScalarWhereWithAggregatesInput[]
+    OR?: OriginalSeatMatrixScalarWhereWithAggregatesInput[]
+    NOT?: OriginalSeatMatrixScalarWhereWithAggregatesInput | OriginalSeatMatrixScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"OriginalSeatMatrix"> | number
+    departmentId?: StringWithAggregatesFilter<"OriginalSeatMatrix"> | string
+    category?: StringWithAggregatesFilter<"OriginalSeatMatrix"> | string
+    subCategory?: StringWithAggregatesFilter<"OriginalSeatMatrix"> | string
+    totalSeats?: IntWithAggregatesFilter<"OriginalSeatMatrix"> | number
   }
 
   export type StudentApplicationCreateInput = {
@@ -6295,24 +7591,28 @@ export namespace Prisma {
     id: string
     name: string
     seatMatrix?: SeatMatrixCreateNestedManyWithoutDepartmentInput
+    originalSeatMatrix?: OriginalSeatMatrixCreateNestedManyWithoutDepartmentInput
   }
 
   export type DepartmentUncheckedCreateInput = {
     id: string
     name: string
     seatMatrix?: SeatMatrixUncheckedCreateNestedManyWithoutDepartmentInput
+    originalSeatMatrix?: OriginalSeatMatrixUncheckedCreateNestedManyWithoutDepartmentInput
   }
 
   export type DepartmentUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     seatMatrix?: SeatMatrixUpdateManyWithoutDepartmentNestedInput
+    originalSeatMatrix?: OriginalSeatMatrixUpdateManyWithoutDepartmentNestedInput
   }
 
   export type DepartmentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     seatMatrix?: SeatMatrixUncheckedUpdateManyWithoutDepartmentNestedInput
+    originalSeatMatrix?: OriginalSeatMatrixUncheckedUpdateManyWithoutDepartmentNestedInput
   }
 
   export type DepartmentCreateManyInput = {
@@ -6432,6 +7732,58 @@ export namespace Prisma {
     allocatedCourse?: StringFieldUpdateOperationsInput | string
     allocationRound?: IntFieldUpdateOperationsInput | number
     allocatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type OriginalSeatMatrixCreateInput = {
+    category: string
+    subCategory: string
+    totalSeats: number
+    department: DepartmentCreateNestedOneWithoutOriginalSeatMatrixInput
+  }
+
+  export type OriginalSeatMatrixUncheckedCreateInput = {
+    id?: number
+    departmentId: string
+    category: string
+    subCategory: string
+    totalSeats: number
+  }
+
+  export type OriginalSeatMatrixUpdateInput = {
+    category?: StringFieldUpdateOperationsInput | string
+    subCategory?: StringFieldUpdateOperationsInput | string
+    totalSeats?: IntFieldUpdateOperationsInput | number
+    department?: DepartmentUpdateOneRequiredWithoutOriginalSeatMatrixNestedInput
+  }
+
+  export type OriginalSeatMatrixUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    departmentId?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subCategory?: StringFieldUpdateOperationsInput | string
+    totalSeats?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type OriginalSeatMatrixCreateManyInput = {
+    id?: number
+    departmentId: string
+    category: string
+    subCategory: string
+    totalSeats: number
+  }
+
+  export type OriginalSeatMatrixUpdateManyMutationInput = {
+    category?: StringFieldUpdateOperationsInput | string
+    subCategory?: StringFieldUpdateOperationsInput | string
+    totalSeats?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type OriginalSeatMatrixUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    departmentId?: StringFieldUpdateOperationsInput | string
+    category?: StringFieldUpdateOperationsInput | string
+    subCategory?: StringFieldUpdateOperationsInput | string
+    totalSeats?: IntFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6675,7 +8027,17 @@ export namespace Prisma {
     none?: SeatMatrixWhereInput
   }
 
+  export type OriginalSeatMatrixListRelationFilter = {
+    every?: OriginalSeatMatrixWhereInput
+    some?: OriginalSeatMatrixWhereInput
+    none?: OriginalSeatMatrixWhereInput
+  }
+
   export type SeatMatrixOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type OriginalSeatMatrixOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -6778,6 +8140,46 @@ export namespace Prisma {
     allocationRound?: SortOrder
   }
 
+  export type OriginalSeatMatrixOriginal_department_category_subCategoryCompoundUniqueInput = {
+    departmentId: string
+    category: string
+    subCategory: string
+  }
+
+  export type OriginalSeatMatrixCountOrderByAggregateInput = {
+    id?: SortOrder
+    departmentId?: SortOrder
+    category?: SortOrder
+    subCategory?: SortOrder
+    totalSeats?: SortOrder
+  }
+
+  export type OriginalSeatMatrixAvgOrderByAggregateInput = {
+    id?: SortOrder
+    totalSeats?: SortOrder
+  }
+
+  export type OriginalSeatMatrixMaxOrderByAggregateInput = {
+    id?: SortOrder
+    departmentId?: SortOrder
+    category?: SortOrder
+    subCategory?: SortOrder
+    totalSeats?: SortOrder
+  }
+
+  export type OriginalSeatMatrixMinOrderByAggregateInput = {
+    id?: SortOrder
+    departmentId?: SortOrder
+    category?: SortOrder
+    subCategory?: SortOrder
+    totalSeats?: SortOrder
+  }
+
+  export type OriginalSeatMatrixSumOrderByAggregateInput = {
+    id?: SortOrder
+    totalSeats?: SortOrder
+  }
+
   export type AllocatedSeatCreateNestedManyWithoutStudentInput = {
     create?: XOR<AllocatedSeatCreateWithoutStudentInput, AllocatedSeatUncheckedCreateWithoutStudentInput> | AllocatedSeatCreateWithoutStudentInput[] | AllocatedSeatUncheckedCreateWithoutStudentInput[]
     connectOrCreate?: AllocatedSeatCreateOrConnectWithoutStudentInput | AllocatedSeatCreateOrConnectWithoutStudentInput[]
@@ -6855,11 +8257,25 @@ export namespace Prisma {
     connect?: SeatMatrixWhereUniqueInput | SeatMatrixWhereUniqueInput[]
   }
 
+  export type OriginalSeatMatrixCreateNestedManyWithoutDepartmentInput = {
+    create?: XOR<OriginalSeatMatrixCreateWithoutDepartmentInput, OriginalSeatMatrixUncheckedCreateWithoutDepartmentInput> | OriginalSeatMatrixCreateWithoutDepartmentInput[] | OriginalSeatMatrixUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: OriginalSeatMatrixCreateOrConnectWithoutDepartmentInput | OriginalSeatMatrixCreateOrConnectWithoutDepartmentInput[]
+    createMany?: OriginalSeatMatrixCreateManyDepartmentInputEnvelope
+    connect?: OriginalSeatMatrixWhereUniqueInput | OriginalSeatMatrixWhereUniqueInput[]
+  }
+
   export type SeatMatrixUncheckedCreateNestedManyWithoutDepartmentInput = {
     create?: XOR<SeatMatrixCreateWithoutDepartmentInput, SeatMatrixUncheckedCreateWithoutDepartmentInput> | SeatMatrixCreateWithoutDepartmentInput[] | SeatMatrixUncheckedCreateWithoutDepartmentInput[]
     connectOrCreate?: SeatMatrixCreateOrConnectWithoutDepartmentInput | SeatMatrixCreateOrConnectWithoutDepartmentInput[]
     createMany?: SeatMatrixCreateManyDepartmentInputEnvelope
     connect?: SeatMatrixWhereUniqueInput | SeatMatrixWhereUniqueInput[]
+  }
+
+  export type OriginalSeatMatrixUncheckedCreateNestedManyWithoutDepartmentInput = {
+    create?: XOR<OriginalSeatMatrixCreateWithoutDepartmentInput, OriginalSeatMatrixUncheckedCreateWithoutDepartmentInput> | OriginalSeatMatrixCreateWithoutDepartmentInput[] | OriginalSeatMatrixUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: OriginalSeatMatrixCreateOrConnectWithoutDepartmentInput | OriginalSeatMatrixCreateOrConnectWithoutDepartmentInput[]
+    createMany?: OriginalSeatMatrixCreateManyDepartmentInputEnvelope
+    connect?: OriginalSeatMatrixWhereUniqueInput | OriginalSeatMatrixWhereUniqueInput[]
   }
 
   export type SeatMatrixUpdateManyWithoutDepartmentNestedInput = {
@@ -6876,6 +8292,20 @@ export namespace Prisma {
     deleteMany?: SeatMatrixScalarWhereInput | SeatMatrixScalarWhereInput[]
   }
 
+  export type OriginalSeatMatrixUpdateManyWithoutDepartmentNestedInput = {
+    create?: XOR<OriginalSeatMatrixCreateWithoutDepartmentInput, OriginalSeatMatrixUncheckedCreateWithoutDepartmentInput> | OriginalSeatMatrixCreateWithoutDepartmentInput[] | OriginalSeatMatrixUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: OriginalSeatMatrixCreateOrConnectWithoutDepartmentInput | OriginalSeatMatrixCreateOrConnectWithoutDepartmentInput[]
+    upsert?: OriginalSeatMatrixUpsertWithWhereUniqueWithoutDepartmentInput | OriginalSeatMatrixUpsertWithWhereUniqueWithoutDepartmentInput[]
+    createMany?: OriginalSeatMatrixCreateManyDepartmentInputEnvelope
+    set?: OriginalSeatMatrixWhereUniqueInput | OriginalSeatMatrixWhereUniqueInput[]
+    disconnect?: OriginalSeatMatrixWhereUniqueInput | OriginalSeatMatrixWhereUniqueInput[]
+    delete?: OriginalSeatMatrixWhereUniqueInput | OriginalSeatMatrixWhereUniqueInput[]
+    connect?: OriginalSeatMatrixWhereUniqueInput | OriginalSeatMatrixWhereUniqueInput[]
+    update?: OriginalSeatMatrixUpdateWithWhereUniqueWithoutDepartmentInput | OriginalSeatMatrixUpdateWithWhereUniqueWithoutDepartmentInput[]
+    updateMany?: OriginalSeatMatrixUpdateManyWithWhereWithoutDepartmentInput | OriginalSeatMatrixUpdateManyWithWhereWithoutDepartmentInput[]
+    deleteMany?: OriginalSeatMatrixScalarWhereInput | OriginalSeatMatrixScalarWhereInput[]
+  }
+
   export type SeatMatrixUncheckedUpdateManyWithoutDepartmentNestedInput = {
     create?: XOR<SeatMatrixCreateWithoutDepartmentInput, SeatMatrixUncheckedCreateWithoutDepartmentInput> | SeatMatrixCreateWithoutDepartmentInput[] | SeatMatrixUncheckedCreateWithoutDepartmentInput[]
     connectOrCreate?: SeatMatrixCreateOrConnectWithoutDepartmentInput | SeatMatrixCreateOrConnectWithoutDepartmentInput[]
@@ -6888,6 +8318,20 @@ export namespace Prisma {
     update?: SeatMatrixUpdateWithWhereUniqueWithoutDepartmentInput | SeatMatrixUpdateWithWhereUniqueWithoutDepartmentInput[]
     updateMany?: SeatMatrixUpdateManyWithWhereWithoutDepartmentInput | SeatMatrixUpdateManyWithWhereWithoutDepartmentInput[]
     deleteMany?: SeatMatrixScalarWhereInput | SeatMatrixScalarWhereInput[]
+  }
+
+  export type OriginalSeatMatrixUncheckedUpdateManyWithoutDepartmentNestedInput = {
+    create?: XOR<OriginalSeatMatrixCreateWithoutDepartmentInput, OriginalSeatMatrixUncheckedCreateWithoutDepartmentInput> | OriginalSeatMatrixCreateWithoutDepartmentInput[] | OriginalSeatMatrixUncheckedCreateWithoutDepartmentInput[]
+    connectOrCreate?: OriginalSeatMatrixCreateOrConnectWithoutDepartmentInput | OriginalSeatMatrixCreateOrConnectWithoutDepartmentInput[]
+    upsert?: OriginalSeatMatrixUpsertWithWhereUniqueWithoutDepartmentInput | OriginalSeatMatrixUpsertWithWhereUniqueWithoutDepartmentInput[]
+    createMany?: OriginalSeatMatrixCreateManyDepartmentInputEnvelope
+    set?: OriginalSeatMatrixWhereUniqueInput | OriginalSeatMatrixWhereUniqueInput[]
+    disconnect?: OriginalSeatMatrixWhereUniqueInput | OriginalSeatMatrixWhereUniqueInput[]
+    delete?: OriginalSeatMatrixWhereUniqueInput | OriginalSeatMatrixWhereUniqueInput[]
+    connect?: OriginalSeatMatrixWhereUniqueInput | OriginalSeatMatrixWhereUniqueInput[]
+    update?: OriginalSeatMatrixUpdateWithWhereUniqueWithoutDepartmentInput | OriginalSeatMatrixUpdateWithWhereUniqueWithoutDepartmentInput[]
+    updateMany?: OriginalSeatMatrixUpdateManyWithWhereWithoutDepartmentInput | OriginalSeatMatrixUpdateManyWithWhereWithoutDepartmentInput[]
+    deleteMany?: OriginalSeatMatrixScalarWhereInput | OriginalSeatMatrixScalarWhereInput[]
   }
 
   export type DepartmentCreateNestedOneWithoutSeatMatrixInput = {
@@ -6916,6 +8360,20 @@ export namespace Prisma {
     upsert?: StudentApplicationUpsertWithoutAllocationsInput
     connect?: StudentApplicationWhereUniqueInput
     update?: XOR<XOR<StudentApplicationUpdateToOneWithWhereWithoutAllocationsInput, StudentApplicationUpdateWithoutAllocationsInput>, StudentApplicationUncheckedUpdateWithoutAllocationsInput>
+  }
+
+  export type DepartmentCreateNestedOneWithoutOriginalSeatMatrixInput = {
+    create?: XOR<DepartmentCreateWithoutOriginalSeatMatrixInput, DepartmentUncheckedCreateWithoutOriginalSeatMatrixInput>
+    connectOrCreate?: DepartmentCreateOrConnectWithoutOriginalSeatMatrixInput
+    connect?: DepartmentWhereUniqueInput
+  }
+
+  export type DepartmentUpdateOneRequiredWithoutOriginalSeatMatrixNestedInput = {
+    create?: XOR<DepartmentCreateWithoutOriginalSeatMatrixInput, DepartmentUncheckedCreateWithoutOriginalSeatMatrixInput>
+    connectOrCreate?: DepartmentCreateOrConnectWithoutOriginalSeatMatrixInput
+    upsert?: DepartmentUpsertWithoutOriginalSeatMatrixInput
+    connect?: DepartmentWhereUniqueInput
+    update?: XOR<XOR<DepartmentUpdateToOneWithWhereWithoutOriginalSeatMatrixInput, DepartmentUpdateWithoutOriginalSeatMatrixInput>, DepartmentUncheckedUpdateWithoutOriginalSeatMatrixInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -7154,6 +8612,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type OriginalSeatMatrixCreateWithoutDepartmentInput = {
+    category: string
+    subCategory: string
+    totalSeats: number
+  }
+
+  export type OriginalSeatMatrixUncheckedCreateWithoutDepartmentInput = {
+    id?: number
+    category: string
+    subCategory: string
+    totalSeats: number
+  }
+
+  export type OriginalSeatMatrixCreateOrConnectWithoutDepartmentInput = {
+    where: OriginalSeatMatrixWhereUniqueInput
+    create: XOR<OriginalSeatMatrixCreateWithoutDepartmentInput, OriginalSeatMatrixUncheckedCreateWithoutDepartmentInput>
+  }
+
+  export type OriginalSeatMatrixCreateManyDepartmentInputEnvelope = {
+    data: OriginalSeatMatrixCreateManyDepartmentInput | OriginalSeatMatrixCreateManyDepartmentInput[]
+    skipDuplicates?: boolean
+  }
+
   export type SeatMatrixUpsertWithWhereUniqueWithoutDepartmentInput = {
     where: SeatMatrixWhereUniqueInput
     update: XOR<SeatMatrixUpdateWithoutDepartmentInput, SeatMatrixUncheckedUpdateWithoutDepartmentInput>
@@ -7181,14 +8662,43 @@ export namespace Prisma {
     totalSeats?: IntFilter<"SeatMatrix"> | number
   }
 
+  export type OriginalSeatMatrixUpsertWithWhereUniqueWithoutDepartmentInput = {
+    where: OriginalSeatMatrixWhereUniqueInput
+    update: XOR<OriginalSeatMatrixUpdateWithoutDepartmentInput, OriginalSeatMatrixUncheckedUpdateWithoutDepartmentInput>
+    create: XOR<OriginalSeatMatrixCreateWithoutDepartmentInput, OriginalSeatMatrixUncheckedCreateWithoutDepartmentInput>
+  }
+
+  export type OriginalSeatMatrixUpdateWithWhereUniqueWithoutDepartmentInput = {
+    where: OriginalSeatMatrixWhereUniqueInput
+    data: XOR<OriginalSeatMatrixUpdateWithoutDepartmentInput, OriginalSeatMatrixUncheckedUpdateWithoutDepartmentInput>
+  }
+
+  export type OriginalSeatMatrixUpdateManyWithWhereWithoutDepartmentInput = {
+    where: OriginalSeatMatrixScalarWhereInput
+    data: XOR<OriginalSeatMatrixUpdateManyMutationInput, OriginalSeatMatrixUncheckedUpdateManyWithoutDepartmentInput>
+  }
+
+  export type OriginalSeatMatrixScalarWhereInput = {
+    AND?: OriginalSeatMatrixScalarWhereInput | OriginalSeatMatrixScalarWhereInput[]
+    OR?: OriginalSeatMatrixScalarWhereInput[]
+    NOT?: OriginalSeatMatrixScalarWhereInput | OriginalSeatMatrixScalarWhereInput[]
+    id?: IntFilter<"OriginalSeatMatrix"> | number
+    departmentId?: StringFilter<"OriginalSeatMatrix"> | string
+    category?: StringFilter<"OriginalSeatMatrix"> | string
+    subCategory?: StringFilter<"OriginalSeatMatrix"> | string
+    totalSeats?: IntFilter<"OriginalSeatMatrix"> | number
+  }
+
   export type DepartmentCreateWithoutSeatMatrixInput = {
     id: string
     name: string
+    originalSeatMatrix?: OriginalSeatMatrixCreateNestedManyWithoutDepartmentInput
   }
 
   export type DepartmentUncheckedCreateWithoutSeatMatrixInput = {
     id: string
     name: string
+    originalSeatMatrix?: OriginalSeatMatrixUncheckedCreateNestedManyWithoutDepartmentInput
   }
 
   export type DepartmentCreateOrConnectWithoutSeatMatrixInput = {
@@ -7210,11 +8720,13 @@ export namespace Prisma {
   export type DepartmentUpdateWithoutSeatMatrixInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    originalSeatMatrix?: OriginalSeatMatrixUpdateManyWithoutDepartmentNestedInput
   }
 
   export type DepartmentUncheckedUpdateWithoutSeatMatrixInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    originalSeatMatrix?: OriginalSeatMatrixUncheckedUpdateManyWithoutDepartmentNestedInput
   }
 
   export type StudentApplicationCreateWithoutAllocationsInput = {
@@ -7317,6 +8829,46 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type DepartmentCreateWithoutOriginalSeatMatrixInput = {
+    id: string
+    name: string
+    seatMatrix?: SeatMatrixCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentUncheckedCreateWithoutOriginalSeatMatrixInput = {
+    id: string
+    name: string
+    seatMatrix?: SeatMatrixUncheckedCreateNestedManyWithoutDepartmentInput
+  }
+
+  export type DepartmentCreateOrConnectWithoutOriginalSeatMatrixInput = {
+    where: DepartmentWhereUniqueInput
+    create: XOR<DepartmentCreateWithoutOriginalSeatMatrixInput, DepartmentUncheckedCreateWithoutOriginalSeatMatrixInput>
+  }
+
+  export type DepartmentUpsertWithoutOriginalSeatMatrixInput = {
+    update: XOR<DepartmentUpdateWithoutOriginalSeatMatrixInput, DepartmentUncheckedUpdateWithoutOriginalSeatMatrixInput>
+    create: XOR<DepartmentCreateWithoutOriginalSeatMatrixInput, DepartmentUncheckedCreateWithoutOriginalSeatMatrixInput>
+    where?: DepartmentWhereInput
+  }
+
+  export type DepartmentUpdateToOneWithWhereWithoutOriginalSeatMatrixInput = {
+    where?: DepartmentWhereInput
+    data: XOR<DepartmentUpdateWithoutOriginalSeatMatrixInput, DepartmentUncheckedUpdateWithoutOriginalSeatMatrixInput>
+  }
+
+  export type DepartmentUpdateWithoutOriginalSeatMatrixInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    seatMatrix?: SeatMatrixUpdateManyWithoutDepartmentNestedInput
+  }
+
+  export type DepartmentUncheckedUpdateWithoutOriginalSeatMatrixInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    seatMatrix?: SeatMatrixUncheckedUpdateManyWithoutDepartmentNestedInput
+  }
+
   export type AllocatedSeatCreateManyStudentInput = {
     id?: number
     allocatedCourse: string
@@ -7351,6 +8903,13 @@ export namespace Prisma {
     totalSeats: number
   }
 
+  export type OriginalSeatMatrixCreateManyDepartmentInput = {
+    id?: number
+    category: string
+    subCategory: string
+    totalSeats: number
+  }
+
   export type SeatMatrixUpdateWithoutDepartmentInput = {
     category?: StringFieldUpdateOperationsInput | string
     subCategory?: StringFieldUpdateOperationsInput | string
@@ -7365,6 +8924,26 @@ export namespace Prisma {
   }
 
   export type SeatMatrixUncheckedUpdateManyWithoutDepartmentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    subCategory?: StringFieldUpdateOperationsInput | string
+    totalSeats?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type OriginalSeatMatrixUpdateWithoutDepartmentInput = {
+    category?: StringFieldUpdateOperationsInput | string
+    subCategory?: StringFieldUpdateOperationsInput | string
+    totalSeats?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type OriginalSeatMatrixUncheckedUpdateWithoutDepartmentInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    category?: StringFieldUpdateOperationsInput | string
+    subCategory?: StringFieldUpdateOperationsInput | string
+    totalSeats?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type OriginalSeatMatrixUncheckedUpdateManyWithoutDepartmentInput = {
     id?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
     subCategory?: StringFieldUpdateOperationsInput | string
