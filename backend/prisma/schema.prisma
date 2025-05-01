@@ -34,6 +34,7 @@ model StudentApplication {
   courseChoice5 String?
   courseChoice6 String?
   courseChoice7 String?
+  sportsMarks   Float?
 
   createdAt   DateTime        @default(now())
   allocations AllocatedSeat[]

@@ -1319,12 +1319,14 @@ export namespace Prisma {
     jeeCRL: number | null
     categoryRank: number | null
     subCategoryRank: number | null
+    sportsMarks: number | null
   }
 
   export type StudentApplicationSumAggregateOutputType = {
     jeeCRL: number | null
     categoryRank: number | null
     subCategoryRank: number | null
+    sportsMarks: number | null
   }
 
   export type StudentApplicationMinAggregateOutputType = {
@@ -1345,6 +1347,7 @@ export namespace Prisma {
     courseChoice5: string | null
     courseChoice6: string | null
     courseChoice7: string | null
+    sportsMarks: number | null
     createdAt: Date | null
   }
 
@@ -1366,6 +1369,7 @@ export namespace Prisma {
     courseChoice5: string | null
     courseChoice6: string | null
     courseChoice7: string | null
+    sportsMarks: number | null
     createdAt: Date | null
   }
 
@@ -1387,6 +1391,7 @@ export namespace Prisma {
     courseChoice5: number
     courseChoice6: number
     courseChoice7: number
+    sportsMarks: number
     createdAt: number
     _all: number
   }
@@ -1396,12 +1401,14 @@ export namespace Prisma {
     jeeCRL?: true
     categoryRank?: true
     subCategoryRank?: true
+    sportsMarks?: true
   }
 
   export type StudentApplicationSumAggregateInputType = {
     jeeCRL?: true
     categoryRank?: true
     subCategoryRank?: true
+    sportsMarks?: true
   }
 
   export type StudentApplicationMinAggregateInputType = {
@@ -1422,6 +1429,7 @@ export namespace Prisma {
     courseChoice5?: true
     courseChoice6?: true
     courseChoice7?: true
+    sportsMarks?: true
     createdAt?: true
   }
 
@@ -1443,6 +1451,7 @@ export namespace Prisma {
     courseChoice5?: true
     courseChoice6?: true
     courseChoice7?: true
+    sportsMarks?: true
     createdAt?: true
   }
 
@@ -1464,6 +1473,7 @@ export namespace Prisma {
     courseChoice5?: true
     courseChoice6?: true
     courseChoice7?: true
+    sportsMarks?: true
     createdAt?: true
     _all?: true
   }
@@ -1572,6 +1582,7 @@ export namespace Prisma {
     courseChoice5: string | null
     courseChoice6: string | null
     courseChoice7: string | null
+    sportsMarks: number | null
     createdAt: Date
     _count: StudentApplicationCountAggregateOutputType | null
     _avg: StudentApplicationAvgAggregateOutputType | null
@@ -1612,6 +1623,7 @@ export namespace Prisma {
     courseChoice5?: boolean
     courseChoice6?: boolean
     courseChoice7?: boolean
+    sportsMarks?: boolean
     createdAt?: boolean
     allocations?: boolean | StudentApplication$allocationsArgs<ExtArgs>
     _count?: boolean | StudentApplicationCountOutputTypeDefaultArgs<ExtArgs>
@@ -1635,6 +1647,7 @@ export namespace Prisma {
     courseChoice5?: boolean
     courseChoice6?: boolean
     courseChoice7?: boolean
+    sportsMarks?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["studentApplication"]>
 
@@ -1656,6 +1669,7 @@ export namespace Prisma {
     courseChoice5?: boolean
     courseChoice6?: boolean
     courseChoice7?: boolean
+    sportsMarks?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["studentApplication"]>
 
@@ -1677,10 +1691,11 @@ export namespace Prisma {
     courseChoice5?: boolean
     courseChoice6?: boolean
     courseChoice7?: boolean
+    sportsMarks?: boolean
     createdAt?: boolean
   }
 
-  export type StudentApplicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"applicationNumber" | "studentName" | "fatherMotherName" | "phoneNumber" | "email" | "jeeCRL" | "category" | "categoryRank" | "subCategory" | "subCategoryRank" | "courseChoice1" | "courseChoice2" | "courseChoice3" | "courseChoice4" | "courseChoice5" | "courseChoice6" | "courseChoice7" | "createdAt", ExtArgs["result"]["studentApplication"]>
+  export type StudentApplicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"applicationNumber" | "studentName" | "fatherMotherName" | "phoneNumber" | "email" | "jeeCRL" | "category" | "categoryRank" | "subCategory" | "subCategoryRank" | "courseChoice1" | "courseChoice2" | "courseChoice3" | "courseChoice4" | "courseChoice5" | "courseChoice6" | "courseChoice7" | "sportsMarks" | "createdAt", ExtArgs["result"]["studentApplication"]>
   export type StudentApplicationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     allocations?: boolean | StudentApplication$allocationsArgs<ExtArgs>
     _count?: boolean | StudentApplicationCountOutputTypeDefaultArgs<ExtArgs>
@@ -1711,6 +1726,7 @@ export namespace Prisma {
       courseChoice5: string | null
       courseChoice6: string | null
       courseChoice7: string | null
+      sportsMarks: number | null
       createdAt: Date
     }, ExtArgs["result"]["studentApplication"]>
     composites: {}
@@ -2153,6 +2169,7 @@ export namespace Prisma {
     readonly courseChoice5: FieldRef<"StudentApplication", 'String'>
     readonly courseChoice6: FieldRef<"StudentApplication", 'String'>
     readonly courseChoice7: FieldRef<"StudentApplication", 'String'>
+    readonly sportsMarks: FieldRef<"StudentApplication", 'Float'>
     readonly createdAt: FieldRef<"StudentApplication", 'DateTime'>
   }
     
@@ -6963,6 +6980,7 @@ export namespace Prisma {
     courseChoice5: 'courseChoice5',
     courseChoice6: 'courseChoice6',
     courseChoice7: 'courseChoice7',
+    sportsMarks: 'sportsMarks',
     createdAt: 'createdAt'
   };
 
@@ -7068,20 +7086,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -7092,6 +7096,20 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
     
   /**
    * Deep Input Types
@@ -7119,6 +7137,7 @@ export namespace Prisma {
     courseChoice5?: StringNullableFilter<"StudentApplication"> | string | null
     courseChoice6?: StringNullableFilter<"StudentApplication"> | string | null
     courseChoice7?: StringNullableFilter<"StudentApplication"> | string | null
+    sportsMarks?: FloatNullableFilter<"StudentApplication"> | number | null
     createdAt?: DateTimeFilter<"StudentApplication"> | Date | string
     allocations?: AllocatedSeatListRelationFilter
   }
@@ -7141,6 +7160,7 @@ export namespace Prisma {
     courseChoice5?: SortOrderInput | SortOrder
     courseChoice6?: SortOrderInput | SortOrder
     courseChoice7?: SortOrderInput | SortOrder
+    sportsMarks?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     allocations?: AllocatedSeatOrderByRelationAggregateInput
   }
@@ -7166,6 +7186,7 @@ export namespace Prisma {
     courseChoice5?: StringNullableFilter<"StudentApplication"> | string | null
     courseChoice6?: StringNullableFilter<"StudentApplication"> | string | null
     courseChoice7?: StringNullableFilter<"StudentApplication"> | string | null
+    sportsMarks?: FloatNullableFilter<"StudentApplication"> | number | null
     createdAt?: DateTimeFilter<"StudentApplication"> | Date | string
     allocations?: AllocatedSeatListRelationFilter
   }, "applicationNumber">
@@ -7188,6 +7209,7 @@ export namespace Prisma {
     courseChoice5?: SortOrderInput | SortOrder
     courseChoice6?: SortOrderInput | SortOrder
     courseChoice7?: SortOrderInput | SortOrder
+    sportsMarks?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: StudentApplicationCountOrderByAggregateInput
     _avg?: StudentApplicationAvgOrderByAggregateInput
@@ -7217,6 +7239,7 @@ export namespace Prisma {
     courseChoice5?: StringNullableWithAggregatesFilter<"StudentApplication"> | string | null
     courseChoice6?: StringNullableWithAggregatesFilter<"StudentApplication"> | string | null
     courseChoice7?: StringNullableWithAggregatesFilter<"StudentApplication"> | string | null
+    sportsMarks?: FloatNullableWithAggregatesFilter<"StudentApplication"> | number | null
     createdAt?: DateTimeWithAggregatesFilter<"StudentApplication"> | Date | string
   }
 
@@ -7454,6 +7477,7 @@ export namespace Prisma {
     courseChoice5?: string | null
     courseChoice6?: string | null
     courseChoice7?: string | null
+    sportsMarks?: number | null
     createdAt?: Date | string
     allocations?: AllocatedSeatCreateNestedManyWithoutStudentInput
   }
@@ -7476,6 +7500,7 @@ export namespace Prisma {
     courseChoice5?: string | null
     courseChoice6?: string | null
     courseChoice7?: string | null
+    sportsMarks?: number | null
     createdAt?: Date | string
     allocations?: AllocatedSeatUncheckedCreateNestedManyWithoutStudentInput
   }
@@ -7498,6 +7523,7 @@ export namespace Prisma {
     courseChoice5?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice6?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice7?: NullableStringFieldUpdateOperationsInput | string | null
+    sportsMarks?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     allocations?: AllocatedSeatUpdateManyWithoutStudentNestedInput
   }
@@ -7520,6 +7546,7 @@ export namespace Prisma {
     courseChoice5?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice6?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice7?: NullableStringFieldUpdateOperationsInput | string | null
+    sportsMarks?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     allocations?: AllocatedSeatUncheckedUpdateManyWithoutStudentNestedInput
   }
@@ -7542,6 +7569,7 @@ export namespace Prisma {
     courseChoice5?: string | null
     courseChoice6?: string | null
     courseChoice7?: string | null
+    sportsMarks?: number | null
     createdAt?: Date | string
   }
 
@@ -7563,6 +7591,7 @@ export namespace Prisma {
     courseChoice5?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice6?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice7?: NullableStringFieldUpdateOperationsInput | string | null
+    sportsMarks?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -7584,6 +7613,7 @@ export namespace Prisma {
     courseChoice5?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice6?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice7?: NullableStringFieldUpdateOperationsInput | string | null
+    sportsMarks?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -7838,6 +7868,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -7882,6 +7923,7 @@ export namespace Prisma {
     courseChoice5?: SortOrder
     courseChoice6?: SortOrder
     courseChoice7?: SortOrder
+    sportsMarks?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -7889,6 +7931,7 @@ export namespace Prisma {
     jeeCRL?: SortOrder
     categoryRank?: SortOrder
     subCategoryRank?: SortOrder
+    sportsMarks?: SortOrder
   }
 
   export type StudentApplicationMaxOrderByAggregateInput = {
@@ -7909,6 +7952,7 @@ export namespace Prisma {
     courseChoice5?: SortOrder
     courseChoice6?: SortOrder
     courseChoice7?: SortOrder
+    sportsMarks?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -7930,6 +7974,7 @@ export namespace Prisma {
     courseChoice5?: SortOrder
     courseChoice6?: SortOrder
     courseChoice7?: SortOrder
+    sportsMarks?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -7937,6 +7982,7 @@ export namespace Prisma {
     jeeCRL?: SortOrder
     categoryRank?: SortOrder
     subCategoryRank?: SortOrder
+    sportsMarks?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -8005,6 +8051,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -8218,6 +8280,14 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -8426,6 +8496,17 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -8497,17 +8578,6 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -8523,6 +8593,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -8747,6 +8833,7 @@ export namespace Prisma {
     courseChoice5?: string | null
     courseChoice6?: string | null
     courseChoice7?: string | null
+    sportsMarks?: number | null
     createdAt?: Date | string
   }
 
@@ -8768,6 +8855,7 @@ export namespace Prisma {
     courseChoice5?: string | null
     courseChoice6?: string | null
     courseChoice7?: string | null
+    sportsMarks?: number | null
     createdAt?: Date | string
   }
 
@@ -8805,6 +8893,7 @@ export namespace Prisma {
     courseChoice5?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice6?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice7?: NullableStringFieldUpdateOperationsInput | string | null
+    sportsMarks?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -8826,6 +8915,7 @@ export namespace Prisma {
     courseChoice5?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice6?: NullableStringFieldUpdateOperationsInput | string | null
     courseChoice7?: NullableStringFieldUpdateOperationsInput | string | null
+    sportsMarks?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

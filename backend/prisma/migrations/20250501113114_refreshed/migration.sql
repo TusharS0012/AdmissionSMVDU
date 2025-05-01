@@ -1,12 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `User` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropTable
-DROP TABLE "User";
-
 -- CreateTable
 CREATE TABLE "StudentApplication" (
     "applicationNumber" TEXT NOT NULL,
@@ -16,7 +7,7 @@ CREATE TABLE "StudentApplication" (
     "email" TEXT NOT NULL,
     "jeeCRL" INTEGER NOT NULL,
     "category" TEXT NOT NULL,
-    "categoryRank" INTEGER NOT NULL,
+    "categoryRank" INTEGER,
     "subCategory" TEXT,
     "subCategoryRank" INTEGER,
     "courseChoice1" TEXT NOT NULL,
@@ -26,6 +17,7 @@ CREATE TABLE "StudentApplication" (
     "courseChoice5" TEXT,
     "courseChoice6" TEXT,
     "courseChoice7" TEXT,
+    "sportsMarks" DOUBLE PRECISION,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "StudentApplication_pkey" PRIMARY KEY ("applicationNumber")
@@ -61,8 +53,28 @@ CREATE TABLE "AllocatedSeat" (
     CONSTRAINT "AllocatedSeat_pkey" PRIMARY KEY ("id")
 );
 
+-- CreateTable
+CREATE TABLE "OriginalSeatMatrix" (
+    "id" SERIAL NOT NULL,
+    "departmentId" TEXT NOT NULL,
+    "category" TEXT NOT NULL,
+    "subCategory" TEXT NOT NULL,
+    "totalSeats" INTEGER NOT NULL,
+
+    CONSTRAINT "OriginalSeatMatrix_pkey" PRIMARY KEY ("id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "SeatMatrix_departmentId_category_subCategory_key" ON "SeatMatrix"("departmentId", "category", "subCategory");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "OriginalSeatMatrix_departmentId_category_subCategory_key" ON "OriginalSeatMatrix"("departmentId", "category", "subCategory");
+
 -- AddForeignKey
 ALTER TABLE "SeatMatrix" ADD CONSTRAINT "SeatMatrix_departmentId_fkey" FOREIGN KEY ("departmentId") REFERENCES "Department"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "AllocatedSeat" ADD CONSTRAINT "AllocatedSeat_studentId_fkey" FOREIGN KEY ("studentId") REFERENCES "StudentApplication"("applicationNumber") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "OriginalSeatMatrix" ADD CONSTRAINT "OriginalSeatMatrix_departmentId_fkey" FOREIGN KEY ("departmentId") REFERENCES "Department"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
