@@ -178,7 +178,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/home/hecker_01/Projects/AdmissionSMVDU/backend/prisma/generated/prisma",
+      "value": "C:\\Users\\tushar sharma\\Desktop\\WEBDEV\\college\\collegeadmission\\backend\\prisma\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -187,16 +187,11 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "debian-openssl-3.0.x",
-        "native": true
-      },
-      {
-        "fromEnvVar": null,
         "value": "windows"
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/hecker_01/Projects/AdmissionSMVDU/backend/prisma/schema.prisma",
+    "sourceFilePath": "C:\\Users\\tushar sharma\\Desktop\\WEBDEV\\college\\collegeadmission\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -210,16 +205,17 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://admin:lFH16j8AqOj5awl3caZzYs5VwI8chzMd@dpg-cvtuqphr0fns73e1g37g-a.singapore-postgres.render.com/smvdu_admission_db"
+        "value": null
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  binaryTargets = [\"native\", \"windows\"]\n  output        = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel StudentApplication {\n  applicationNumber String  @id\n  studentName       String\n  fatherMotherName  String\n  phoneNumber       String\n  email             String\n  jeeCRL            Int\n  category          String\n  categoryRank      Int?\n  subCategory       String?\n  subCategoryRank   Int?\n\n  courseChoice1 String\n  courseChoice2 String?\n  courseChoice3 String?\n  courseChoice4 String?\n  courseChoice5 String?\n  courseChoice6 String?\n  courseChoice7 String?\n  sportsMarks   Float?\n\n  createdAt   DateTime        @default(now())\n  allocations AllocatedSeat[]\n}\n\nmodel Department {\n  id                 String               @id\n  name               String\n  seatMatrix         SeatMatrix[]\n  originalSeatMatrix OriginalSeatMatrix[]\n}\n\nmodel SeatMatrix {\n  id           Int        @id @default(autoincrement())\n  departmentId String\n  category     String\n  subCategory  String\n  totalSeats   Int\n  department   Department @relation(fields: [departmentId], references: [id])\n\n  @@unique([departmentId, category, subCategory], name: \"departmentId_category_subCategory\")\n}\n\nmodel AllocatedSeat {\n  id              Int                @id @default(autoincrement())\n  studentId       String\n  allocatedCourse String\n  allocationRound Int\n  allocatedAt     DateTime           @default(now())\n  student         StudentApplication @relation(fields: [studentId], references: [applicationNumber])\n}\n\nmodel OriginalSeatMatrix {\n  id           Int    @id @default(autoincrement())\n  departmentId String\n  category     String\n  subCategory  String\n  totalSeats   Int\n\n  department Department @relation(fields: [departmentId], references: [id])\n\n  @@unique([departmentId, category, subCategory], name: \"original_department_category_subCategory\")\n}\n",
-  "inlineSchemaHash": "dfc7f961ccbab35ba267df40bf731cdbe57ab881919ac7558565b239e38e1f58",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  binaryTargets = [\"windows\"]\n  output        = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel StudentApplication {\n  applicationNumber String  @id\n  studentName       String\n  fatherMotherName  String\n  phoneNumber       String\n  email             String\n  jeeCRL            Int\n  category          String\n  categoryRank      Int?\n  subCategory       String?\n  subCategoryRank   Int?\n\n  courseChoice1 String\n  courseChoice2 String?\n  courseChoice3 String?\n  courseChoice4 String?\n  courseChoice5 String?\n  courseChoice6 String?\n  courseChoice7 String?\n  sportsMarks   Float?\n\n  createdAt   DateTime        @default(now())\n  allocations AllocatedSeat[]\n}\n\nmodel Department {\n  id                 String               @id\n  name               String\n  seatMatrix         SeatMatrix[]\n  originalSeatMatrix OriginalSeatMatrix[]\n}\n\nmodel SeatMatrix {\n  id           Int        @id @default(autoincrement())\n  departmentId String\n  category     String\n  subCategory  String\n  totalSeats   Int\n  department   Department @relation(fields: [departmentId], references: [id])\n\n  @@unique([departmentId, category, subCategory], name: \"departmentId_category_subCategory\")\n}\n\nmodel AllocatedSeat {\n  id              Int                @id @default(autoincrement())\n  studentId       String\n  allocatedCourse String\n  allocationRound Int\n  allocatedAt     DateTime           @default(now())\n  student         StudentApplication @relation(fields: [studentId], references: [applicationNumber])\n}\n\nmodel OriginalSeatMatrix {\n  id           Int    @id @default(autoincrement())\n  departmentId String\n  category     String\n  subCategory  String\n  totalSeats   Int\n\n  department Department @relation(fields: [departmentId], references: [id])\n\n  @@unique([departmentId, category, subCategory], name: \"original_department_category_subCategory\")\n}\n",
+  "inlineSchemaHash": "c0d449927d68c227bf836bc9f605345f15ede4fe40aa1e89bb26d51bc831b133",
   "copyEngine": true
 }
 
@@ -256,10 +252,6 @@ warnEnvConflicts({
 const PrismaClient = getPrismaClient(config)
 exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
-
-// file annotations for bundling tools to include these files
-path.join(__dirname, "libquery_engine-debian-openssl-3.0.x.so.node");
-path.join(process.cwd(), "prisma/generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node")
 
 // file annotations for bundling tools to include these files
 path.join(__dirname, "query_engine-windows.dll.node");
