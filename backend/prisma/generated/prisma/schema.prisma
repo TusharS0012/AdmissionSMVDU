@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["windows"]
@@ -16,7 +10,7 @@ datasource db {
 }
 
 model StudentApplication {
-  applicationNumber String  @id
+  applicationNumber String @id
   studentName       String
   fatherMotherName  String
   phoneNumber       String
@@ -24,8 +18,6 @@ model StudentApplication {
   jeeCRL            Int
   category          String
   categoryRank      Int?
-  subCategory       String?
-  subCategoryRank   Int?
 
   courseChoice1 String
   courseChoice2 String?
@@ -51,11 +43,10 @@ model SeatMatrix {
   id           Int        @id @default(autoincrement())
   departmentId String
   category     String
-  subCategory  String
   totalSeats   Int
   department   Department @relation(fields: [departmentId], references: [id])
 
-  @@unique([departmentId, category, subCategory], name: "departmentId_category_subCategory")
+  @@unique([departmentId, category], name: "dept_category")
 }
 
 model AllocatedSeat {
@@ -63,7 +54,7 @@ model AllocatedSeat {
   studentId        String
   allocatedCourse  String
   allocationRound  Int
-  preferenceNumber Int // New: Which preference was allocated (1–7)
+  preferenceNumber Int // Which preference was allocated (1–7)
   status           AllocationStatus @default(PENDING) // LOCK / FLOAT / PENDING
   allocatedAt      DateTime         @default(now())
 
@@ -80,25 +71,9 @@ model OriginalSeatMatrix {
   id           Int    @id @default(autoincrement())
   departmentId String
   category     String
-  subCategory  String
   totalSeats   Int
 
   department Department @relation(fields: [departmentId], references: [id])
 
-  @@unique([departmentId, category, subCategory], name: "original_department_category_subCategory")
-}
-
-model Category {
-  id            Int           @id @default(autoincrement())
-  name          String        @unique
-  subCategories SubCategory[]
-}
-
-model SubCategory {
-  id         Int      @id @default(autoincrement())
-  name       String
-  categoryId Int
-  category   Category @relation(fields: [categoryId], references: [id])
-
-  @@unique([categoryId, name])
+  @@unique([departmentId, category], name: "orig_dept_category")
 }

@@ -3,6 +3,7 @@ import cors from "cors";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { PrismaClient } from "./prisma/generated/prisma/index.js";
+import { allocateSeats } from "./seat-allocation.js"; // your generic allocator
 
 dotenv.config();
 const prisma = new PrismaClient();
@@ -11,31 +12,32 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
+// -------------------------
+// Student Authentication
+// -------------------------
 app.post("/api/login", async (req, res) => {
   const { email, applicationNumber } = req.body;
-
   if (!email || !applicationNumber) {
     return res
       .status(400)
       .json({ message: "Email and application number required." });
   }
-
   try {
     const student = await prisma.studentApplication.findUnique({
       where: { applicationNumber },
     });
-
     if (!student || student.email !== email) {
       return res.status(401).json({ message: "Invalid credentials." });
     }
-
     const token = jwt.sign(
-      { applicationNumber: student.applicationNumber, email: student.email },
+      {
+        applicationNumber: student.applicationNumber,
+        email: student.email,
+        role: "student",
+      },
       process.env.JWT_SECRET,
       { expiresIn: "2h" }
     );
-
     res.json({ token });
   } catch (err) {
     console.error("Login error:", err);
@@ -43,14 +45,12 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
+// Verify student JWT
 const verifyToken = (req, res, next) => {
   const token = req.headers["authorization"]?.split(" ")[1];
-  if (!token) {
-    return res.status(401).json({ message: "No token provided." });
-  }
-
+  if (!token) return res.status(401).json({ message: "No token provided." });
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) {
+    if (err || decoded.role !== "student") {
       return res.status(403).json({ message: "Failed to authenticate token." });
     }
     req.user = decoded;
@@ -58,87 +58,121 @@ const verifyToken = (req, res, next) => {
   });
 };
 
+// -------------------------
+// Student Endpoints
+// -------------------------
 app.post("/api/seat-allotment", verifyToken, async (req, res) => {
   try {
-    const userId = req.user?.applicationNumber;
-    if (!userId) {
-      return res.status(400).json({ message: "Invalid user ID from token." });
-    }
-
+    const userId = req.user.applicationNumber;
     const seatAllotment = await prisma.allocatedSeat.findFirst({
       where: { studentId: userId },
-      orderBy: {
-        allocationRound: "desc",
-      },
-      include: {
-        student: true,
-      },
+      orderBy: { allocationRound: "desc" },
+      include: { student: true },
     });
-
     if (!seatAllotment) {
       return res.status(404).json({ message: "Seat allotment not found." });
     }
-
-    const response = {
+    res.json({
       candidateName: seatAllotment.student.studentName,
       round: seatAllotment.allocationRound,
       course: seatAllotment.allocatedCourse,
       preference: seatAllotment.preferenceNumber,
       status: seatAllotment.status,
       institute: "SMVDU",
-    };
-
-    res.json(response);
+    });
   } catch (err) {
     console.error("Error fetching seat allotment:", err);
-    res.status(500).json({
-      message: "An error occurred while fetching the seat allotment.",
-    });
+    res
+      .status(500)
+      .json({ message: "An error occurred fetching seat allotment." });
   }
 });
 
 app.post("/api/seat-decision", verifyToken, async (req, res) => {
-  const userId = req.user?.applicationNumber;
+  const userId = req.user.applicationNumber;
   const { decision } = req.body;
-
-  if (!userId || !["LOCK", "FLOAT"].includes(decision)) {
-    return res.status(400).json({ message: "Invalid request data." });
+  if (!["LOCK", "FLOAT"].includes(decision)) {
+    return res.status(400).json({ message: "Invalid decision." });
   }
-
   try {
-    const latestSeat = await prisma.allocatedSeat.findFirst({
-      where: {
-        studentId: userId,
-      },
-      orderBy: {
-        allocationRound: "desc",
-      },
+    const latest = await prisma.allocatedSeat.findFirst({
+      where: { studentId: userId },
+      orderBy: { allocationRound: "desc" },
     });
-
-    if (!latestSeat) {
-      return res.status(404).json({ message: "No seat found to update." });
-    }
-
-    if (latestSeat.status !== "PENDING") {
+    if (!latest)
+      return res.status(404).json({ message: "No allocation to update." });
+    if (latest.status !== "PENDING") {
       return res.status(400).json({ message: "Decision already submitted." });
     }
-
     await prisma.allocatedSeat.update({
-      where: { id: latestSeat.id },
-      data: {
-        status: decision,
-      },
+      where: { id: latest.id },
+      data: { status: decision },
     });
-
-    res.json({ message: `Seat successfully ${decision}ED.` });
+    res.json({ message: `Seat ${decision}ED successfully.` });
   } catch (err) {
     console.error("Error updating seat decision:", err);
-    res.status(500).json({ message: "Failed to update seat decision." });
+    res.status(500).json({ message: "Failed to update decision." });
   }
 });
 
-const PORT = process.env.PORT || 3000;
+// -------------------------
+// Admin Authentication
+// -------------------------
+app.post("/api/admin/login", (req, res) => {
+  const { email, password } = req.body;
+  if (
+    email === process.env.ADMIN_EMAIL &&
+    password === process.env.ADMIN_PASSWORD
+  ) {
+    const token = jwt.sign({ email, role: "admin" }, process.env.JWT_SECRET, {
+      expiresIn: "2h",
+    });
+    return res.json({ token });
+  }
+  res.status(401).json({ message: "Invalid admin credentials." });
+});
 
+// Verify admin JWT
+const verifyAdminToken = (req, res, next) => {
+  const token = req.headers["authorization"]?.split(" ")[1];
+  if (!token) return res.status(401).json({ message: "No token provided." });
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err || decoded.role !== "admin") {
+      return res.status(403).json({ message: "Unauthorized." });
+    }
+    req.admin = decoded;
+    next();
+  });
+};
+
+// -------------------------
+// Admin: Run Allocation Round
+// -------------------------
+app.post("/api/admin/allocate-round", verifyAdminToken, async (req, res) => {
+  const { roundNumber } = req.body;
+  if (typeof roundNumber !== "number" || roundNumber < 1) {
+    return res.status(400).json({ message: "Invalid roundNumber." });
+  }
+  // Only category-level allocation now
+  const categories = ["GEN", "OBC", "EWS", "SC", "RBA", "RLAC", "ST"];
+
+  try {
+    for (const category of categories) {
+      await allocateSeats({ category, roundNumber });
+    }
+    res.json({ message: `Round ${roundNumber} allocation completed.` });
+  } catch (err) {
+    console.error("Admin allocation error:", err);
+    res.status(500).json({ message: "Allocation failed." });
+  } finally {
+    await prisma.$disconnect();
+  }
+});
+
+// -------------------------
+// Start Server
+// -------------------------
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server up on port: ${PORT}`);
 });

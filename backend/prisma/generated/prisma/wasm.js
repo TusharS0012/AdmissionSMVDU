@@ -129,8 +129,6 @@ exports.Prisma.StudentApplicationScalarFieldEnum = {
   jeeCRL: 'jeeCRL',
   category: 'category',
   categoryRank: 'categoryRank',
-  subCategory: 'subCategory',
-  subCategoryRank: 'subCategoryRank',
   courseChoice1: 'courseChoice1',
   courseChoice2: 'courseChoice2',
   courseChoice3: 'courseChoice3',
@@ -151,7 +149,6 @@ exports.Prisma.SeatMatrixScalarFieldEnum = {
   id: 'id',
   departmentId: 'departmentId',
   category: 'category',
-  subCategory: 'subCategory',
   totalSeats: 'totalSeats'
 };
 
@@ -169,19 +166,7 @@ exports.Prisma.OriginalSeatMatrixScalarFieldEnum = {
   id: 'id',
   departmentId: 'departmentId',
   category: 'category',
-  subCategory: 'subCategory',
   totalSeats: 'totalSeats'
-};
-
-exports.Prisma.CategoryScalarFieldEnum = {
-  id: 'id',
-  name: 'name'
-};
-
-exports.Prisma.SubCategoryScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  categoryId: 'categoryId'
 };
 
 exports.Prisma.SortOrder = {
@@ -209,9 +194,7 @@ exports.Prisma.ModelName = {
   Department: 'Department',
   SeatMatrix: 'SeatMatrix',
   AllocatedSeat: 'AllocatedSeat',
-  OriginalSeatMatrix: 'OriginalSeatMatrix',
-  Category: 'Category',
-  SubCategory: 'SubCategory'
+  OriginalSeatMatrix: 'OriginalSeatMatrix'
 };
 
 /**

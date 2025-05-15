@@ -3,44 +3,40 @@ import { PrismaClient } from "./prisma/generated/prisma/index.js";
 const prisma = new PrismaClient();
 
 /**
- * Generic allocation function for any category, subCategory, and round number.
+ * Generic allocation function for any category and round number.
  *
- * @param {string} category 
- * @param {string} subCategory
- * @param {number} roundNumber 
+ * @param {string} category
+ * @param {number} roundNumber
  */
-async function allocateSeats({ category, subCategory, roundNumber }) {
+async function allocateSeats({ category, roundNumber }) {
   console.log(
-    `\n📢 Starting allocation for Category: ${category}, SubCategory: ${subCategory}, Round: ${roundNumber}`
+    `\n📢 Starting allocation for Category: ${category}, Round: ${roundNumber}`
   );
 
   // Fetch students of this category ordered by rank ascending
-  const students = await prisma.studentApplication.findMany({
+  const students = await prisma.StudentApplication.findMany({
     where: { category },
     orderBy: { categoryRank: "asc" },
   });
   console.log(`Found ${students.length} ${category} students.`);
 
-  // Fetch seat matrix with seats available in this category/subcategory
+  // Fetch seat matrix with seats available in this category
   const seatMatrix = await prisma.seatMatrix.findMany({
     where: {
       category,
-      subCategory,
       totalSeats: { gt: 0 },
     },
     include: { department: true },
   });
 
-  // Map departmentId -> seats available and departmentName -> departmentId
+  // Map deptId -> seatsLeft and deptName -> deptId
   const seatMap = new Map();
   const nameToDeptId = new Map();
-
   seatMatrix.forEach((seat) => {
     seatMap.set(seat.departmentId, seat.totalSeats);
     nameToDeptId.set(seat.department.name, seat.departmentId);
   });
 
-  // Process each student
   for (const student of students) {
     const choices = [
       student.courseChoice1,
@@ -52,96 +48,63 @@ async function allocateSeats({ category, subCategory, roundNumber }) {
       student.courseChoice7,
     ].filter(Boolean);
 
-    // Get existing allocation if any for this student
-    const existingAllocation = await prisma.allocatedSeat.findFirst({
+    const existing = await prisma.allocatedSeat.findFirst({
       where: { studentId: student.applicationNumber },
     });
 
-    for (
-      let preferenceNumber = 0;
-      preferenceNumber < choices.length;
-      preferenceNumber++
-    ) {
-      const courseName = choices[preferenceNumber];
+    for (let i = 0; i < choices.length; i++) {
+      const courseName = choices[i];
       const deptId = nameToDeptId.get(courseName);
       if (!deptId) continue;
 
       const available = seatMap.get(deptId);
-
-      if (available && available > 0) {
-        if (existingAllocation) {
-          const previousChoiceIndex = choices.indexOf(
-            existingAllocation.allocatedCourse
-          );
-
-          // If existing allocation is better or same, skip
-          if (
-            previousChoiceIndex !== -1 &&
-            preferenceNumber >= previousChoiceIndex
-          ) {
+      if (available > 0) {
+        if (existing) {
+          const prevIdx = choices.indexOf(existing.allocatedCourse);
+          if (prevIdx !== -1 && i >= prevIdx) {
             console.log(
-              `Skipping ${student.studentName}, current seat (${existingAllocation.allocatedCourse}) is better or same.`
+              `Skipping ${student.studentName}: existing seat is better or same`
             );
             break;
-          } else {
-            // Delete previous allocation & free seat
-            await prisma.allocatedSeat.delete({
-              where: { id: existingAllocation.id },
-            });
-
-            const previousDeptId = nameToDeptId.get(
-              existingAllocation.allocatedCourse
-            );
-            if (previousDeptId) {
-              seatMap.set(previousDeptId, seatMap.get(previousDeptId) + 1);
-              await prisma.seatMatrix.update({
-                where: {
-                  departmentId_category_subCategory: {
-                    departmentId: previousDeptId,
-                    category,
-                    subCategory,
-                  },
-                },
-                data: { totalSeats: { increment: 1 } },
-              });
-            }
-
-            console.log(
-              `Upgraded ${student.studentName} from ${existingAllocation.allocatedCourse} to ${courseName}`
-            );
           }
+          // free previous
+          await prisma.allocatedSeat.delete({ where: { id: existing.id } });
+          seatMap.set(
+            nameToDeptId.get(existing.allocatedCourse),
+            seatMap.get(nameToDeptId.get(existing.allocatedCourse)) + 1
+          );
+          await prisma.seatMatrix.update({
+            where: {
+              id: seatMatrix.find(
+                (s) =>
+                  s.departmentId === nameToDeptId.get(existing.allocatedCourse)
+              ).id,
+            },
+            data: { totalSeats: { increment: 1 } },
+          });
         }
 
-        // Allocate new seat
+        // create new
         await prisma.allocatedSeat.create({
           data: {
             studentId: student.applicationNumber,
             allocatedCourse: courseName,
             allocationRound: roundNumber,
-            preferenceNumber: preferenceNumber + 1,
+            preferenceNumber: i + 1,
             allocatedAt: new Date(),
           },
         });
 
         seatMap.set(deptId, available - 1);
-
         await prisma.seatMatrix.update({
-          where: {
-            departmentId_category_subCategory: {
-              departmentId: deptId,
-              category,
-              subCategory,
-            },
-          },
+          where: { id: seatMatrix.find((s) => s.departmentId === deptId).id },
           data: { totalSeats: { decrement: 1 } },
         });
 
         console.log(
-          `✅ Allocated ${student.studentName} to ${courseName} (Preference #${
-            preferenceNumber + 1
-          })`
+          `✅ Allocated ${student.studentName} to ${courseName} (Pref ${i + 1})`
         );
-        break; // move to next student after allocation
+        break;
       }
     }
   }
