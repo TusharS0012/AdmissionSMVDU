@@ -11,6 +11,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
 app.post("/api/login", async (req, res) => {
   const { email, applicationNumber } = req.body;
 
@@ -43,7 +44,7 @@ app.post("/api/login", async (req, res) => {
 });
 
 const verifyToken = (req, res, next) => {
-  const token = req.headers["authorization"]?.split(" ")[1]; 
+  const token = req.headers["authorization"]?.split(" ")[1];
   if (!token) {
     return res.status(401).json({ message: "No token provided." });
   }
@@ -64,10 +65,11 @@ app.post("/api/seat-allotment", verifyToken, async (req, res) => {
       return res.status(400).json({ message: "Invalid user ID from token." });
     }
 
-    console.log("Fetching seat allotment for userId:", userId);
-
     const seatAllotment = await prisma.allocatedSeat.findFirst({
       where: { studentId: userId },
+      orderBy: {
+        allocationRound: "desc",
+      },
       include: {
         student: true,
       },
@@ -81,9 +83,11 @@ app.post("/api/seat-allotment", verifyToken, async (req, res) => {
       candidateName: seatAllotment.student.studentName,
       round: seatAllotment.allocationRound,
       course: seatAllotment.allocatedCourse,
+      preference: seatAllotment.preferenceNumber,
+      status: seatAllotment.status,
       institute: "SMVDU",
     };
-    console.log(response);
+
     res.json(response);
   } catch (err) {
     console.error("Error fetching seat allotment:", err);
@@ -93,9 +97,48 @@ app.post("/api/seat-allotment", verifyToken, async (req, res) => {
   }
 });
 
+app.post("/api/seat-decision", verifyToken, async (req, res) => {
+  const userId = req.user?.applicationNumber;
+  const { decision } = req.body;
+
+  if (!userId || !["LOCK", "FLOAT"].includes(decision)) {
+    return res.status(400).json({ message: "Invalid request data." });
+  }
+
+  try {
+    const latestSeat = await prisma.allocatedSeat.findFirst({
+      where: {
+        studentId: userId,
+      },
+      orderBy: {
+        allocationRound: "desc",
+      },
+    });
+
+    if (!latestSeat) {
+      return res.status(404).json({ message: "No seat found to update." });
+    }
+
+    if (latestSeat.status !== "PENDING") {
+      return res.status(400).json({ message: "Decision already submitted." });
+    }
+
+    await prisma.allocatedSeat.update({
+      where: { id: latestSeat.id },
+      data: {
+        status: decision,
+      },
+    });
+
+    res.json({ message: `Seat successfully ${decision}ED.` });
+  } catch (err) {
+    console.error("Error updating seat decision:", err);
+    res.status(500).json({ message: "Failed to update seat decision." });
+  }
+});
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Server up on port:${PORT}`);
+  console.log(`Server up on port: ${PORT}`);
 });

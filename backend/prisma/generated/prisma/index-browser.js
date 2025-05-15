@@ -160,6 +160,8 @@ exports.Prisma.AllocatedSeatScalarFieldEnum = {
   studentId: 'studentId',
   allocatedCourse: 'allocatedCourse',
   allocationRound: 'allocationRound',
+  preferenceNumber: 'preferenceNumber',
+  status: 'status',
   allocatedAt: 'allocatedAt'
 };
 
@@ -169,6 +171,17 @@ exports.Prisma.OriginalSeatMatrixScalarFieldEnum = {
   category: 'category',
   subCategory: 'subCategory',
   totalSeats: 'totalSeats'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.SubCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  categoryId: 'categoryId'
 };
 
 exports.Prisma.SortOrder = {
@@ -185,14 +198,20 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.AllocationStatus = exports.$Enums.AllocationStatus = {
+  LOCK: 'LOCK',
+  FLOAT: 'FLOAT',
+  PENDING: 'PENDING'
+};
 
 exports.Prisma.ModelName = {
   StudentApplication: 'StudentApplication',
   Department: 'Department',
   SeatMatrix: 'SeatMatrix',
   AllocatedSeat: 'AllocatedSeat',
-  OriginalSeatMatrix: 'OriginalSeatMatrix'
+  OriginalSeatMatrix: 'OriginalSeatMatrix',
+  Category: 'Category',
+  SubCategory: 'SubCategory'
 };
 
 /**

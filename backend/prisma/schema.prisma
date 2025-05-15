@@ -57,14 +57,22 @@ model SeatMatrix {
 
   @@unique([departmentId, category, subCategory], name: "departmentId_category_subCategory")
 }
-
 model AllocatedSeat {
-  id              Int                @id @default(autoincrement())
-  studentId       String
-  allocatedCourse String
-  allocationRound Int
-  allocatedAt     DateTime           @default(now())
-  student         StudentApplication @relation(fields: [studentId], references: [applicationNumber])
+  id                    Int                @id @default(autoincrement())
+  studentId             String
+  allocatedCourse       String
+  allocationRound       Int
+  preferenceNumber      Int                // New: Which preference was allocated (1–7)
+  status                AllocationStatus   @default(PENDING) // LOCK / FLOAT / PENDING
+  allocatedAt           DateTime           @default(now())
+
+  student               StudentApplication @relation(fields: [studentId], references: [applicationNumber])
+}
+
+enum AllocationStatus {
+  LOCK
+  FLOAT
+  PENDING
 }
 
 model OriginalSeatMatrix {
@@ -77,4 +85,19 @@ model OriginalSeatMatrix {
   department Department @relation(fields: [departmentId], references: [id])
 
   @@unique([departmentId, category, subCategory], name: "original_department_category_subCategory")
+}
+
+model Category {
+  id            Int           @id @default(autoincrement())
+  name          String        @unique
+  subCategories SubCategory[]
+}
+
+model SubCategory {
+  id          Int      @id @default(autoincrement())
+  name        String
+  categoryId  Int
+  category    Category @relation(fields: [categoryId], references: [id])
+
+  @@unique([categoryId, name])
 }
