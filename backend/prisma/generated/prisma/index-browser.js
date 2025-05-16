@@ -193,7 +193,7 @@ exports.Prisma.ModelName = {
   StudentApplication: 'StudentApplication',
   Department: 'Department',
   SeatMatrix: 'SeatMatrix',
-  AllocatedSeat: 'AllocatedSeat',
+  allocatedSeat: 'allocatedSeat',
   OriginalSeatMatrix: 'OriginalSeatMatrix'
 };
 

@@ -13,7 +13,7 @@ model StudentApplication {
   applicationNumber String  @id
   studentName       String
   fatherMotherName  String
-  phoneNumber       String
+  phoneNumber       String?
   email             String
   jeeCRL            Int
   category          String
@@ -29,7 +29,7 @@ model StudentApplication {
   sportsMarks   Float?
 
   createdAt   DateTime        @default(now())
-  allocations AllocatedSeat[]
+  allocations allocatedSeat[]
 }
 
 model Department {
@@ -49,7 +49,7 @@ model SeatMatrix {
   @@unique([departmentId, category], name: "dept_category")
 }
 
-model AllocatedSeat {
+model allocatedSeat {
   id                    Int                @id @default(autoincrement())
   studentId             String
   allocatedCourse       String

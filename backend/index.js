@@ -64,14 +64,19 @@ const verifyToken = (req, res, next) => {
 app.post("/api/seat-allotment", verifyToken, async (req, res) => {
   try {
     const userId = req.user.applicationNumber;
+    console.log("Looking up seat for studentId:", userId);
+
     const seatAllotment = await prisma.allocatedSeat.findFirst({
       where: { studentId: userId },
       orderBy: { allocationRound: "desc" },
       include: { student: true },
     });
+
     if (!seatAllotment) {
+      console.log("No seat allotment found for:", userId);
       return res.status(404).json({ message: "Seat allotment not found." });
     }
+
     res.json({
       candidateName: seatAllotment.student.studentName,
       round: seatAllotment.allocationRound,
@@ -88,10 +93,11 @@ app.post("/api/seat-allotment", verifyToken, async (req, res) => {
   }
 });
 
-app.post("/api/seat-decision", verifyToken, async (req, res) => {
+
+app.post("/api/seat-allotment/status", verifyToken, async (req, res) => {
   const userId = req.user.applicationNumber;
-  const { decision } = req.body;
-  if (!["LOCK", "FLOAT"].includes(decision)) {
+  const { status } = req.body;  
+  if (!["LOCK", "FLOAT"].includes(status)) {
     return res.status(400).json({ message: "Invalid decision." });
   }
   try {
@@ -106,9 +112,9 @@ app.post("/api/seat-decision", verifyToken, async (req, res) => {
     }
     await prisma.allocatedSeat.update({
       where: { id: latest.id },
-      data: { status: decision },
+      data: { status: status },
     });
-    res.json({ message: `Seat ${decision}ED successfully.` });
+    res.json({ message: `Seat ${status}ED successfully.` });
   } catch (err) {
     console.error("Error updating seat decision:", err);
     res.status(500).json({ message: "Failed to update decision." });

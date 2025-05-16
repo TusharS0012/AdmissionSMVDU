@@ -13,30 +13,29 @@ async function allocateSeats({ category, roundNumber }) {
     `\n📢 Starting allocation for Category: ${category}, Round: ${roundNumber}`
   );
 
-  // Fetch students of this category ordered by rank ascending
-  const students = await prisma.StudentApplication.findMany({
+  // 1) Fetch students
+  const students = await prisma.studentApplication.findMany({
     where: { category },
     orderBy: { categoryRank: "asc" },
   });
   console.log(`Found ${students.length} ${category} students.`);
 
-  // Fetch seat matrix with seats available in this category
+  // 2) Fetch seat matrix including department relation
   const seatMatrix = await prisma.seatMatrix.findMany({
-    where: {
-      category,
-      totalSeats: { gt: 0 },
-    },
+    where: { category, totalSeats: { gt: 0 } },
     include: { department: true },
   });
 
-  // Map deptId -> seatsLeft and deptName -> deptId
+  // Build a map: deptId -> { seatsLeft, matrixId }
   const seatMap = new Map();
-  const nameToDeptId = new Map();
   seatMatrix.forEach((seat) => {
-    seatMap.set(seat.departmentId, seat.totalSeats);
-    nameToDeptId.set(seat.department.name, seat.departmentId);
+    seatMap.set(seat.departmentId, {
+      seatsLeft: seat.totalSeats,
+      matrixId: seat.id,
+    });
   });
 
+  // 3) Allocate per student
   for (const student of students) {
     const choices = [
       student.courseChoice1,
@@ -46,66 +45,84 @@ async function allocateSeats({ category, roundNumber }) {
       student.courseChoice5,
       student.courseChoice6,
       student.courseChoice7,
-    ].filter(Boolean);
+    ]
+      .filter(Boolean)
+      .map((c) => c.trim().toLowerCase());
 
     const existing = await prisma.allocatedSeat.findFirst({
       where: { studentId: student.applicationNumber },
     });
 
+    let allocated = false;
     for (let i = 0; i < choices.length; i++) {
-      const courseName = choices[i];
-      const deptId = nameToDeptId.get(courseName);
-      if (!deptId) continue;
+      const deptKey = choices[i];
+      const seatInfo = seatMap.get(deptKey);
 
-      const available = seatMap.get(deptId);
-      if (available > 0) {
-        if (existing) {
-          const prevIdx = choices.indexOf(existing.allocatedCourse);
-          if (prevIdx !== -1 && i >= prevIdx) {
-            console.log(
-              `Skipping ${student.studentName}: existing seat is better or same`
-            );
-            break;
-          }
-          // free previous
-          await prisma.allocatedSeat.delete({ where: { id: existing.id } });
-          seatMap.set(
-            nameToDeptId.get(existing.allocatedCourse),
-            seatMap.get(nameToDeptId.get(existing.allocatedCourse)) + 1
-          );
-          await prisma.seatMatrix.update({
-            where: {
-              id: seatMatrix.find(
-                (s) =>
-                  s.departmentId === nameToDeptId.get(existing.allocatedCourse)
-              ).id,
-            },
-            data: { totalSeats: { increment: 1 } },
-          });
+      if (!seatInfo) {
+        console.warn(
+          `⚠️ Choice "${deptKey}" not offered under ${category} for ${student.studentName}`
+        );
+        continue;
+      }
+      if (seatInfo.seatsLeft <= 0) {
+        continue;
+      }
+
+      // If there's an existing allocation, free it if this choice is strictly better
+      if (existing) {
+        const prevKey = existing.allocatedCourse.trim().toLowerCase();
+        const prevIndex = choices.indexOf(prevKey);
+
+        if (prevIndex !== -1 && i >= prevIndex) {
+          // New preference is same or worse than existing
+          break;
         }
 
-        // create new
-        await prisma.allocatedSeat.create({
-          data: {
-            studentId: student.applicationNumber,
-            allocatedCourse: courseName,
-            allocationRound: roundNumber,
-            preferenceNumber: i + 1,
-            allocatedAt: new Date(),
-          },
-        });
+        // Delete the old allocation
+        await prisma.allocatedSeat.delete({ where: { id: existing.id } });
 
-        seatMap.set(deptId, available - 1);
-        await prisma.seatMatrix.update({
-          where: { id: seatMatrix.find((s) => s.departmentId === deptId).id },
-          data: { totalSeats: { decrement: 1 } },
-        });
-
-        console.log(
-          `✅ Allocated ${student.studentName} to ${courseName} (Pref ${i + 1})`
-        );
-        break;
+        // Try to fetch the old seatInfo; if missing, log and skip freeing DB
+        const oldSeatInfo = seatMap.get(prevKey);
+        if (oldSeatInfo) {
+          oldSeatInfo.seatsLeft++;
+          await prisma.seatMatrix.update({
+            where: { id: oldSeatInfo.matrixId },
+            data: { totalSeats: { increment: 1 } },
+          });
+        } else {
+          console.error(
+            `❗️ Could not find seatMap entry for previous choice "${prevKey}"`
+          );
+        }
       }
+
+      // Create the new allocation
+      await prisma.allocatedSeat.create({
+        data: {
+          studentId: student.applicationNumber,
+          allocatedCourse: deptKey,
+          allocationRound: roundNumber,
+          preferenceNumber: i + 1,
+          allocatedAt: new Date(),
+        },
+      });
+
+      // Decrement both local map and DB
+      seatInfo.seatsLeft--;
+      await prisma.seatMatrix.update({
+        where: { id: seatInfo.matrixId },
+        data: { totalSeats: { decrement: 1 } },
+      });
+
+      console.log(
+        `✅ Allocated ${student.studentName} to ${deptKey} (Pref ${i + 1})`
+      );
+      allocated = true;
+      break;
+    }
+
+    if (!allocated && !existing) {
+      console.log(`⛔️ Could not allocate any seat for ${student.studentName}`);
     }
   }
 

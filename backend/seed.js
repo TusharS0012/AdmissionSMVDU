@@ -1,3 +1,4 @@
+// seed.js
 import { PrismaClient } from "./prisma/generated/prisma/index.js";
 import fs from "fs";
 import csv from "csv-parser";
@@ -30,56 +31,61 @@ async function main() {
 
   console.log("🛠 Inserting Departments...");
   for (const dept of departments) {
+    const id = dept.id.trim();
+    const name = dept.name.trim();
     await prisma.department.create({
-      data: {
-        id: dept.id,
-        name: dept.name,
-      },
+      data: { id, name },
     });
   }
 
   console.log("🪑 Inserting Seat Matrix & Original Seat Matrix...");
   for (const seat of seatMatrices) {
-    const data = {
-      departmentId: seat.departmentId,
-      category: seat.category,
-      subCategory: seat.subCategory,
-      totalSeats: parseInt(seat.totalSeats),
-    };
+    const departmentId = seat.departmentId.trim();
+    const category = seat.category.trim().toUpperCase();
+    const totalSeats = parseInt(seat.totalSeats.trim(), 10) || 0;
 
-    await prisma.seatMatrix.create({ data });
-    await prisma.originalSeatMatrix.create({ data });
+    await prisma.seatMatrix.create({
+      data: { departmentId, category, totalSeats },
+    });
+    await prisma.originalSeatMatrix.create({
+      data: { departmentId, category, totalSeats },
+    });
   }
 
   console.log("👨‍🎓 Inserting Student Applications...");
   await prisma.studentApplication.createMany({
-    data: studentApplications.map((student) => ({
-      applicationNumber: student.applicationNumber,
-      studentName: student.studentName,
-      fatherMotherName: student.fatherMotherName,
-      phoneNumber: student.phoneNumber,
-      email: student.email,
-      jeeCRL: parseInt(student.jeeCRL),
-      category: student.category,
-      subCategory: student.subCategory || null,
-      categoryRank: student.categoryRank
-        ? parseInt(student.categoryRank)
-        : null,
-      subCategoryRank: student.subCategoryRank
-        ? parseInt(student.subCategoryRank)
-        : null,
+    data: studentApplications.map((student) => {
+      // helper to trim or null
+      const t = (v) =>
+        v?.trim() ? v.trim() : null;
 
-      courseChoice1: student.courseChoice1,
-      courseChoice2: student.courseChoice2 || null,
-      courseChoice3: student.courseChoice3 || null,
-      courseChoice4: student.courseChoice4 || null,
-      courseChoice5: student.courseChoice5 || null,
-      courseChoice6: student.courseChoice6 || null,
-      courseChoice7: student.courseChoice7 || null,
-      sportsMarks: student.sportsMarks ? parseFloat(student.sportsMarks) : null,
+      return {
+        applicationNumber: student.applicationNumber.trim(),
+        studentName: student.studentName.trim(),
+        fatherMotherName: t(student.fatherMotherName),
+        phoneNumber: t(student.phoneNumber),
+        email: t(student.email),
+        jeeCRL: parseInt(student.jeeCRL.trim(), 10),
+        category: student.category.trim().toUpperCase(),
+        categoryRank: student.categoryRank?.trim()
+          ? parseInt(student.categoryRank.trim(), 10)
+          : null,
 
-      createdAt: new Date(),
-    })),
+        courseChoice1: t(student.courseChoice1),
+        courseChoice2: t(student.courseChoice2),
+        courseChoice3: t(student.courseChoice3),
+        courseChoice4: t(student.courseChoice4),
+        courseChoice5: t(student.courseChoice5),
+        courseChoice6: t(student.courseChoice6),
+        courseChoice7: t(student.courseChoice7),
+
+        sportsMarks: student.sportsMarks?.trim()
+          ? parseFloat(student.sportsMarks.trim())
+          : null,
+
+        createdAt: new Date(),
+      };
+    }),
   });
 
   console.log("✅ Seed data created from CSV!");

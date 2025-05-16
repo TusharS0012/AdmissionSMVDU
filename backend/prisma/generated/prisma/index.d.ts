@@ -29,10 +29,10 @@ export type Department = $Result.DefaultSelection<Prisma.$DepartmentPayload>
  */
 export type SeatMatrix = $Result.DefaultSelection<Prisma.$SeatMatrixPayload>
 /**
- * Model AllocatedSeat
+ * Model allocatedSeat
  * 
  */
-export type AllocatedSeat = $Result.DefaultSelection<Prisma.$AllocatedSeatPayload>
+export type allocatedSeat = $Result.DefaultSelection<Prisma.$allocatedSeatPayload>
 /**
  * Model OriginalSeatMatrix
  * 
@@ -213,14 +213,14 @@ export class PrismaClient<
   get seatMatrix(): Prisma.SeatMatrixDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.allocatedSeat`: Exposes CRUD operations for the **AllocatedSeat** model.
+   * `prisma.allocatedSeat`: Exposes CRUD operations for the **allocatedSeat** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more AllocatedSeats
     * const allocatedSeats = await prisma.allocatedSeat.findMany()
     * ```
     */
-  get allocatedSeat(): Prisma.AllocatedSeatDelegate<ExtArgs, ClientOptions>;
+  get allocatedSeat(): Prisma.allocatedSeatDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.originalSeatMatrix`: Exposes CRUD operations for the **OriginalSeatMatrix** model.
@@ -674,7 +674,7 @@ export namespace Prisma {
     StudentApplication: 'StudentApplication',
     Department: 'Department',
     SeatMatrix: 'SeatMatrix',
-    AllocatedSeat: 'AllocatedSeat',
+    allocatedSeat: 'allocatedSeat',
     OriginalSeatMatrix: 'OriginalSeatMatrix'
   };
 
@@ -920,76 +920,76 @@ export namespace Prisma {
           }
         }
       }
-      AllocatedSeat: {
-        payload: Prisma.$AllocatedSeatPayload<ExtArgs>
-        fields: Prisma.AllocatedSeatFieldRefs
+      allocatedSeat: {
+        payload: Prisma.$allocatedSeatPayload<ExtArgs>
+        fields: Prisma.allocatedSeatFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.AllocatedSeatFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AllocatedSeatPayload> | null
+            args: Prisma.allocatedSeatFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allocatedSeatPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.AllocatedSeatFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AllocatedSeatPayload>
+            args: Prisma.allocatedSeatFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allocatedSeatPayload>
           }
           findFirst: {
-            args: Prisma.AllocatedSeatFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AllocatedSeatPayload> | null
+            args: Prisma.allocatedSeatFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allocatedSeatPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.AllocatedSeatFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AllocatedSeatPayload>
+            args: Prisma.allocatedSeatFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allocatedSeatPayload>
           }
           findMany: {
-            args: Prisma.AllocatedSeatFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AllocatedSeatPayload>[]
+            args: Prisma.allocatedSeatFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allocatedSeatPayload>[]
           }
           create: {
-            args: Prisma.AllocatedSeatCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AllocatedSeatPayload>
+            args: Prisma.allocatedSeatCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allocatedSeatPayload>
           }
           createMany: {
-            args: Prisma.AllocatedSeatCreateManyArgs<ExtArgs>
+            args: Prisma.allocatedSeatCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.AllocatedSeatCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AllocatedSeatPayload>[]
+            args: Prisma.allocatedSeatCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allocatedSeatPayload>[]
           }
           delete: {
-            args: Prisma.AllocatedSeatDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AllocatedSeatPayload>
+            args: Prisma.allocatedSeatDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allocatedSeatPayload>
           }
           update: {
-            args: Prisma.AllocatedSeatUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AllocatedSeatPayload>
+            args: Prisma.allocatedSeatUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allocatedSeatPayload>
           }
           deleteMany: {
-            args: Prisma.AllocatedSeatDeleteManyArgs<ExtArgs>
+            args: Prisma.allocatedSeatDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.AllocatedSeatUpdateManyArgs<ExtArgs>
+            args: Prisma.allocatedSeatUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.AllocatedSeatUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AllocatedSeatPayload>[]
+            args: Prisma.allocatedSeatUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allocatedSeatPayload>[]
           }
           upsert: {
-            args: Prisma.AllocatedSeatUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$AllocatedSeatPayload>
+            args: Prisma.allocatedSeatUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$allocatedSeatPayload>
           }
           aggregate: {
             args: Prisma.AllocatedSeatAggregateArgs<ExtArgs>
             result: $Utils.Optional<AggregateAllocatedSeat>
           }
           groupBy: {
-            args: Prisma.AllocatedSeatGroupByArgs<ExtArgs>
+            args: Prisma.allocatedSeatGroupByArgs<ExtArgs>
             result: $Utils.Optional<AllocatedSeatGroupByOutputType>[]
           }
           count: {
-            args: Prisma.AllocatedSeatCountArgs<ExtArgs>
+            args: Prisma.allocatedSeatCountArgs<ExtArgs>
             result: $Utils.Optional<AllocatedSeatCountAggregateOutputType> | number
           }
         }
@@ -1155,7 +1155,7 @@ export namespace Prisma {
     studentApplication?: StudentApplicationOmit
     department?: DepartmentOmit
     seatMatrix?: SeatMatrixOmit
-    allocatedSeat?: AllocatedSeatOmit
+    allocatedSeat?: allocatedSeatOmit
     originalSeatMatrix?: OriginalSeatMatrixOmit
   }
 
@@ -1273,7 +1273,7 @@ export namespace Prisma {
    * StudentApplicationCountOutputType without action
    */
   export type StudentApplicationCountOutputTypeCountAllocationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AllocatedSeatWhereInput
+    where?: allocatedSeatWhereInput
   }
 
 
@@ -1570,7 +1570,7 @@ export namespace Prisma {
     applicationNumber: string
     studentName: string
     fatherMotherName: string
-    phoneNumber: string
+    phoneNumber: string | null
     email: string
     jeeCRL: number
     category: string
@@ -1698,13 +1698,13 @@ export namespace Prisma {
   export type $StudentApplicationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "StudentApplication"
     objects: {
-      allocations: Prisma.$AllocatedSeatPayload<ExtArgs>[]
+      allocations: Prisma.$allocatedSeatPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       applicationNumber: string
       studentName: string
       fatherMotherName: string
-      phoneNumber: string
+      phoneNumber: string | null
       email: string
       jeeCRL: number
       category: string
@@ -2112,7 +2112,7 @@ export namespace Prisma {
    */
   export interface Prisma__StudentApplicationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    allocations<T extends StudentApplication$allocationsArgs<ExtArgs> = {}>(args?: Subset<T, StudentApplication$allocationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AllocatedSeatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    allocations<T extends StudentApplication$allocationsArgs<ExtArgs> = {}>(args?: Subset<T, StudentApplication$allocationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$allocatedSeatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2551,20 +2551,20 @@ export namespace Prisma {
    */
   export type StudentApplication$allocationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AllocatedSeat
+     * Select specific fields to fetch from the allocatedSeat
      */
-    select?: AllocatedSeatSelect<ExtArgs> | null
+    select?: allocatedSeatSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AllocatedSeat
+     * Omit specific fields from the allocatedSeat
      */
-    omit?: AllocatedSeatOmit<ExtArgs> | null
+    omit?: allocatedSeatOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AllocatedSeatInclude<ExtArgs> | null
-    where?: AllocatedSeatWhereInput
-    orderBy?: AllocatedSeatOrderByWithRelationInput | AllocatedSeatOrderByWithRelationInput[]
-    cursor?: AllocatedSeatWhereUniqueInput
+    include?: allocatedSeatInclude<ExtArgs> | null
+    where?: allocatedSeatWhereInput
+    orderBy?: allocatedSeatOrderByWithRelationInput | allocatedSeatOrderByWithRelationInput[]
+    cursor?: allocatedSeatWhereUniqueInput
     take?: number
     skip?: number
     distinct?: AllocatedSeatScalarFieldEnum | AllocatedSeatScalarFieldEnum[]
@@ -4732,7 +4732,7 @@ export namespace Prisma {
 
 
   /**
-   * Model AllocatedSeat
+   * Model allocatedSeat
    */
 
   export type AggregateAllocatedSeat = {
@@ -4832,37 +4832,37 @@ export namespace Prisma {
 
   export type AllocatedSeatAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which AllocatedSeat to aggregate.
+     * Filter which allocatedSeat to aggregate.
      */
-    where?: AllocatedSeatWhereInput
+    where?: allocatedSeatWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AllocatedSeats to fetch.
+     * Determine the order of allocatedSeats to fetch.
      */
-    orderBy?: AllocatedSeatOrderByWithRelationInput | AllocatedSeatOrderByWithRelationInput[]
+    orderBy?: allocatedSeatOrderByWithRelationInput | allocatedSeatOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: AllocatedSeatWhereUniqueInput
+    cursor?: allocatedSeatWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AllocatedSeats from the position of the cursor.
+     * Take `±n` allocatedSeats from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AllocatedSeats.
+     * Skip the first `n` allocatedSeats.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned AllocatedSeats
+     * Count returned allocatedSeats
     **/
     _count?: true | AllocatedSeatCountAggregateInputType
     /**
@@ -4902,11 +4902,11 @@ export namespace Prisma {
 
 
 
-  export type AllocatedSeatGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: AllocatedSeatWhereInput
-    orderBy?: AllocatedSeatOrderByWithAggregationInput | AllocatedSeatOrderByWithAggregationInput[]
+  export type allocatedSeatGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: allocatedSeatWhereInput
+    orderBy?: allocatedSeatOrderByWithAggregationInput | allocatedSeatOrderByWithAggregationInput[]
     by: AllocatedSeatScalarFieldEnum[] | AllocatedSeatScalarFieldEnum
-    having?: AllocatedSeatScalarWhereWithAggregatesInput
+    having?: allocatedSeatScalarWhereWithAggregatesInput
     take?: number
     skip?: number
     _count?: AllocatedSeatCountAggregateInputType | true
@@ -4931,7 +4931,7 @@ export namespace Prisma {
     _max: AllocatedSeatMaxAggregateOutputType | null
   }
 
-  type GetAllocatedSeatGroupByPayload<T extends AllocatedSeatGroupByArgs> = Prisma.PrismaPromise<
+  type GetAllocatedSeatGroupByPayload<T extends allocatedSeatGroupByArgs> = Prisma.PrismaPromise<
     Array<
       PickEnumerable<AllocatedSeatGroupByOutputType, T['by']> &
         {
@@ -4945,7 +4945,7 @@ export namespace Prisma {
     >
 
 
-  export type AllocatedSeatSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type allocatedSeatSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     studentId?: boolean
     allocatedCourse?: boolean
@@ -4956,7 +4956,7 @@ export namespace Prisma {
     student?: boolean | StudentApplicationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["allocatedSeat"]>
 
-  export type AllocatedSeatSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type allocatedSeatSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     studentId?: boolean
     allocatedCourse?: boolean
@@ -4967,7 +4967,7 @@ export namespace Prisma {
     student?: boolean | StudentApplicationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["allocatedSeat"]>
 
-  export type AllocatedSeatSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type allocatedSeatSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     studentId?: boolean
     allocatedCourse?: boolean
@@ -4978,7 +4978,7 @@ export namespace Prisma {
     student?: boolean | StudentApplicationDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["allocatedSeat"]>
 
-  export type AllocatedSeatSelectScalar = {
+  export type allocatedSeatSelectScalar = {
     id?: boolean
     studentId?: boolean
     allocatedCourse?: boolean
@@ -4988,19 +4988,19 @@ export namespace Prisma {
     allocatedAt?: boolean
   }
 
-  export type AllocatedSeatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "studentId" | "allocatedCourse" | "allocationRound" | "preferenceNumber" | "status" | "allocatedAt", ExtArgs["result"]["allocatedSeat"]>
-  export type AllocatedSeatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "studentId" | "allocatedCourse" | "allocationRound" | "preferenceNumber" | "status" | "allocatedAt", ExtArgs["result"]["allocatedSeat"]>
+  export type allocatedSeatInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     student?: boolean | StudentApplicationDefaultArgs<ExtArgs>
   }
-  export type AllocatedSeatIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     student?: boolean | StudentApplicationDefaultArgs<ExtArgs>
   }
-  export type AllocatedSeatIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     student?: boolean | StudentApplicationDefaultArgs<ExtArgs>
   }
 
-  export type $AllocatedSeatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "AllocatedSeat"
+  export type $allocatedSeatPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "allocatedSeat"
     objects: {
       student: Prisma.$StudentApplicationPayload<ExtArgs>
     }
@@ -5016,18 +5016,18 @@ export namespace Prisma {
     composites: {}
   }
 
-  type AllocatedSeatGetPayload<S extends boolean | null | undefined | AllocatedSeatDefaultArgs> = $Result.GetResult<Prisma.$AllocatedSeatPayload, S>
+  type allocatedSeatGetPayload<S extends boolean | null | undefined | allocatedSeatDefaultArgs> = $Result.GetResult<Prisma.$allocatedSeatPayload, S>
 
-  type AllocatedSeatCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<AllocatedSeatFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+  type allocatedSeatCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<allocatedSeatFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
       select?: AllocatedSeatCountAggregateInputType | true
     }
 
-  export interface AllocatedSeatDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AllocatedSeat'], meta: { name: 'AllocatedSeat' } }
+  export interface allocatedSeatDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['allocatedSeat'], meta: { name: 'allocatedSeat' } }
     /**
      * Find zero or one AllocatedSeat that matches the filter.
-     * @param {AllocatedSeatFindUniqueArgs} args - Arguments to find a AllocatedSeat
+     * @param {allocatedSeatFindUniqueArgs} args - Arguments to find a AllocatedSeat
      * @example
      * // Get one AllocatedSeat
      * const allocatedSeat = await prisma.allocatedSeat.findUnique({
@@ -5036,12 +5036,12 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUnique<T extends AllocatedSeatFindUniqueArgs>(args: SelectSubset<T, AllocatedSeatFindUniqueArgs<ExtArgs>>): Prisma__AllocatedSeatClient<$Result.GetResult<Prisma.$AllocatedSeatPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends allocatedSeatFindUniqueArgs>(args: SelectSubset<T, allocatedSeatFindUniqueArgs<ExtArgs>>): Prisma__allocatedSeatClient<$Result.GetResult<Prisma.$allocatedSeatPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find one AllocatedSeat that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {AllocatedSeatFindUniqueOrThrowArgs} args - Arguments to find a AllocatedSeat
+     * @param {allocatedSeatFindUniqueOrThrowArgs} args - Arguments to find a AllocatedSeat
      * @example
      * // Get one AllocatedSeat
      * const allocatedSeat = await prisma.allocatedSeat.findUniqueOrThrow({
@@ -5050,13 +5050,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findUniqueOrThrow<T extends AllocatedSeatFindUniqueOrThrowArgs>(args: SelectSubset<T, AllocatedSeatFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AllocatedSeatClient<$Result.GetResult<Prisma.$AllocatedSeatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends allocatedSeatFindUniqueOrThrowArgs>(args: SelectSubset<T, allocatedSeatFindUniqueOrThrowArgs<ExtArgs>>): Prisma__allocatedSeatClient<$Result.GetResult<Prisma.$allocatedSeatPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first AllocatedSeat that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AllocatedSeatFindFirstArgs} args - Arguments to find a AllocatedSeat
+     * @param {allocatedSeatFindFirstArgs} args - Arguments to find a AllocatedSeat
      * @example
      * // Get one AllocatedSeat
      * const allocatedSeat = await prisma.allocatedSeat.findFirst({
@@ -5065,14 +5065,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirst<T extends AllocatedSeatFindFirstArgs>(args?: SelectSubset<T, AllocatedSeatFindFirstArgs<ExtArgs>>): Prisma__AllocatedSeatClient<$Result.GetResult<Prisma.$AllocatedSeatPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends allocatedSeatFindFirstArgs>(args?: SelectSubset<T, allocatedSeatFindFirstArgs<ExtArgs>>): Prisma__allocatedSeatClient<$Result.GetResult<Prisma.$allocatedSeatPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find the first AllocatedSeat that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AllocatedSeatFindFirstOrThrowArgs} args - Arguments to find a AllocatedSeat
+     * @param {allocatedSeatFindFirstOrThrowArgs} args - Arguments to find a AllocatedSeat
      * @example
      * // Get one AllocatedSeat
      * const allocatedSeat = await prisma.allocatedSeat.findFirstOrThrow({
@@ -5081,13 +5081,13 @@ export namespace Prisma {
      *   }
      * })
      */
-    findFirstOrThrow<T extends AllocatedSeatFindFirstOrThrowArgs>(args?: SelectSubset<T, AllocatedSeatFindFirstOrThrowArgs<ExtArgs>>): Prisma__AllocatedSeatClient<$Result.GetResult<Prisma.$AllocatedSeatPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends allocatedSeatFindFirstOrThrowArgs>(args?: SelectSubset<T, allocatedSeatFindFirstOrThrowArgs<ExtArgs>>): Prisma__allocatedSeatClient<$Result.GetResult<Prisma.$allocatedSeatPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Find zero or more AllocatedSeats that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AllocatedSeatFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {allocatedSeatFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
      * // Get all AllocatedSeats
      * const allocatedSeats = await prisma.allocatedSeat.findMany()
@@ -5099,11 +5099,11 @@ export namespace Prisma {
      * const allocatedSeatWithIdOnly = await prisma.allocatedSeat.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends AllocatedSeatFindManyArgs>(args?: SelectSubset<T, AllocatedSeatFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AllocatedSeatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends allocatedSeatFindManyArgs>(args?: SelectSubset<T, allocatedSeatFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$allocatedSeatPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
      * Create a AllocatedSeat.
-     * @param {AllocatedSeatCreateArgs} args - Arguments to create a AllocatedSeat.
+     * @param {allocatedSeatCreateArgs} args - Arguments to create a AllocatedSeat.
      * @example
      * // Create one AllocatedSeat
      * const AllocatedSeat = await prisma.allocatedSeat.create({
@@ -5113,11 +5113,11 @@ export namespace Prisma {
      * })
      * 
      */
-    create<T extends AllocatedSeatCreateArgs>(args: SelectSubset<T, AllocatedSeatCreateArgs<ExtArgs>>): Prisma__AllocatedSeatClient<$Result.GetResult<Prisma.$AllocatedSeatPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends allocatedSeatCreateArgs>(args: SelectSubset<T, allocatedSeatCreateArgs<ExtArgs>>): Prisma__allocatedSeatClient<$Result.GetResult<Prisma.$allocatedSeatPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Create many AllocatedSeats.
-     * @param {AllocatedSeatCreateManyArgs} args - Arguments to create many AllocatedSeats.
+     * @param {allocatedSeatCreateManyArgs} args - Arguments to create many AllocatedSeats.
      * @example
      * // Create many AllocatedSeats
      * const allocatedSeat = await prisma.allocatedSeat.createMany({
@@ -5127,11 +5127,11 @@ export namespace Prisma {
      * })
      *     
      */
-    createMany<T extends AllocatedSeatCreateManyArgs>(args?: SelectSubset<T, AllocatedSeatCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends allocatedSeatCreateManyArgs>(args?: SelectSubset<T, allocatedSeatCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Create many AllocatedSeats and returns the data saved in the database.
-     * @param {AllocatedSeatCreateManyAndReturnArgs} args - Arguments to create many AllocatedSeats.
+     * @param {allocatedSeatCreateManyAndReturnArgs} args - Arguments to create many AllocatedSeats.
      * @example
      * // Create many AllocatedSeats
      * const allocatedSeat = await prisma.allocatedSeat.createManyAndReturn({
@@ -5151,11 +5151,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends AllocatedSeatCreateManyAndReturnArgs>(args?: SelectSubset<T, AllocatedSeatCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AllocatedSeatPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends allocatedSeatCreateManyAndReturnArgs>(args?: SelectSubset<T, allocatedSeatCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$allocatedSeatPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Delete a AllocatedSeat.
-     * @param {AllocatedSeatDeleteArgs} args - Arguments to delete one AllocatedSeat.
+     * @param {allocatedSeatDeleteArgs} args - Arguments to delete one AllocatedSeat.
      * @example
      * // Delete one AllocatedSeat
      * const AllocatedSeat = await prisma.allocatedSeat.delete({
@@ -5165,11 +5165,11 @@ export namespace Prisma {
      * })
      * 
      */
-    delete<T extends AllocatedSeatDeleteArgs>(args: SelectSubset<T, AllocatedSeatDeleteArgs<ExtArgs>>): Prisma__AllocatedSeatClient<$Result.GetResult<Prisma.$AllocatedSeatPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends allocatedSeatDeleteArgs>(args: SelectSubset<T, allocatedSeatDeleteArgs<ExtArgs>>): Prisma__allocatedSeatClient<$Result.GetResult<Prisma.$allocatedSeatPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Update one AllocatedSeat.
-     * @param {AllocatedSeatUpdateArgs} args - Arguments to update one AllocatedSeat.
+     * @param {allocatedSeatUpdateArgs} args - Arguments to update one AllocatedSeat.
      * @example
      * // Update one AllocatedSeat
      * const allocatedSeat = await prisma.allocatedSeat.update({
@@ -5182,11 +5182,11 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends AllocatedSeatUpdateArgs>(args: SelectSubset<T, AllocatedSeatUpdateArgs<ExtArgs>>): Prisma__AllocatedSeatClient<$Result.GetResult<Prisma.$AllocatedSeatPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends allocatedSeatUpdateArgs>(args: SelectSubset<T, allocatedSeatUpdateArgs<ExtArgs>>): Prisma__allocatedSeatClient<$Result.GetResult<Prisma.$allocatedSeatPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
      * Delete zero or more AllocatedSeats.
-     * @param {AllocatedSeatDeleteManyArgs} args - Arguments to filter AllocatedSeats to delete.
+     * @param {allocatedSeatDeleteManyArgs} args - Arguments to filter AllocatedSeats to delete.
      * @example
      * // Delete a few AllocatedSeats
      * const { count } = await prisma.allocatedSeat.deleteMany({
@@ -5196,13 +5196,13 @@ export namespace Prisma {
      * })
      * 
      */
-    deleteMany<T extends AllocatedSeatDeleteManyArgs>(args?: SelectSubset<T, AllocatedSeatDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends allocatedSeatDeleteManyArgs>(args?: SelectSubset<T, allocatedSeatDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more AllocatedSeats.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AllocatedSeatUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {allocatedSeatUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
      * // Update many AllocatedSeats
      * const allocatedSeat = await prisma.allocatedSeat.updateMany({
@@ -5215,11 +5215,11 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends AllocatedSeatUpdateManyArgs>(args: SelectSubset<T, AllocatedSeatUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends allocatedSeatUpdateManyArgs>(args: SelectSubset<T, allocatedSeatUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
      * Update zero or more AllocatedSeats and returns the data updated in the database.
-     * @param {AllocatedSeatUpdateManyAndReturnArgs} args - Arguments to update many AllocatedSeats.
+     * @param {allocatedSeatUpdateManyAndReturnArgs} args - Arguments to update many AllocatedSeats.
      * @example
      * // Update many AllocatedSeats
      * const allocatedSeat = await prisma.allocatedSeat.updateManyAndReturn({
@@ -5245,11 +5245,11 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends AllocatedSeatUpdateManyAndReturnArgs>(args: SelectSubset<T, AllocatedSeatUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AllocatedSeatPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends allocatedSeatUpdateManyAndReturnArgs>(args: SelectSubset<T, allocatedSeatUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$allocatedSeatPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one AllocatedSeat.
-     * @param {AllocatedSeatUpsertArgs} args - Arguments to update or create a AllocatedSeat.
+     * @param {allocatedSeatUpsertArgs} args - Arguments to update or create a AllocatedSeat.
      * @example
      * // Update or create a AllocatedSeat
      * const allocatedSeat = await prisma.allocatedSeat.upsert({
@@ -5264,14 +5264,14 @@ export namespace Prisma {
      *   }
      * })
      */
-    upsert<T extends AllocatedSeatUpsertArgs>(args: SelectSubset<T, AllocatedSeatUpsertArgs<ExtArgs>>): Prisma__AllocatedSeatClient<$Result.GetResult<Prisma.$AllocatedSeatPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends allocatedSeatUpsertArgs>(args: SelectSubset<T, allocatedSeatUpsertArgs<ExtArgs>>): Prisma__allocatedSeatClient<$Result.GetResult<Prisma.$allocatedSeatPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
      * Count the number of AllocatedSeats.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AllocatedSeatCountArgs} args - Arguments to filter AllocatedSeats to count.
+     * @param {allocatedSeatCountArgs} args - Arguments to filter AllocatedSeats to count.
      * @example
      * // Count the number of AllocatedSeats
      * const count = await prisma.allocatedSeat.count({
@@ -5280,8 +5280,8 @@ export namespace Prisma {
      *   }
      * })
     **/
-    count<T extends AllocatedSeatCountArgs>(
-      args?: Subset<T, AllocatedSeatCountArgs>,
+    count<T extends allocatedSeatCountArgs>(
+      args?: Subset<T, allocatedSeatCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
@@ -5320,7 +5320,7 @@ export namespace Prisma {
      * Group by AllocatedSeat.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {AllocatedSeatGroupByArgs} args - Group by arguments.
+     * @param {allocatedSeatGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5335,14 +5335,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends AllocatedSeatGroupByArgs,
+      T extends allocatedSeatGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: AllocatedSeatGroupByArgs['orderBy'] }
-        : { orderBy?: AllocatedSeatGroupByArgs['orderBy'] },
+        ? { orderBy: allocatedSeatGroupByArgs['orderBy'] }
+        : { orderBy?: allocatedSeatGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -5391,20 +5391,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, AllocatedSeatGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAllocatedSeatGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, allocatedSeatGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAllocatedSeatGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the AllocatedSeat model
+   * Fields of the allocatedSeat model
    */
-  readonly fields: AllocatedSeatFieldRefs;
+  readonly fields: allocatedSeatFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for AllocatedSeat.
+   * The delegate class that acts as a "Promise-like" for allocatedSeat.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__AllocatedSeatClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__allocatedSeatClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     student<T extends StudentApplicationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, StudentApplicationDefaultArgs<ExtArgs>>): Prisma__StudentApplicationClient<$Result.GetResult<Prisma.$StudentApplicationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -5433,427 +5433,427 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the AllocatedSeat model
+   * Fields of the allocatedSeat model
    */
-  interface AllocatedSeatFieldRefs {
-    readonly id: FieldRef<"AllocatedSeat", 'Int'>
-    readonly studentId: FieldRef<"AllocatedSeat", 'String'>
-    readonly allocatedCourse: FieldRef<"AllocatedSeat", 'String'>
-    readonly allocationRound: FieldRef<"AllocatedSeat", 'Int'>
-    readonly preferenceNumber: FieldRef<"AllocatedSeat", 'Int'>
-    readonly status: FieldRef<"AllocatedSeat", 'AllocationStatus'>
-    readonly allocatedAt: FieldRef<"AllocatedSeat", 'DateTime'>
+  interface allocatedSeatFieldRefs {
+    readonly id: FieldRef<"allocatedSeat", 'Int'>
+    readonly studentId: FieldRef<"allocatedSeat", 'String'>
+    readonly allocatedCourse: FieldRef<"allocatedSeat", 'String'>
+    readonly allocationRound: FieldRef<"allocatedSeat", 'Int'>
+    readonly preferenceNumber: FieldRef<"allocatedSeat", 'Int'>
+    readonly status: FieldRef<"allocatedSeat", 'AllocationStatus'>
+    readonly allocatedAt: FieldRef<"allocatedSeat", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * AllocatedSeat findUnique
+   * allocatedSeat findUnique
    */
-  export type AllocatedSeatFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AllocatedSeat
+     * Select specific fields to fetch from the allocatedSeat
      */
-    select?: AllocatedSeatSelect<ExtArgs> | null
+    select?: allocatedSeatSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AllocatedSeat
+     * Omit specific fields from the allocatedSeat
      */
-    omit?: AllocatedSeatOmit<ExtArgs> | null
+    omit?: allocatedSeatOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AllocatedSeatInclude<ExtArgs> | null
+    include?: allocatedSeatInclude<ExtArgs> | null
     /**
-     * Filter, which AllocatedSeat to fetch.
+     * Filter, which allocatedSeat to fetch.
      */
-    where: AllocatedSeatWhereUniqueInput
+    where: allocatedSeatWhereUniqueInput
   }
 
   /**
-   * AllocatedSeat findUniqueOrThrow
+   * allocatedSeat findUniqueOrThrow
    */
-  export type AllocatedSeatFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AllocatedSeat
+     * Select specific fields to fetch from the allocatedSeat
      */
-    select?: AllocatedSeatSelect<ExtArgs> | null
+    select?: allocatedSeatSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AllocatedSeat
+     * Omit specific fields from the allocatedSeat
      */
-    omit?: AllocatedSeatOmit<ExtArgs> | null
+    omit?: allocatedSeatOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AllocatedSeatInclude<ExtArgs> | null
+    include?: allocatedSeatInclude<ExtArgs> | null
     /**
-     * Filter, which AllocatedSeat to fetch.
+     * Filter, which allocatedSeat to fetch.
      */
-    where: AllocatedSeatWhereUniqueInput
+    where: allocatedSeatWhereUniqueInput
   }
 
   /**
-   * AllocatedSeat findFirst
+   * allocatedSeat findFirst
    */
-  export type AllocatedSeatFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AllocatedSeat
+     * Select specific fields to fetch from the allocatedSeat
      */
-    select?: AllocatedSeatSelect<ExtArgs> | null
+    select?: allocatedSeatSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AllocatedSeat
+     * Omit specific fields from the allocatedSeat
      */
-    omit?: AllocatedSeatOmit<ExtArgs> | null
+    omit?: allocatedSeatOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AllocatedSeatInclude<ExtArgs> | null
+    include?: allocatedSeatInclude<ExtArgs> | null
     /**
-     * Filter, which AllocatedSeat to fetch.
+     * Filter, which allocatedSeat to fetch.
      */
-    where?: AllocatedSeatWhereInput
+    where?: allocatedSeatWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AllocatedSeats to fetch.
+     * Determine the order of allocatedSeats to fetch.
      */
-    orderBy?: AllocatedSeatOrderByWithRelationInput | AllocatedSeatOrderByWithRelationInput[]
+    orderBy?: allocatedSeatOrderByWithRelationInput | allocatedSeatOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for AllocatedSeats.
+     * Sets the position for searching for allocatedSeats.
      */
-    cursor?: AllocatedSeatWhereUniqueInput
+    cursor?: allocatedSeatWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AllocatedSeats from the position of the cursor.
+     * Take `±n` allocatedSeats from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AllocatedSeats.
+     * Skip the first `n` allocatedSeats.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of AllocatedSeats.
+     * Filter by unique combinations of allocatedSeats.
      */
     distinct?: AllocatedSeatScalarFieldEnum | AllocatedSeatScalarFieldEnum[]
   }
 
   /**
-   * AllocatedSeat findFirstOrThrow
+   * allocatedSeat findFirstOrThrow
    */
-  export type AllocatedSeatFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AllocatedSeat
+     * Select specific fields to fetch from the allocatedSeat
      */
-    select?: AllocatedSeatSelect<ExtArgs> | null
+    select?: allocatedSeatSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AllocatedSeat
+     * Omit specific fields from the allocatedSeat
      */
-    omit?: AllocatedSeatOmit<ExtArgs> | null
+    omit?: allocatedSeatOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AllocatedSeatInclude<ExtArgs> | null
+    include?: allocatedSeatInclude<ExtArgs> | null
     /**
-     * Filter, which AllocatedSeat to fetch.
+     * Filter, which allocatedSeat to fetch.
      */
-    where?: AllocatedSeatWhereInput
+    where?: allocatedSeatWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AllocatedSeats to fetch.
+     * Determine the order of allocatedSeats to fetch.
      */
-    orderBy?: AllocatedSeatOrderByWithRelationInput | AllocatedSeatOrderByWithRelationInput[]
+    orderBy?: allocatedSeatOrderByWithRelationInput | allocatedSeatOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for AllocatedSeats.
+     * Sets the position for searching for allocatedSeats.
      */
-    cursor?: AllocatedSeatWhereUniqueInput
+    cursor?: allocatedSeatWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AllocatedSeats from the position of the cursor.
+     * Take `±n` allocatedSeats from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AllocatedSeats.
+     * Skip the first `n` allocatedSeats.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of AllocatedSeats.
+     * Filter by unique combinations of allocatedSeats.
      */
     distinct?: AllocatedSeatScalarFieldEnum | AllocatedSeatScalarFieldEnum[]
   }
 
   /**
-   * AllocatedSeat findMany
+   * allocatedSeat findMany
    */
-  export type AllocatedSeatFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AllocatedSeat
+     * Select specific fields to fetch from the allocatedSeat
      */
-    select?: AllocatedSeatSelect<ExtArgs> | null
+    select?: allocatedSeatSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AllocatedSeat
+     * Omit specific fields from the allocatedSeat
      */
-    omit?: AllocatedSeatOmit<ExtArgs> | null
+    omit?: allocatedSeatOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AllocatedSeatInclude<ExtArgs> | null
+    include?: allocatedSeatInclude<ExtArgs> | null
     /**
-     * Filter, which AllocatedSeats to fetch.
+     * Filter, which allocatedSeats to fetch.
      */
-    where?: AllocatedSeatWhereInput
+    where?: allocatedSeatWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of AllocatedSeats to fetch.
+     * Determine the order of allocatedSeats to fetch.
      */
-    orderBy?: AllocatedSeatOrderByWithRelationInput | AllocatedSeatOrderByWithRelationInput[]
+    orderBy?: allocatedSeatOrderByWithRelationInput | allocatedSeatOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing AllocatedSeats.
+     * Sets the position for listing allocatedSeats.
      */
-    cursor?: AllocatedSeatWhereUniqueInput
+    cursor?: allocatedSeatWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` AllocatedSeats from the position of the cursor.
+     * Take `±n` allocatedSeats from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` AllocatedSeats.
+     * Skip the first `n` allocatedSeats.
      */
     skip?: number
     distinct?: AllocatedSeatScalarFieldEnum | AllocatedSeatScalarFieldEnum[]
   }
 
   /**
-   * AllocatedSeat create
+   * allocatedSeat create
    */
-  export type AllocatedSeatCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AllocatedSeat
+     * Select specific fields to fetch from the allocatedSeat
      */
-    select?: AllocatedSeatSelect<ExtArgs> | null
+    select?: allocatedSeatSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AllocatedSeat
+     * Omit specific fields from the allocatedSeat
      */
-    omit?: AllocatedSeatOmit<ExtArgs> | null
+    omit?: allocatedSeatOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AllocatedSeatInclude<ExtArgs> | null
+    include?: allocatedSeatInclude<ExtArgs> | null
     /**
-     * The data needed to create a AllocatedSeat.
+     * The data needed to create a allocatedSeat.
      */
-    data: XOR<AllocatedSeatCreateInput, AllocatedSeatUncheckedCreateInput>
+    data: XOR<allocatedSeatCreateInput, allocatedSeatUncheckedCreateInput>
   }
 
   /**
-   * AllocatedSeat createMany
+   * allocatedSeat createMany
    */
-  export type AllocatedSeatCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many AllocatedSeats.
+     * The data used to create many allocatedSeats.
      */
-    data: AllocatedSeatCreateManyInput | AllocatedSeatCreateManyInput[]
+    data: allocatedSeatCreateManyInput | allocatedSeatCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * AllocatedSeat createManyAndReturn
+   * allocatedSeat createManyAndReturn
    */
-  export type AllocatedSeatCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AllocatedSeat
+     * Select specific fields to fetch from the allocatedSeat
      */
-    select?: AllocatedSeatSelectCreateManyAndReturn<ExtArgs> | null
+    select?: allocatedSeatSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the AllocatedSeat
+     * Omit specific fields from the allocatedSeat
      */
-    omit?: AllocatedSeatOmit<ExtArgs> | null
+    omit?: allocatedSeatOmit<ExtArgs> | null
     /**
-     * The data used to create many AllocatedSeats.
+     * The data used to create many allocatedSeats.
      */
-    data: AllocatedSeatCreateManyInput | AllocatedSeatCreateManyInput[]
+    data: allocatedSeatCreateManyInput | allocatedSeatCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AllocatedSeatIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: allocatedSeatIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * AllocatedSeat update
+   * allocatedSeat update
    */
-  export type AllocatedSeatUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AllocatedSeat
+     * Select specific fields to fetch from the allocatedSeat
      */
-    select?: AllocatedSeatSelect<ExtArgs> | null
+    select?: allocatedSeatSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AllocatedSeat
+     * Omit specific fields from the allocatedSeat
      */
-    omit?: AllocatedSeatOmit<ExtArgs> | null
+    omit?: allocatedSeatOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AllocatedSeatInclude<ExtArgs> | null
+    include?: allocatedSeatInclude<ExtArgs> | null
     /**
-     * The data needed to update a AllocatedSeat.
+     * The data needed to update a allocatedSeat.
      */
-    data: XOR<AllocatedSeatUpdateInput, AllocatedSeatUncheckedUpdateInput>
+    data: XOR<allocatedSeatUpdateInput, allocatedSeatUncheckedUpdateInput>
     /**
-     * Choose, which AllocatedSeat to update.
+     * Choose, which allocatedSeat to update.
      */
-    where: AllocatedSeatWhereUniqueInput
+    where: allocatedSeatWhereUniqueInput
   }
 
   /**
-   * AllocatedSeat updateMany
+   * allocatedSeat updateMany
    */
-  export type AllocatedSeatUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update AllocatedSeats.
+     * The data used to update allocatedSeats.
      */
-    data: XOR<AllocatedSeatUpdateManyMutationInput, AllocatedSeatUncheckedUpdateManyInput>
+    data: XOR<allocatedSeatUpdateManyMutationInput, allocatedSeatUncheckedUpdateManyInput>
     /**
-     * Filter which AllocatedSeats to update
+     * Filter which allocatedSeats to update
      */
-    where?: AllocatedSeatWhereInput
+    where?: allocatedSeatWhereInput
     /**
-     * Limit how many AllocatedSeats to update.
+     * Limit how many allocatedSeats to update.
      */
     limit?: number
   }
 
   /**
-   * AllocatedSeat updateManyAndReturn
+   * allocatedSeat updateManyAndReturn
    */
-  export type AllocatedSeatUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AllocatedSeat
+     * Select specific fields to fetch from the allocatedSeat
      */
-    select?: AllocatedSeatSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: allocatedSeatSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the AllocatedSeat
+     * Omit specific fields from the allocatedSeat
      */
-    omit?: AllocatedSeatOmit<ExtArgs> | null
+    omit?: allocatedSeatOmit<ExtArgs> | null
     /**
-     * The data used to update AllocatedSeats.
+     * The data used to update allocatedSeats.
      */
-    data: XOR<AllocatedSeatUpdateManyMutationInput, AllocatedSeatUncheckedUpdateManyInput>
+    data: XOR<allocatedSeatUpdateManyMutationInput, allocatedSeatUncheckedUpdateManyInput>
     /**
-     * Filter which AllocatedSeats to update
+     * Filter which allocatedSeats to update
      */
-    where?: AllocatedSeatWhereInput
+    where?: allocatedSeatWhereInput
     /**
-     * Limit how many AllocatedSeats to update.
+     * Limit how many allocatedSeats to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AllocatedSeatIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: allocatedSeatIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * AllocatedSeat upsert
+   * allocatedSeat upsert
    */
-  export type AllocatedSeatUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AllocatedSeat
+     * Select specific fields to fetch from the allocatedSeat
      */
-    select?: AllocatedSeatSelect<ExtArgs> | null
+    select?: allocatedSeatSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AllocatedSeat
+     * Omit specific fields from the allocatedSeat
      */
-    omit?: AllocatedSeatOmit<ExtArgs> | null
+    omit?: allocatedSeatOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AllocatedSeatInclude<ExtArgs> | null
+    include?: allocatedSeatInclude<ExtArgs> | null
     /**
-     * The filter to search for the AllocatedSeat to update in case it exists.
+     * The filter to search for the allocatedSeat to update in case it exists.
      */
-    where: AllocatedSeatWhereUniqueInput
+    where: allocatedSeatWhereUniqueInput
     /**
-     * In case the AllocatedSeat found by the `where` argument doesn't exist, create a new AllocatedSeat with this data.
+     * In case the allocatedSeat found by the `where` argument doesn't exist, create a new allocatedSeat with this data.
      */
-    create: XOR<AllocatedSeatCreateInput, AllocatedSeatUncheckedCreateInput>
+    create: XOR<allocatedSeatCreateInput, allocatedSeatUncheckedCreateInput>
     /**
-     * In case the AllocatedSeat was found with the provided `where` argument, update it with this data.
+     * In case the allocatedSeat was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<AllocatedSeatUpdateInput, AllocatedSeatUncheckedUpdateInput>
+    update: XOR<allocatedSeatUpdateInput, allocatedSeatUncheckedUpdateInput>
   }
 
   /**
-   * AllocatedSeat delete
+   * allocatedSeat delete
    */
-  export type AllocatedSeatDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AllocatedSeat
+     * Select specific fields to fetch from the allocatedSeat
      */
-    select?: AllocatedSeatSelect<ExtArgs> | null
+    select?: allocatedSeatSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AllocatedSeat
+     * Omit specific fields from the allocatedSeat
      */
-    omit?: AllocatedSeatOmit<ExtArgs> | null
+    omit?: allocatedSeatOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AllocatedSeatInclude<ExtArgs> | null
+    include?: allocatedSeatInclude<ExtArgs> | null
     /**
-     * Filter which AllocatedSeat to delete.
+     * Filter which allocatedSeat to delete.
      */
-    where: AllocatedSeatWhereUniqueInput
+    where: allocatedSeatWhereUniqueInput
   }
 
   /**
-   * AllocatedSeat deleteMany
+   * allocatedSeat deleteMany
    */
-  export type AllocatedSeatDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which AllocatedSeats to delete
+     * Filter which allocatedSeats to delete
      */
-    where?: AllocatedSeatWhereInput
+    where?: allocatedSeatWhereInput
     /**
-     * Limit how many AllocatedSeats to delete.
+     * Limit how many allocatedSeats to delete.
      */
     limit?: number
   }
 
   /**
-   * AllocatedSeat without action
+   * allocatedSeat without action
    */
-  export type AllocatedSeatDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type allocatedSeatDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the AllocatedSeat
+     * Select specific fields to fetch from the allocatedSeat
      */
-    select?: AllocatedSeatSelect<ExtArgs> | null
+    select?: allocatedSeatSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the AllocatedSeat
+     * Omit specific fields from the allocatedSeat
      */
-    omit?: AllocatedSeatOmit<ExtArgs> | null
+    omit?: allocatedSeatOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: AllocatedSeatInclude<ExtArgs> | null
+    include?: allocatedSeatInclude<ExtArgs> | null
   }
 
 
@@ -7127,7 +7127,7 @@ export namespace Prisma {
     applicationNumber?: StringFilter<"StudentApplication"> | string
     studentName?: StringFilter<"StudentApplication"> | string
     fatherMotherName?: StringFilter<"StudentApplication"> | string
-    phoneNumber?: StringFilter<"StudentApplication"> | string
+    phoneNumber?: StringNullableFilter<"StudentApplication"> | string | null
     email?: StringFilter<"StudentApplication"> | string
     jeeCRL?: IntFilter<"StudentApplication"> | number
     category?: StringFilter<"StudentApplication"> | string
@@ -7148,7 +7148,7 @@ export namespace Prisma {
     applicationNumber?: SortOrder
     studentName?: SortOrder
     fatherMotherName?: SortOrder
-    phoneNumber?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
     email?: SortOrder
     jeeCRL?: SortOrder
     category?: SortOrder
@@ -7162,7 +7162,7 @@ export namespace Prisma {
     courseChoice7?: SortOrderInput | SortOrder
     sportsMarks?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    allocations?: AllocatedSeatOrderByRelationAggregateInput
+    allocations?: allocatedSeatOrderByRelationAggregateInput
   }
 
   export type StudentApplicationWhereUniqueInput = Prisma.AtLeast<{
@@ -7172,7 +7172,7 @@ export namespace Prisma {
     NOT?: StudentApplicationWhereInput | StudentApplicationWhereInput[]
     studentName?: StringFilter<"StudentApplication"> | string
     fatherMotherName?: StringFilter<"StudentApplication"> | string
-    phoneNumber?: StringFilter<"StudentApplication"> | string
+    phoneNumber?: StringNullableFilter<"StudentApplication"> | string | null
     email?: StringFilter<"StudentApplication"> | string
     jeeCRL?: IntFilter<"StudentApplication"> | number
     category?: StringFilter<"StudentApplication"> | string
@@ -7193,7 +7193,7 @@ export namespace Prisma {
     applicationNumber?: SortOrder
     studentName?: SortOrder
     fatherMotherName?: SortOrder
-    phoneNumber?: SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
     email?: SortOrder
     jeeCRL?: SortOrder
     category?: SortOrder
@@ -7221,7 +7221,7 @@ export namespace Prisma {
     applicationNumber?: StringWithAggregatesFilter<"StudentApplication"> | string
     studentName?: StringWithAggregatesFilter<"StudentApplication"> | string
     fatherMotherName?: StringWithAggregatesFilter<"StudentApplication"> | string
-    phoneNumber?: StringWithAggregatesFilter<"StudentApplication"> | string
+    phoneNumber?: StringNullableWithAggregatesFilter<"StudentApplication"> | string | null
     email?: StringWithAggregatesFilter<"StudentApplication"> | string
     jeeCRL?: IntWithAggregatesFilter<"StudentApplication"> | number
     category?: StringWithAggregatesFilter<"StudentApplication"> | string
@@ -7333,21 +7333,21 @@ export namespace Prisma {
     totalSeats?: IntWithAggregatesFilter<"SeatMatrix"> | number
   }
 
-  export type AllocatedSeatWhereInput = {
-    AND?: AllocatedSeatWhereInput | AllocatedSeatWhereInput[]
-    OR?: AllocatedSeatWhereInput[]
-    NOT?: AllocatedSeatWhereInput | AllocatedSeatWhereInput[]
-    id?: IntFilter<"AllocatedSeat"> | number
-    studentId?: StringFilter<"AllocatedSeat"> | string
-    allocatedCourse?: StringFilter<"AllocatedSeat"> | string
-    allocationRound?: IntFilter<"AllocatedSeat"> | number
-    preferenceNumber?: IntFilter<"AllocatedSeat"> | number
-    status?: EnumAllocationStatusFilter<"AllocatedSeat"> | $Enums.AllocationStatus
-    allocatedAt?: DateTimeFilter<"AllocatedSeat"> | Date | string
+  export type allocatedSeatWhereInput = {
+    AND?: allocatedSeatWhereInput | allocatedSeatWhereInput[]
+    OR?: allocatedSeatWhereInput[]
+    NOT?: allocatedSeatWhereInput | allocatedSeatWhereInput[]
+    id?: IntFilter<"allocatedSeat"> | number
+    studentId?: StringFilter<"allocatedSeat"> | string
+    allocatedCourse?: StringFilter<"allocatedSeat"> | string
+    allocationRound?: IntFilter<"allocatedSeat"> | number
+    preferenceNumber?: IntFilter<"allocatedSeat"> | number
+    status?: EnumAllocationStatusFilter<"allocatedSeat"> | $Enums.AllocationStatus
+    allocatedAt?: DateTimeFilter<"allocatedSeat"> | Date | string
     student?: XOR<StudentApplicationScalarRelationFilter, StudentApplicationWhereInput>
   }
 
-  export type AllocatedSeatOrderByWithRelationInput = {
+  export type allocatedSeatOrderByWithRelationInput = {
     id?: SortOrder
     studentId?: SortOrder
     allocatedCourse?: SortOrder
@@ -7358,21 +7358,21 @@ export namespace Prisma {
     student?: StudentApplicationOrderByWithRelationInput
   }
 
-  export type AllocatedSeatWhereUniqueInput = Prisma.AtLeast<{
+  export type allocatedSeatWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: AllocatedSeatWhereInput | AllocatedSeatWhereInput[]
-    OR?: AllocatedSeatWhereInput[]
-    NOT?: AllocatedSeatWhereInput | AllocatedSeatWhereInput[]
-    studentId?: StringFilter<"AllocatedSeat"> | string
-    allocatedCourse?: StringFilter<"AllocatedSeat"> | string
-    allocationRound?: IntFilter<"AllocatedSeat"> | number
-    preferenceNumber?: IntFilter<"AllocatedSeat"> | number
-    status?: EnumAllocationStatusFilter<"AllocatedSeat"> | $Enums.AllocationStatus
-    allocatedAt?: DateTimeFilter<"AllocatedSeat"> | Date | string
+    AND?: allocatedSeatWhereInput | allocatedSeatWhereInput[]
+    OR?: allocatedSeatWhereInput[]
+    NOT?: allocatedSeatWhereInput | allocatedSeatWhereInput[]
+    studentId?: StringFilter<"allocatedSeat"> | string
+    allocatedCourse?: StringFilter<"allocatedSeat"> | string
+    allocationRound?: IntFilter<"allocatedSeat"> | number
+    preferenceNumber?: IntFilter<"allocatedSeat"> | number
+    status?: EnumAllocationStatusFilter<"allocatedSeat"> | $Enums.AllocationStatus
+    allocatedAt?: DateTimeFilter<"allocatedSeat"> | Date | string
     student?: XOR<StudentApplicationScalarRelationFilter, StudentApplicationWhereInput>
   }, "id">
 
-  export type AllocatedSeatOrderByWithAggregationInput = {
+  export type allocatedSeatOrderByWithAggregationInput = {
     id?: SortOrder
     studentId?: SortOrder
     allocatedCourse?: SortOrder
@@ -7380,24 +7380,24 @@ export namespace Prisma {
     preferenceNumber?: SortOrder
     status?: SortOrder
     allocatedAt?: SortOrder
-    _count?: AllocatedSeatCountOrderByAggregateInput
-    _avg?: AllocatedSeatAvgOrderByAggregateInput
-    _max?: AllocatedSeatMaxOrderByAggregateInput
-    _min?: AllocatedSeatMinOrderByAggregateInput
-    _sum?: AllocatedSeatSumOrderByAggregateInput
+    _count?: allocatedSeatCountOrderByAggregateInput
+    _avg?: allocatedSeatAvgOrderByAggregateInput
+    _max?: allocatedSeatMaxOrderByAggregateInput
+    _min?: allocatedSeatMinOrderByAggregateInput
+    _sum?: allocatedSeatSumOrderByAggregateInput
   }
 
-  export type AllocatedSeatScalarWhereWithAggregatesInput = {
-    AND?: AllocatedSeatScalarWhereWithAggregatesInput | AllocatedSeatScalarWhereWithAggregatesInput[]
-    OR?: AllocatedSeatScalarWhereWithAggregatesInput[]
-    NOT?: AllocatedSeatScalarWhereWithAggregatesInput | AllocatedSeatScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"AllocatedSeat"> | number
-    studentId?: StringWithAggregatesFilter<"AllocatedSeat"> | string
-    allocatedCourse?: StringWithAggregatesFilter<"AllocatedSeat"> | string
-    allocationRound?: IntWithAggregatesFilter<"AllocatedSeat"> | number
-    preferenceNumber?: IntWithAggregatesFilter<"AllocatedSeat"> | number
-    status?: EnumAllocationStatusWithAggregatesFilter<"AllocatedSeat"> | $Enums.AllocationStatus
-    allocatedAt?: DateTimeWithAggregatesFilter<"AllocatedSeat"> | Date | string
+  export type allocatedSeatScalarWhereWithAggregatesInput = {
+    AND?: allocatedSeatScalarWhereWithAggregatesInput | allocatedSeatScalarWhereWithAggregatesInput[]
+    OR?: allocatedSeatScalarWhereWithAggregatesInput[]
+    NOT?: allocatedSeatScalarWhereWithAggregatesInput | allocatedSeatScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"allocatedSeat"> | number
+    studentId?: StringWithAggregatesFilter<"allocatedSeat"> | string
+    allocatedCourse?: StringWithAggregatesFilter<"allocatedSeat"> | string
+    allocationRound?: IntWithAggregatesFilter<"allocatedSeat"> | number
+    preferenceNumber?: IntWithAggregatesFilter<"allocatedSeat"> | number
+    status?: EnumAllocationStatusWithAggregatesFilter<"allocatedSeat"> | $Enums.AllocationStatus
+    allocatedAt?: DateTimeWithAggregatesFilter<"allocatedSeat"> | Date | string
   }
 
   export type OriginalSeatMatrixWhereInput = {
@@ -7457,7 +7457,7 @@ export namespace Prisma {
     applicationNumber: string
     studentName: string
     fatherMotherName: string
-    phoneNumber: string
+    phoneNumber?: string | null
     email: string
     jeeCRL: number
     category: string
@@ -7471,14 +7471,14 @@ export namespace Prisma {
     courseChoice7?: string | null
     sportsMarks?: number | null
     createdAt?: Date | string
-    allocations?: AllocatedSeatCreateNestedManyWithoutStudentInput
+    allocations?: allocatedSeatCreateNestedManyWithoutStudentInput
   }
 
   export type StudentApplicationUncheckedCreateInput = {
     applicationNumber: string
     studentName: string
     fatherMotherName: string
-    phoneNumber: string
+    phoneNumber?: string | null
     email: string
     jeeCRL: number
     category: string
@@ -7492,14 +7492,14 @@ export namespace Prisma {
     courseChoice7?: string | null
     sportsMarks?: number | null
     createdAt?: Date | string
-    allocations?: AllocatedSeatUncheckedCreateNestedManyWithoutStudentInput
+    allocations?: allocatedSeatUncheckedCreateNestedManyWithoutStudentInput
   }
 
   export type StudentApplicationUpdateInput = {
     applicationNumber?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     fatherMotherName?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     jeeCRL?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
@@ -7513,14 +7513,14 @@ export namespace Prisma {
     courseChoice7?: NullableStringFieldUpdateOperationsInput | string | null
     sportsMarks?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    allocations?: AllocatedSeatUpdateManyWithoutStudentNestedInput
+    allocations?: allocatedSeatUpdateManyWithoutStudentNestedInput
   }
 
   export type StudentApplicationUncheckedUpdateInput = {
     applicationNumber?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     fatherMotherName?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     jeeCRL?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
@@ -7534,14 +7534,14 @@ export namespace Prisma {
     courseChoice7?: NullableStringFieldUpdateOperationsInput | string | null
     sportsMarks?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    allocations?: AllocatedSeatUncheckedUpdateManyWithoutStudentNestedInput
+    allocations?: allocatedSeatUncheckedUpdateManyWithoutStudentNestedInput
   }
 
   export type StudentApplicationCreateManyInput = {
     applicationNumber: string
     studentName: string
     fatherMotherName: string
-    phoneNumber: string
+    phoneNumber?: string | null
     email: string
     jeeCRL: number
     category: string
@@ -7561,7 +7561,7 @@ export namespace Prisma {
     applicationNumber?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     fatherMotherName?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     jeeCRL?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
@@ -7581,7 +7581,7 @@ export namespace Prisma {
     applicationNumber?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     fatherMotherName?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     jeeCRL?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
@@ -7685,7 +7685,7 @@ export namespace Prisma {
     totalSeats?: IntFieldUpdateOperationsInput | number
   }
 
-  export type AllocatedSeatCreateInput = {
+  export type allocatedSeatCreateInput = {
     allocatedCourse: string
     allocationRound: number
     preferenceNumber: number
@@ -7694,7 +7694,7 @@ export namespace Prisma {
     student: StudentApplicationCreateNestedOneWithoutAllocationsInput
   }
 
-  export type AllocatedSeatUncheckedCreateInput = {
+  export type allocatedSeatUncheckedCreateInput = {
     id?: number
     studentId: string
     allocatedCourse: string
@@ -7704,7 +7704,7 @@ export namespace Prisma {
     allocatedAt?: Date | string
   }
 
-  export type AllocatedSeatUpdateInput = {
+  export type allocatedSeatUpdateInput = {
     allocatedCourse?: StringFieldUpdateOperationsInput | string
     allocationRound?: IntFieldUpdateOperationsInput | number
     preferenceNumber?: IntFieldUpdateOperationsInput | number
@@ -7713,7 +7713,7 @@ export namespace Prisma {
     student?: StudentApplicationUpdateOneRequiredWithoutAllocationsNestedInput
   }
 
-  export type AllocatedSeatUncheckedUpdateInput = {
+  export type allocatedSeatUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     studentId?: StringFieldUpdateOperationsInput | string
     allocatedCourse?: StringFieldUpdateOperationsInput | string
@@ -7723,7 +7723,7 @@ export namespace Prisma {
     allocatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AllocatedSeatCreateManyInput = {
+  export type allocatedSeatCreateManyInput = {
     id?: number
     studentId: string
     allocatedCourse: string
@@ -7733,7 +7733,7 @@ export namespace Prisma {
     allocatedAt?: Date | string
   }
 
-  export type AllocatedSeatUpdateManyMutationInput = {
+  export type allocatedSeatUpdateManyMutationInput = {
     allocatedCourse?: StringFieldUpdateOperationsInput | string
     allocationRound?: IntFieldUpdateOperationsInput | number
     preferenceNumber?: IntFieldUpdateOperationsInput | number
@@ -7741,7 +7741,7 @@ export namespace Prisma {
     allocatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AllocatedSeatUncheckedUpdateManyInput = {
+  export type allocatedSeatUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     studentId?: StringFieldUpdateOperationsInput | string
     allocatedCourse?: StringFieldUpdateOperationsInput | string
@@ -7811,6 +7811,21 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -7831,21 +7846,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type FloatNullableFilter<$PrismaModel = never> = {
@@ -7871,9 +7871,9 @@ export namespace Prisma {
   }
 
   export type AllocatedSeatListRelationFilter = {
-    every?: AllocatedSeatWhereInput
-    some?: AllocatedSeatWhereInput
-    none?: AllocatedSeatWhereInput
+    every?: allocatedSeatWhereInput
+    some?: allocatedSeatWhereInput
+    none?: allocatedSeatWhereInput
   }
 
   export type SortOrderInput = {
@@ -7881,7 +7881,7 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type AllocatedSeatOrderByRelationAggregateInput = {
+  export type allocatedSeatOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -7975,6 +7975,24 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -8005,24 +8023,6 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -8143,7 +8143,7 @@ export namespace Prisma {
     isNot?: StudentApplicationWhereInput
   }
 
-  export type AllocatedSeatCountOrderByAggregateInput = {
+  export type allocatedSeatCountOrderByAggregateInput = {
     id?: SortOrder
     studentId?: SortOrder
     allocatedCourse?: SortOrder
@@ -8153,23 +8153,13 @@ export namespace Prisma {
     allocatedAt?: SortOrder
   }
 
-  export type AllocatedSeatAvgOrderByAggregateInput = {
+  export type allocatedSeatAvgOrderByAggregateInput = {
     id?: SortOrder
     allocationRound?: SortOrder
     preferenceNumber?: SortOrder
   }
 
-  export type AllocatedSeatMaxOrderByAggregateInput = {
-    id?: SortOrder
-    studentId?: SortOrder
-    allocatedCourse?: SortOrder
-    allocationRound?: SortOrder
-    preferenceNumber?: SortOrder
-    status?: SortOrder
-    allocatedAt?: SortOrder
-  }
-
-  export type AllocatedSeatMinOrderByAggregateInput = {
+  export type allocatedSeatMaxOrderByAggregateInput = {
     id?: SortOrder
     studentId?: SortOrder
     allocatedCourse?: SortOrder
@@ -8179,7 +8169,17 @@ export namespace Prisma {
     allocatedAt?: SortOrder
   }
 
-  export type AllocatedSeatSumOrderByAggregateInput = {
+  export type allocatedSeatMinOrderByAggregateInput = {
+    id?: SortOrder
+    studentId?: SortOrder
+    allocatedCourse?: SortOrder
+    allocationRound?: SortOrder
+    preferenceNumber?: SortOrder
+    status?: SortOrder
+    allocatedAt?: SortOrder
+  }
+
+  export type allocatedSeatSumOrderByAggregateInput = {
     id?: SortOrder
     allocationRound?: SortOrder
     preferenceNumber?: SortOrder
@@ -8231,22 +8231,26 @@ export namespace Prisma {
     totalSeats?: SortOrder
   }
 
-  export type AllocatedSeatCreateNestedManyWithoutStudentInput = {
-    create?: XOR<AllocatedSeatCreateWithoutStudentInput, AllocatedSeatUncheckedCreateWithoutStudentInput> | AllocatedSeatCreateWithoutStudentInput[] | AllocatedSeatUncheckedCreateWithoutStudentInput[]
-    connectOrCreate?: AllocatedSeatCreateOrConnectWithoutStudentInput | AllocatedSeatCreateOrConnectWithoutStudentInput[]
-    createMany?: AllocatedSeatCreateManyStudentInputEnvelope
-    connect?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
+  export type allocatedSeatCreateNestedManyWithoutStudentInput = {
+    create?: XOR<allocatedSeatCreateWithoutStudentInput, allocatedSeatUncheckedCreateWithoutStudentInput> | allocatedSeatCreateWithoutStudentInput[] | allocatedSeatUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: allocatedSeatCreateOrConnectWithoutStudentInput | allocatedSeatCreateOrConnectWithoutStudentInput[]
+    createMany?: allocatedSeatCreateManyStudentInputEnvelope
+    connect?: allocatedSeatWhereUniqueInput | allocatedSeatWhereUniqueInput[]
   }
 
-  export type AllocatedSeatUncheckedCreateNestedManyWithoutStudentInput = {
-    create?: XOR<AllocatedSeatCreateWithoutStudentInput, AllocatedSeatUncheckedCreateWithoutStudentInput> | AllocatedSeatCreateWithoutStudentInput[] | AllocatedSeatUncheckedCreateWithoutStudentInput[]
-    connectOrCreate?: AllocatedSeatCreateOrConnectWithoutStudentInput | AllocatedSeatCreateOrConnectWithoutStudentInput[]
-    createMany?: AllocatedSeatCreateManyStudentInputEnvelope
-    connect?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
+  export type allocatedSeatUncheckedCreateNestedManyWithoutStudentInput = {
+    create?: XOR<allocatedSeatCreateWithoutStudentInput, allocatedSeatUncheckedCreateWithoutStudentInput> | allocatedSeatCreateWithoutStudentInput[] | allocatedSeatUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: allocatedSeatCreateOrConnectWithoutStudentInput | allocatedSeatCreateOrConnectWithoutStudentInput[]
+    createMany?: allocatedSeatCreateManyStudentInputEnvelope
+    connect?: allocatedSeatWhereUniqueInput | allocatedSeatWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -8265,10 +8269,6 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
   export type NullableFloatFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -8281,32 +8281,32 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type AllocatedSeatUpdateManyWithoutStudentNestedInput = {
-    create?: XOR<AllocatedSeatCreateWithoutStudentInput, AllocatedSeatUncheckedCreateWithoutStudentInput> | AllocatedSeatCreateWithoutStudentInput[] | AllocatedSeatUncheckedCreateWithoutStudentInput[]
-    connectOrCreate?: AllocatedSeatCreateOrConnectWithoutStudentInput | AllocatedSeatCreateOrConnectWithoutStudentInput[]
-    upsert?: AllocatedSeatUpsertWithWhereUniqueWithoutStudentInput | AllocatedSeatUpsertWithWhereUniqueWithoutStudentInput[]
-    createMany?: AllocatedSeatCreateManyStudentInputEnvelope
-    set?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
-    disconnect?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
-    delete?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
-    connect?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
-    update?: AllocatedSeatUpdateWithWhereUniqueWithoutStudentInput | AllocatedSeatUpdateWithWhereUniqueWithoutStudentInput[]
-    updateMany?: AllocatedSeatUpdateManyWithWhereWithoutStudentInput | AllocatedSeatUpdateManyWithWhereWithoutStudentInput[]
-    deleteMany?: AllocatedSeatScalarWhereInput | AllocatedSeatScalarWhereInput[]
+  export type allocatedSeatUpdateManyWithoutStudentNestedInput = {
+    create?: XOR<allocatedSeatCreateWithoutStudentInput, allocatedSeatUncheckedCreateWithoutStudentInput> | allocatedSeatCreateWithoutStudentInput[] | allocatedSeatUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: allocatedSeatCreateOrConnectWithoutStudentInput | allocatedSeatCreateOrConnectWithoutStudentInput[]
+    upsert?: allocatedSeatUpsertWithWhereUniqueWithoutStudentInput | allocatedSeatUpsertWithWhereUniqueWithoutStudentInput[]
+    createMany?: allocatedSeatCreateManyStudentInputEnvelope
+    set?: allocatedSeatWhereUniqueInput | allocatedSeatWhereUniqueInput[]
+    disconnect?: allocatedSeatWhereUniqueInput | allocatedSeatWhereUniqueInput[]
+    delete?: allocatedSeatWhereUniqueInput | allocatedSeatWhereUniqueInput[]
+    connect?: allocatedSeatWhereUniqueInput | allocatedSeatWhereUniqueInput[]
+    update?: allocatedSeatUpdateWithWhereUniqueWithoutStudentInput | allocatedSeatUpdateWithWhereUniqueWithoutStudentInput[]
+    updateMany?: allocatedSeatUpdateManyWithWhereWithoutStudentInput | allocatedSeatUpdateManyWithWhereWithoutStudentInput[]
+    deleteMany?: allocatedSeatScalarWhereInput | allocatedSeatScalarWhereInput[]
   }
 
-  export type AllocatedSeatUncheckedUpdateManyWithoutStudentNestedInput = {
-    create?: XOR<AllocatedSeatCreateWithoutStudentInput, AllocatedSeatUncheckedCreateWithoutStudentInput> | AllocatedSeatCreateWithoutStudentInput[] | AllocatedSeatUncheckedCreateWithoutStudentInput[]
-    connectOrCreate?: AllocatedSeatCreateOrConnectWithoutStudentInput | AllocatedSeatCreateOrConnectWithoutStudentInput[]
-    upsert?: AllocatedSeatUpsertWithWhereUniqueWithoutStudentInput | AllocatedSeatUpsertWithWhereUniqueWithoutStudentInput[]
-    createMany?: AllocatedSeatCreateManyStudentInputEnvelope
-    set?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
-    disconnect?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
-    delete?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
-    connect?: AllocatedSeatWhereUniqueInput | AllocatedSeatWhereUniqueInput[]
-    update?: AllocatedSeatUpdateWithWhereUniqueWithoutStudentInput | AllocatedSeatUpdateWithWhereUniqueWithoutStudentInput[]
-    updateMany?: AllocatedSeatUpdateManyWithWhereWithoutStudentInput | AllocatedSeatUpdateManyWithWhereWithoutStudentInput[]
-    deleteMany?: AllocatedSeatScalarWhereInput | AllocatedSeatScalarWhereInput[]
+  export type allocatedSeatUncheckedUpdateManyWithoutStudentNestedInput = {
+    create?: XOR<allocatedSeatCreateWithoutStudentInput, allocatedSeatUncheckedCreateWithoutStudentInput> | allocatedSeatCreateWithoutStudentInput[] | allocatedSeatUncheckedCreateWithoutStudentInput[]
+    connectOrCreate?: allocatedSeatCreateOrConnectWithoutStudentInput | allocatedSeatCreateOrConnectWithoutStudentInput[]
+    upsert?: allocatedSeatUpsertWithWhereUniqueWithoutStudentInput | allocatedSeatUpsertWithWhereUniqueWithoutStudentInput[]
+    createMany?: allocatedSeatCreateManyStudentInputEnvelope
+    set?: allocatedSeatWhereUniqueInput | allocatedSeatWhereUniqueInput[]
+    disconnect?: allocatedSeatWhereUniqueInput | allocatedSeatWhereUniqueInput[]
+    delete?: allocatedSeatWhereUniqueInput | allocatedSeatWhereUniqueInput[]
+    connect?: allocatedSeatWhereUniqueInput | allocatedSeatWhereUniqueInput[]
+    update?: allocatedSeatUpdateWithWhereUniqueWithoutStudentInput | allocatedSeatUpdateWithWhereUniqueWithoutStudentInput[]
+    updateMany?: allocatedSeatUpdateManyWithWhereWithoutStudentInput | allocatedSeatUpdateManyWithWhereWithoutStudentInput[]
+    deleteMany?: allocatedSeatScalarWhereInput | allocatedSeatScalarWhereInput[]
   }
 
   export type SeatMatrixCreateNestedManyWithoutDepartmentInput = {
@@ -8453,6 +8453,20 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -8473,20 +8487,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
   export type NestedFloatNullableFilter<$PrismaModel = never> = {
@@ -8526,6 +8526,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -8569,23 +8586,6 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -8635,7 +8635,7 @@ export namespace Prisma {
     _max?: NestedEnumAllocationStatusFilter<$PrismaModel>
   }
 
-  export type AllocatedSeatCreateWithoutStudentInput = {
+  export type allocatedSeatCreateWithoutStudentInput = {
     allocatedCourse: string
     allocationRound: number
     preferenceNumber: number
@@ -8643,7 +8643,7 @@ export namespace Prisma {
     allocatedAt?: Date | string
   }
 
-  export type AllocatedSeatUncheckedCreateWithoutStudentInput = {
+  export type allocatedSeatUncheckedCreateWithoutStudentInput = {
     id?: number
     allocatedCourse: string
     allocationRound: number
@@ -8652,43 +8652,43 @@ export namespace Prisma {
     allocatedAt?: Date | string
   }
 
-  export type AllocatedSeatCreateOrConnectWithoutStudentInput = {
-    where: AllocatedSeatWhereUniqueInput
-    create: XOR<AllocatedSeatCreateWithoutStudentInput, AllocatedSeatUncheckedCreateWithoutStudentInput>
+  export type allocatedSeatCreateOrConnectWithoutStudentInput = {
+    where: allocatedSeatWhereUniqueInput
+    create: XOR<allocatedSeatCreateWithoutStudentInput, allocatedSeatUncheckedCreateWithoutStudentInput>
   }
 
-  export type AllocatedSeatCreateManyStudentInputEnvelope = {
-    data: AllocatedSeatCreateManyStudentInput | AllocatedSeatCreateManyStudentInput[]
+  export type allocatedSeatCreateManyStudentInputEnvelope = {
+    data: allocatedSeatCreateManyStudentInput | allocatedSeatCreateManyStudentInput[]
     skipDuplicates?: boolean
   }
 
-  export type AllocatedSeatUpsertWithWhereUniqueWithoutStudentInput = {
-    where: AllocatedSeatWhereUniqueInput
-    update: XOR<AllocatedSeatUpdateWithoutStudentInput, AllocatedSeatUncheckedUpdateWithoutStudentInput>
-    create: XOR<AllocatedSeatCreateWithoutStudentInput, AllocatedSeatUncheckedCreateWithoutStudentInput>
+  export type allocatedSeatUpsertWithWhereUniqueWithoutStudentInput = {
+    where: allocatedSeatWhereUniqueInput
+    update: XOR<allocatedSeatUpdateWithoutStudentInput, allocatedSeatUncheckedUpdateWithoutStudentInput>
+    create: XOR<allocatedSeatCreateWithoutStudentInput, allocatedSeatUncheckedCreateWithoutStudentInput>
   }
 
-  export type AllocatedSeatUpdateWithWhereUniqueWithoutStudentInput = {
-    where: AllocatedSeatWhereUniqueInput
-    data: XOR<AllocatedSeatUpdateWithoutStudentInput, AllocatedSeatUncheckedUpdateWithoutStudentInput>
+  export type allocatedSeatUpdateWithWhereUniqueWithoutStudentInput = {
+    where: allocatedSeatWhereUniqueInput
+    data: XOR<allocatedSeatUpdateWithoutStudentInput, allocatedSeatUncheckedUpdateWithoutStudentInput>
   }
 
-  export type AllocatedSeatUpdateManyWithWhereWithoutStudentInput = {
-    where: AllocatedSeatScalarWhereInput
-    data: XOR<AllocatedSeatUpdateManyMutationInput, AllocatedSeatUncheckedUpdateManyWithoutStudentInput>
+  export type allocatedSeatUpdateManyWithWhereWithoutStudentInput = {
+    where: allocatedSeatScalarWhereInput
+    data: XOR<allocatedSeatUpdateManyMutationInput, allocatedSeatUncheckedUpdateManyWithoutStudentInput>
   }
 
-  export type AllocatedSeatScalarWhereInput = {
-    AND?: AllocatedSeatScalarWhereInput | AllocatedSeatScalarWhereInput[]
-    OR?: AllocatedSeatScalarWhereInput[]
-    NOT?: AllocatedSeatScalarWhereInput | AllocatedSeatScalarWhereInput[]
-    id?: IntFilter<"AllocatedSeat"> | number
-    studentId?: StringFilter<"AllocatedSeat"> | string
-    allocatedCourse?: StringFilter<"AllocatedSeat"> | string
-    allocationRound?: IntFilter<"AllocatedSeat"> | number
-    preferenceNumber?: IntFilter<"AllocatedSeat"> | number
-    status?: EnumAllocationStatusFilter<"AllocatedSeat"> | $Enums.AllocationStatus
-    allocatedAt?: DateTimeFilter<"AllocatedSeat"> | Date | string
+  export type allocatedSeatScalarWhereInput = {
+    AND?: allocatedSeatScalarWhereInput | allocatedSeatScalarWhereInput[]
+    OR?: allocatedSeatScalarWhereInput[]
+    NOT?: allocatedSeatScalarWhereInput | allocatedSeatScalarWhereInput[]
+    id?: IntFilter<"allocatedSeat"> | number
+    studentId?: StringFilter<"allocatedSeat"> | string
+    allocatedCourse?: StringFilter<"allocatedSeat"> | string
+    allocationRound?: IntFilter<"allocatedSeat"> | number
+    preferenceNumber?: IntFilter<"allocatedSeat"> | number
+    status?: EnumAllocationStatusFilter<"allocatedSeat"> | $Enums.AllocationStatus
+    allocatedAt?: DateTimeFilter<"allocatedSeat"> | Date | string
   }
 
   export type SeatMatrixCreateWithoutDepartmentInput = {
@@ -8829,7 +8829,7 @@ export namespace Prisma {
     applicationNumber: string
     studentName: string
     fatherMotherName: string
-    phoneNumber: string
+    phoneNumber?: string | null
     email: string
     jeeCRL: number
     category: string
@@ -8849,7 +8849,7 @@ export namespace Prisma {
     applicationNumber: string
     studentName: string
     fatherMotherName: string
-    phoneNumber: string
+    phoneNumber?: string | null
     email: string
     jeeCRL: number
     category: string
@@ -8885,7 +8885,7 @@ export namespace Prisma {
     applicationNumber?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     fatherMotherName?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     jeeCRL?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
@@ -8905,7 +8905,7 @@ export namespace Prisma {
     applicationNumber?: StringFieldUpdateOperationsInput | string
     studentName?: StringFieldUpdateOperationsInput | string
     fatherMotherName?: StringFieldUpdateOperationsInput | string
-    phoneNumber?: StringFieldUpdateOperationsInput | string
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: StringFieldUpdateOperationsInput | string
     jeeCRL?: IntFieldUpdateOperationsInput | number
     category?: StringFieldUpdateOperationsInput | string
@@ -8961,7 +8961,7 @@ export namespace Prisma {
     seatMatrix?: SeatMatrixUncheckedUpdateManyWithoutDepartmentNestedInput
   }
 
-  export type AllocatedSeatCreateManyStudentInput = {
+  export type allocatedSeatCreateManyStudentInput = {
     id?: number
     allocatedCourse: string
     allocationRound: number
@@ -8970,7 +8970,7 @@ export namespace Prisma {
     allocatedAt?: Date | string
   }
 
-  export type AllocatedSeatUpdateWithoutStudentInput = {
+  export type allocatedSeatUpdateWithoutStudentInput = {
     allocatedCourse?: StringFieldUpdateOperationsInput | string
     allocationRound?: IntFieldUpdateOperationsInput | number
     preferenceNumber?: IntFieldUpdateOperationsInput | number
@@ -8978,7 +8978,7 @@ export namespace Prisma {
     allocatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AllocatedSeatUncheckedUpdateWithoutStudentInput = {
+  export type allocatedSeatUncheckedUpdateWithoutStudentInput = {
     id?: IntFieldUpdateOperationsInput | number
     allocatedCourse?: StringFieldUpdateOperationsInput | string
     allocationRound?: IntFieldUpdateOperationsInput | number
@@ -8987,7 +8987,7 @@ export namespace Prisma {
     allocatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AllocatedSeatUncheckedUpdateManyWithoutStudentInput = {
+  export type allocatedSeatUncheckedUpdateManyWithoutStudentInput = {
     id?: IntFieldUpdateOperationsInput | number
     allocatedCourse?: StringFieldUpdateOperationsInput | string
     allocationRound?: IntFieldUpdateOperationsInput | number
