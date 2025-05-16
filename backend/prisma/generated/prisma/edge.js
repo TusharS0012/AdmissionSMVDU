@@ -206,11 +206,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://smvdu_admission_user:UQ49DcByU71MU1s0W9Ym95bPqQT59ng2@dpg-d0j1r0vfte5s73c68e80-a.singapore-postgres.render.com/smvdu_admission"
+        "value": null
       }
     }
   },
