@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./Login";
-import SeatAllotment from "./SeatAllotment";
-import { AdminLogin } from "./adminlogin";
-import { RunAllocation } from "./adminAllocation";
+import Login from "./pages/auth/Login";
+import SeatAllotment from "./pages/SeatAllotment";
+import { AdminLogin } from "./pages/auth/adminlogin";
+import { RunAllocation } from "./pages/admin/adminAllocation";
 
 function App() {
   return (
