@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
@@ -29,8 +29,8 @@ const Login: React.FC = () => {
 
   return (
     <>
-      <div className="min-w-full min-h-full flex flex-col gap-4 bg-black p-6">
-        <h2 className="text-2xl font-semibold mb-8">Student Login</h2>
+      <div className="min-w-full min-h-full flex flex-col gap-4 bg-white p-6">
+        <h2 className="text-2xl font-semibold m-4">Student Login</h2>
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
             <label className="block border text-sm font-medium">Email</label>
