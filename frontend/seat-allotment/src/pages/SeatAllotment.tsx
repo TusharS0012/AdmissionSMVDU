@@ -23,7 +23,7 @@ const SeatAllotment = () => {
       }
 
       try {
-        const res = await fetch("http://localhost:3000/api/seat-allotment", {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/seat-allotment`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -55,7 +55,7 @@ const SeatAllotment = () => {
     try {
       const token = localStorage.getItem("token");
       const res = await fetch(
-        "http://localhost:3000/api/seat-allotment/status",
+        `{BACKEND_URL}/api/seat-allotment`,
         {
           method: "POST",
           headers: {
